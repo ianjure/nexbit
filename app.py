@@ -119,7 +119,11 @@ info, chart = st.columns([1,2])
 
 with info:
     # CRYPTO INFO
-    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 900; line-height: 0.5;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
+    logo, name = st.columns([1,3])
+    with logo:
+        st.image('icon.png')
+    with name:
+        st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 900; line-height: 0.5;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
     symbol, supply = st.columns([1,3])
     with symbol:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>{st.session_state.symbol}</h4>", unsafe_allow_html=True)
