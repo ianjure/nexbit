@@ -244,7 +244,7 @@ with chart:
         alt.Y('price:Q', title=None, axis=alt.Axis(orient='right',  grid=True, gridColor='#2C2E2D'))
     ).properties(
         height=315,
-        padding={'top': 20, 'bottom': 20, 'left': 20, 'right': 20}
+        padding={'top': 20, 'bottom': 20, 'left': 5, 'right': 5}
     )
     st.altair_chart(chart, use_container_width=True)
     
