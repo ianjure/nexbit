@@ -137,8 +137,6 @@ if "total_supply" not in st.session_state:
     st.session_state.total_supply = crypto_info["total_supply"][0]
 if "website" not in st.session_state:
     st.session_state.website = crypto_info["website"][0]
-if "description" not in st.session_state:
-    st.session_state.description = crypto_info["description"][0]
 
 info, chart = st.columns([1,2])
 
@@ -177,16 +175,6 @@ with info:
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>WEBSITE:</span>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>
                 <a href='{st.session_state.website}' style='color: #AFFD86'>{st.session_state.website}
-                </a>
-            </span>
-        </div>
-        """
-    st.markdown(website, unsafe_allow_html=True)
-    website = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>DESCRIPTION:</span>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>
-                <a href='{st.session_state.website}' style='color: #AFFD86'>{st.session_state.description}
                 </a>
             </span>
         </div>
@@ -242,19 +230,16 @@ def open_options():
                 st.session_state.market_cap = crypto_info["market_cap"][0]
                 st.session_state.total_supply = crypto_info["total_supply"][0]
                 st.session_state.website = crypto_info["website"][0]
-                st.session_state.description = crypto_info["description"][0]
             elif selection == "Ethereum":
                 st.session_state.symbol = crypto_info["symbol"][1]
                 st.session_state.market_cap = crypto_info["market_cap"][1]
                 st.session_state.total_supply = crypto_info["total_supply"][1]
                 st.session_state.website = crypto_info["website"][1]
-                st.session_state.description = crypto_info["description"][1]
             else:
                 st.session_state.symbol = crypto_info["symbol"][2]
                 st.session_state.market_cap = crypto_info["market_cap"][2]
                 st.session_state.total_supply = crypto_info["total_supply"][2]
                 st.session_state.website = crypto_info["website"][2]
-                st.session_state.description = crypto_info["description"][2]
             st.rerun()
     with export:
         st.write("**EXPORT DASHBOARD AS PDF**")
