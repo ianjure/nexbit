@@ -72,8 +72,9 @@ logo = """
         """
 st.markdown(logo, unsafe_allow_html=True)
 
+"""
 # [STREAMLIT] ADJUST SETTINGS BUTTON
-set_btn = """
+set_btn = ""
     <style>
     [class="st-emotion-cache-11t4yo9 ef3psqc19"] {
         border-radius: 5rem;
@@ -81,8 +82,9 @@ set_btn = """
         height: 3rem;
     }
     </style>
-        """
+        ""
 st.markdown(set_btn, unsafe_allow_html=True)
+"""
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "crypto" not in st.session_state:
@@ -132,7 +134,7 @@ def open_options():
             st.rerun()
     with export:
         st.write("**EXPORT DASHBOARD AS PDF**")
-        st.button("**EXPORT**")
+        st.button("**Export**")
     #export_btn = st.download_button(label="**EXPORT**", data=None, file_name="large_df.pdf", mime="text/csv", use_container_width=True)
         
 button_container = st.container()
