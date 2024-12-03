@@ -47,7 +47,7 @@ with open( "style.css" ) as css:
 header = """
     <style>
     [data-testid="stHeader"] {
-        height: 4rem;
+        height: 7rem;
         width: auto;
         z-index: 1;
     }
@@ -244,7 +244,7 @@ with chart:
         alt.Y('close_price:Q', title=None, axis=alt.Axis(orient='right',  grid=True, gridColor='#2C2E2D'))
     ).properties(
         height=315,
-        padding={'top': 20, 'bottom': 20, 'left': 0, 'right': 0}
+        padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
     )
     st.altair_chart(chart, use_container_width=True)
     
@@ -301,5 +301,5 @@ with button_container:
                  type="secondary"):
         open_options()
     
-button_css = float_css_helper(width="1.8rem", height="2rem", right="3rem", top="2rem", transition=0)
+button_css = float_css_helper(width="1.8rem", height="2rem", right="1rem", top="1rem", transition=0)
 button_container.float(button_css)
