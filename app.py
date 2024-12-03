@@ -259,10 +259,37 @@ with latest_news:
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_1 = f"""
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
+            <div>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
+            </div>
+            <div>
+                <span style='text-align: left; font-size: 0.7rem; font-weight: 100;'>Taasdjhwakjhdkjhwajkhsjkdhwjkahsjkdhjkwha.</span>
+            </div>
         </div>
         """
     st.markdown(news_1, unsafe_allow_html=True)
+    news_2 = f"""
+        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
+            <div>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
+            </div>
+            <div>
+                <span style='text-align: left; font-size: 0.7rem; font-weight: 100;'>Taasdjhwakjhdkjhwajkhsjkdhwjkahsjkdhjkwha.</span>
+            </div>
+        </div>
+        """
+    st.markdown(news_2, unsafe_allow_html=True)
+    news_1 = f"""
+        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
+            <div>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
+            </div>
+            <div>
+                <span style='text-align: left; font-size: 0.7rem; font-weight: 100;'>Taasdjhwakjhdkjhwajkhsjkdhwjkahsjkdhjkwha.</span>
+            </div>
+        </div>
+        """
+    st.markdown(news_2, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
