@@ -267,10 +267,10 @@ with latest_news:
                 <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"][-1]}</span>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"].iloc[-1]}</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"][-1]}</span>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"].iloc[-1]}</span>
             </div>
         </div>
         """
@@ -281,10 +281,10 @@ with latest_news:
                 <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"][-2]}</span>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"].iloc[-2]}</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"][-2]}</span>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"].iloc[-2]}</span>
             </div>
         </div>
         """
@@ -295,10 +295,10 @@ with latest_news:
                 <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"][-3]}</span>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"].iloc[-3]}</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"][-3]}</span>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"].iloc[-3]}</span>
             </div>
         </div>
         """
