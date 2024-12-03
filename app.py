@@ -47,7 +47,7 @@ with open( "style.css" ) as css:
 header = """
     <style>
     [data-testid="stHeader"] {
-        height: 7rem;
+        height: 5rem;
         width: auto;
         z-index: 1;
     }
@@ -301,5 +301,5 @@ with button_container:
                  type="secondary"):
         open_options()
     
-button_css = float_css_helper(width="1.8rem", height="2rem", right="1rem", top="1rem", transition=0)
+button_css = float_css_helper(width="1.8rem", height="2rem", right="2rem", top="1rem", transition=0)
 button_container.float(button_css)
