@@ -128,7 +128,7 @@ if "symbol" not in st.session_state:
 if "total_supply" not in st.session_state:
     st.session_state.total_supply = "100000"
 
-info, chart = st.columns(2)
+info, chart = st.columns([1,2])
 
 with info:
     # CRYPTO INFO
