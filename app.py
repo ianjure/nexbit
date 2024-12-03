@@ -33,6 +33,18 @@ hide_menu = """
     """
 st.markdown(hide_menu, unsafe_allow_html=True)
 
+# [STREAMLIT] ADJUST HEADER
+header = """
+    <style>
+    [data-testid="stHeader"] {
+        height: 7rem;
+        width: auto;
+        z-index: 1;
+    }
+    </style>
+        """
+st.markdown(header, unsafe_allow_html=True)
+
 # [STREAMLIT] ADJUST TOP PADDING
 top = """
     <style>
