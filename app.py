@@ -260,7 +260,7 @@ with ave_sentiment:
 with latest_news:
     latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
-    news_df = st.session_states.news
+    news_df = st.session_state.news
     news_1 = f"""
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
             <div>
