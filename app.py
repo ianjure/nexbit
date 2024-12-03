@@ -130,7 +130,7 @@ if "symbol" not in st.session_state:
 if "market_cap" not in st.session_state:
     st.session_state.market_cap = crypto_info["market_cap"][0]
 if "total_supply" not in st.session_state:
-    st.session_state.total_supply = crypto_info["website"][0]
+    st.session_state.total_supply = crypto_info["total_supply"][0]
 if "website" not in st.session_state:
     st.session_state.website = crypto_info["website"][0]
 if "description" not in st.session_state:
@@ -160,7 +160,7 @@ with info:
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{st.session_state.market_cap}</span>
         </div>
         """
-    st.markdown(total_supply, unsafe_allow_html=True)
+    st.markdown(market_cap, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>TOTAL SUPPLY:</span>
