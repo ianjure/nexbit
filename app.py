@@ -176,7 +176,7 @@ with chart:
         color=alt.Gradient(
             gradient='linear',
             stops=[alt.GradientStop(color='#1A1C1B', offset=0),
-                   alt.GradientStop(color='darkred', offset=1)],
+                   alt.GradientStop(color='red', offset=1)],
             x1=1,
             x2=1,
             y1=1,
