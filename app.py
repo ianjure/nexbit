@@ -131,9 +131,9 @@ info, prediction = st.columns(2)
 with info:
     # CRYPTO NAME
     st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 500; line-height: 0.5;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
-    symbol, supply = st.columns(2)
+    symbol, supply = st.columns([1,2])
     with symbol:
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>SYMBOL: {st.session_state.symbol}</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>{st.session_state.symbol}</h4>", unsafe_allow_html=True)
     with supply:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>TOTAL SUPPLY: {st.session_state.total_supply}</h4>", unsafe_allow_html=True)
 with prediction:
