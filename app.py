@@ -114,8 +114,8 @@ set_btn = """
     [class="st-emotion-cache-11t4yo9 ef3psqc19"] {
         border-radius: 5rem;
         border: 2px solid #FFFFFF;
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
     }
     </style>
         """
