@@ -153,17 +153,17 @@ crypto_price = fetch_data('nexbit.db', 'Price')
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "price" not in st.session_state:
-    st.session_state.price = crypto_price[[crypto_price["crypto_id"]==0]]["close_price"][-1]
+    st.session_state.price = crypto_price[crypto_price["crypto_id"]==0]["close_price"].iloc[-1]
 if "crypto" not in st.session_state:
-    st.session_state.crypto = crypto_info["name"][0]
+    st.session_state.crypto = crypto_info["name"].iloc[0]
 if "symbol" not in st.session_state:
-    st.session_state.symbol = crypto_info["symbol"][0]
+    st.session_state.symbol = crypto_info["symbol"].iloc[0]
 if "market_cap" not in st.session_state:
-    st.session_state.market_cap = crypto_info["market_cap"][0]
+    st.session_state.market_cap = crypto_info["market_cap"].iloc[0]
 if "total_supply" not in st.session_state:
-    st.session_state.total_supply = crypto_info["total_supply"][0]
+    st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
 if "website" not in st.session_state:
-    st.session_state.website = crypto_info["website"][0]
+    st.session_state.website = crypto_info["website"].iloc[0]
 if "accuracy" not in st.session_state:
     st.session_state.accuracy = "54.07%"
 
@@ -267,20 +267,20 @@ def open_options():
         else:
             st.session_state.crypto = selection
             if selection == "Bitcoin":
-                st.session_state.symbol = crypto_info["symbol"][0]
-                st.session_state.market_cap = crypto_info["market_cap"][0]
-                st.session_state.total_supply = crypto_info["total_supply"][0]
-                st.session_state.website = crypto_info["website"][0]
+                st.session_state.symbol = crypto_info["symbol"].iloc[0]
+                st.session_state.market_cap = crypto_info["market_cap"].iloc[0]
+                st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
+                st.session_state.website = crypto_info["website"].iloc[0]
             elif selection == "Ethereum":
-                st.session_state.symbol = crypto_info["symbol"][1]
-                st.session_state.market_cap = crypto_info["market_cap"][1]
-                st.session_state.total_supply = crypto_info["total_supply"][1]
-                st.session_state.website = crypto_info["website"][1]
+                st.session_state.symbol = crypto_info["symbol"].iloc[1]
+                st.session_state.market_cap = crypto_info["market_cap"].iloc[1]
+                st.session_state.total_supply = crypto_info["total_supply"].iloc[1]
+                st.session_state.website = crypto_info["website"].iloc[1]
             else:
-                st.session_state.symbol = crypto_info["symbol"][2]
-                st.session_state.market_cap = crypto_info["market_cap"][2]
-                st.session_state.total_supply = crypto_info["total_supply"][2]
-                st.session_state.website = crypto_info["website"][2]
+                st.session_state.symbol = crypto_info["symbol"].iloc[2]
+                st.session_state.market_cap = crypto_info["market_cap"].iloc[2]
+                st.session_state.total_supply = crypto_info["total_supply"].iloc[2]
+                st.session_state.website = crypto_info["website"].iloc[2]
             st.rerun()
     with export:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>Export Dashboard as PDF</h4>", unsafe_allow_html=True)
