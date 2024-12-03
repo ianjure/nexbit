@@ -33,6 +33,16 @@ hide_menu = """
     """
 st.markdown(hide_menu, unsafe_allow_html=True)
 
+# [STREAMLIT] CENTER SEGMENTED CONTROL
+seg_cent = """
+    <style>
+    [data-baseweb="button-group"] {
+        margin: 0;
+    }
+    </style>
+        """
+st.markdown(seg_cent, unsafe_allow_html=True)
+
 # [STREAMLIT] ADJUST HEADER
 header = """
     <style>
