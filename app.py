@@ -139,7 +139,12 @@ with info:
         st.image("assets/sol-logo.png")
     st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>$96,188.43</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
-    st.success('Price will increase.', icon=":material/expand_circle_up:")
+    increase = """
+        <div style='width: auto; height: 100px; padding: 20px; margin: 0px; border: 5px solid gray; border-radius: 1rem;'>
+            The price will increase.
+        </div>
+        """
+    st.markdown(increase, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>TOTAL SUPPLY:</span>
