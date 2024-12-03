@@ -162,11 +162,17 @@ hover_card = """
         font-weight: 300;
         color: #FFFFFF;
     }
-    .news-card .source {
-        text-align: left;
-        font-size: 0.7rem;
-        font-weight: 400;
-        color: #E1E1E1;
+    .news-card .meta-info {
+            text-align: left;
+            font-size: 0.7rem;
+            font-weight: 400;
+            position: relative;
+    }
+    .news-card .sentiment {
+            float: right;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: #8DFB4E;
     }
     </style>
     """
@@ -332,9 +338,9 @@ with latest_news:
     <a class='news-card' target='_blank' href='{news_df["url"].iloc[-3]}'>
         <span class='title'>{news_df["title"].iloc[-3].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-3]}</span>
-        <div style='display: inline;'>
-            <span class='source'>Source: {news_df["source"].iloc[-3]}</span>
-            <span class='source'>Score: {news_df["sentiment"].iloc[-3]}</span>
+        <div class='meta-info'>
+            <span>Source: {news_df["source"].iloc[-3]}</span>
+            <span class='sentiment'>Score: {news_df["sentiment"].iloc[-3]}</span>
         </div>
     </a>
     """
