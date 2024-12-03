@@ -216,7 +216,7 @@ float_init()
 def open_options():
     select, export = st.columns(2)
     with select:
-        st.write("**CHOOSE A CRYPTOCURRENCY**")
+        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 200; line-height: 0.8;'>Choose a cryptocurrency</h1>", unsafe_allow_html=True)
         options = ["Bitcoin", "Ethereum", "Solana"]
         selection = st.selectbox(label="",
                                  options=options,
@@ -243,7 +243,7 @@ def open_options():
                 st.session_state.website = crypto_info["website"][2]
             st.rerun()
     with export:
-        st.write("**EXPORT DASHBOARD AS PDF**")
+        st.write("Export Dashboard as PDF")
         st.button(label="**Export**",
                   type="primary",
                   use_container_width=True)
