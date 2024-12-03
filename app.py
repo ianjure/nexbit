@@ -140,7 +140,7 @@ def get_crypto_price(api_key):
             print("Error fetching data from CryptoCompare API")
             return None
     #return price_list
-prices = get_crypto_price('29f6b8bc885d1ec56c7612acdd69a9a9f1c4575666aa752220805a7a8dd01df9')
+#prices = get_crypto_price('29f6b8bc885d1ec56c7612acdd69a9a9f1c4575666aa752220805a7a8dd01df9')
 
 # [SQLITE3] FETCHING DATA FROM THE DATABASE
 def fetch_data(database, table):
@@ -148,10 +148,12 @@ def fetch_data(database, table):
     result = pd.read_sql_query(f"SELECT * FROM {table}", conn)
     conn.close()
     return result
-
 crypto_info = fetch_data('nexbit.db', 'Cryptocurrency')
+crypto_price = fetch_data('nexbit.db', 'Price')
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
+if "price" not in st.session_state:
+    st.session_state.price = crypto_price[[crypto_price["crypto_id"]==0]]["close_price"][-1]
 if "crypto" not in st.session_state:
     st.session_state.crypto = crypto_info["name"][0]
 if "symbol" not in st.session_state:
@@ -176,7 +178,7 @@ with info:
     else:
         st.image("assets/sol-logo.png")
     # CRYPTO PRICE
-    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{prices}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{"${:,.2f}".format(float(st.session_state.price))}</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
     date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
