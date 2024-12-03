@@ -83,13 +83,22 @@ st.markdown(set_btn, unsafe_allow_html=True)
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "crypto" not in st.session_state:
     st.session_state.crypto = "Bitcoin"
+if "symbol" not in st.session_state:
+    st.session_state.symbol = "BTC"
+if "total_supply" not in st.session_state:
+    st.session_state.total_supply = "100000"
 
-col1, col2 = st.columns([1, 2])
+info, prediction = st.columns([1, 2])
 
-with col1:
+with info:
     # CRYPTO NAME
     st.markdown(f"<h1 style='text-align: left; font-size: 3rem; font-weight: 500; line-height: 1.2;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
-with col2:
+    symbol, supply = st.columns([1, 2])
+    with symbol:
+        st.markdown(f"<h4 style='text-align: left; font-size: 1.5rem; font-weight: 500; line-height: 1.2;'>{st.session_state.symbol}</h4>", unsafe_allow_html=True)
+    with supply:
+        st.markdown(f"<h4 style='text-align: left; font-size: 1.5rem; font-weight: 500; line-height: 1.2;'>{st.session_state.total_supply}</h4>", unsafe_allow_html=True)
+with prediction:
     # MODEL PREDICTION
     st.success('This is a success message!', icon=":material/expand_circle_up:")
 
@@ -104,6 +113,12 @@ def open_options():
         print("None")
     else:
         st.session_state.crypto = selection
+        if selection == "Bitcoin":
+            st.session_state.symbol = "BTC"
+        elif selection == "Ethereum":
+            st.session_state.symbol = "ETH"
+        else:
+            st.session_state.symbol = "SOL"
         st.rerun()
                 
 button_container = st.container()
