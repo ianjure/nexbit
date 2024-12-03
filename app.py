@@ -124,13 +124,17 @@ conn.close()
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "crypto" not in st.session_state:
-    st.session_state.crypto = "Bitcoin"
+    st.session_state.crypto = crypto_info["name"][0]
 if "symbol" not in st.session_state:
-    st.session_state.symbol = "BTC"
+    st.session_state.symbol = crypto_info["symbol"][0]
+if "market_cap" not in st.session_state:
+    st.session_state.market_cap = crypto_info["market_cap"][0]
 if "total_supply" not in st.session_state:
-    st.session_state.total_supply = "21,000,000"
+    st.session_state.total_supply = crypto_info["website"][0]
 if "website" not in st.session_state:
     st.session_state.website = crypto_info["website"][0]
+if "description" not in st.session_state:
+    st.session_state.description = crypto_info["description"][0]
 
 info, chart = st.columns([1,2])
 
@@ -150,6 +154,13 @@ with info:
         </div>
         """
     st.markdown(increase, unsafe_allow_html=True)
+    market_cap = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>MARKET CAP:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{st.session_state.market_cap}</span>
+        </div>
+        """
+    st.markdown(total_supply, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>TOTAL SUPPLY:</span>
@@ -213,14 +224,23 @@ def open_options():
         else:
             st.session_state.crypto = selection
             if selection == "Bitcoin":
-                st.session_state.symbol = "BTC"
+                st.session_state.symbol = crypto_info["symbol"][0]
+                st.session_state.website = crypto_info["market_cap"][0]
+                st.session_state.website = crypto_info["total_supply"][0]
                 st.session_state.website = crypto_info["website"][0]
+                st.session_state.description = crypto_info["description"][0]
             elif selection == "Ethereum":
-                st.session_state.symbol = "ETH"
+                st.session_state.symbol = crypto_info["symbol"][1]
+                st.session_state.website = crypto_info["market_cap"][1]
+                st.session_state.website = crypto_info["total_supply"][1]
                 st.session_state.website = crypto_info["website"][1]
+                st.session_state.description = crypto_info["description"][1]
             else:
-                st.session_state.symbol = "SOL"
+                st.session_state.symbol = crypto_info["symbol"][2]
+                st.session_state.website = crypto_info["market_cap"][2]
+                st.session_state.website = crypto_info["total_supply"][2]
                 st.session_state.website = crypto_info["website"][2]
+                st.session_state.description = crypto_info["description"][2]
             st.rerun()
     with export:
         st.write("**EXPORT DASHBOARD AS PDF**")
