@@ -127,7 +127,10 @@ hover_card = """
     .news-card {
         width: auto;
         height: auto;
-        padding: 12px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-left: 15px;
+        padding-right: 15px;
         margin: 0px;
         margin-bottom: 15px;
         border-radius: 0.8rem;
