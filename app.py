@@ -342,6 +342,14 @@ with latest_news:
         </div>
         """
     st.markdown(news_3, unsafe_allow_html=True)
+    news_4 = f"""
+    <div class='news-card'>
+        <span class='title'>{news_df["title"].iloc[-3]}</span>
+        <span class='summary'>{news_df["summary"].iloc[-3]}</span>
+        <span class='source'>Source: {news_df["source"].iloc[-3]}</span>
+    </div>
+    """
+    st.markdown(news_4, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
