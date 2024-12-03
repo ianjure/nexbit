@@ -122,7 +122,11 @@ with info:
     logo, name = st.columns([1,3])
     with logo:
         if st.session_state.crypto == "Bitcoin":
-            st.image("assets/btc-logo.svg")
+            st.image("assets/btc-logo.svg", use_container_width=True)
+        elif st.session_state.crypto == "Ethereum":
+            st.image("assets/eth-logo.svg", use_container_width=True)
+        else:
+            st.image("assets/sol-logo.svg", use_container_width=True)
     with name:
         st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 900; line-height: 0.5;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
     symbol, supply = st.columns([1,3])
