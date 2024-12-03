@@ -146,7 +146,7 @@ with info:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>WEBSITE:</h4>", unsafe_allow_html=True)
     with sub_info2:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>{st.session_state.total_supply}</h4>", unsafe_allow_html=True)
-        st.markdown(f"<h4 href='{st.session_state.website}' style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>{st.session_state.website}</h4>", unsafe_allow_html=True)
+        st.markdown(f"<a href='{st.session_state.website}' style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>{st.session_state.website}</a>", unsafe_allow_html=True)
 with chart:
     # PRICE CHART
     chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
