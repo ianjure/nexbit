@@ -295,7 +295,7 @@ with chart:
     )
     st.altair_chart(chart, use_container_width=True)
 
-ave_sentiment, latest_news = st.columns([2,1])
+ave_sentiment, latest_news = st.columns([3,2])
 
 with ave_sentiment:
     ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>DAILY AVERAGE SENTIMENT</h4>"
