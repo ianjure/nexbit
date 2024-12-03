@@ -241,7 +241,7 @@ with chart:
         )
     ).encode(
         alt.X('date:T', title=None),
-        alt.Y('price:Q', title=None)
+        alt.Y('price:Q', title=None, axis=alt.Axis(orient='right'))
     ).properties(
         height=315
     )
