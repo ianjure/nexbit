@@ -135,7 +135,7 @@ def get_crypto_price(api_key):
         if response.status_code == 200:
             data = response.json()
             print(data)
-            price_list.append(price)
+            #price_list.append(price)
         else:
             print("Error fetching data from CryptoCompare API")
             return None
