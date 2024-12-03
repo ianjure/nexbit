@@ -153,21 +153,22 @@ with info:
     # MODEL PREDICTION
     increase = """
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E40;'>
-            The price will increase.
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Model Prediction: The price will increase.</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>Confidence: 67%</span>
         </div>
         """
     st.markdown(increase, unsafe_allow_html=True)
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Market Cap:</span>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
         </div>
         """
     st.markdown(market_cap, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Total Supply:</span>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
         </div>
         """
     st.markdown(total_supply, unsafe_allow_html=True)
