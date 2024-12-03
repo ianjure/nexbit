@@ -140,19 +140,23 @@ with info:
     st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>$96,188.43</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
     st.success('Price will increase.', icon=":material/expand_circle_up:")
-    sub_info1, sub_info2 = st.columns(2)
-    with sub_info1:
-        total_supply = f"""
-            <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>TOTAL SUPPLY:</span>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>{st.session_state.total_supply}</span>
-            </div>
-            """
-        st.markdown(total_supply, unsafe_allow_html=True)
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>WEBSITE:</h4>", unsafe_allow_html=True)
-    with sub_info2:
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>{st.session_state.total_supply}</h4>", unsafe_allow_html=True)
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right color: #AFFD86'><a href='{st.session_state.website}' style='color: #AFFD86'>{st.session_state.website}</a></h4>", unsafe_allow_html=True)
+    total_supply = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>TOTAL SUPPLY:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>{st.session_state.total_supply}</span>
+        </div>
+        """
+    st.markdown(total_supply, unsafe_allow_html=True)
+    website = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>WEBSITE:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>
+                <a href='{st.session_state.website}' style='color: #AFFD86'>{st.session_state.website}
+                </a>
+            </span>
+        </div>
+        """
+    st.markdown(website, unsafe_allow_html=True)
 with chart:
     # PRICE CHART
     chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
