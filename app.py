@@ -4,6 +4,7 @@ import streamlit as st
 # [STREAMLIT] PAGE CONFIGURATION
 icon = Image.open("icon.png")
 st.set_page_config(page_title="Nexbit", page_icon=icon)
+st.logo("logo.svg")
 
 # [STREAMLIT] HIDE MENU
 hide_menu = """
@@ -39,6 +40,17 @@ top = """
     </style>
     """
 st.markdown(top, unsafe_allow_html=True)
+
+# [STREAMLIT] ADJUST LOGO SIZE
+logo = """
+    <style>
+    [data-testid="stLogo"] {
+        width: 10rem;
+        height: auto;
+    }
+    </style>
+        """
+st.markdown(logo, unsafe_allow_html=True)
 
 st.write("nexbit")
 
