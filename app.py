@@ -88,7 +88,7 @@ col1, col2, col3 = st.columns(3)
 
 with col1:
     # CRYPTO NAME
-    st.markdown(f"<h1 style='text-align: center; font-size: 3rem; font-weight: 500; line-height: 1.2;'>{st.session_state.crypto}</p>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: left; font-size: 3rem; font-weight: 500; line-height: 1.2;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
 with col2:
     with st.popover("Change Crypto"):
         st.markdown("Hello World 👋")
