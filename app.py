@@ -61,6 +61,16 @@ hide_anchor = """
     """
 st.markdown(hide_anchor, unsafe_allow_html=True)
 
+# [STREAMLIT] HIDE IMAGE ZOOM
+hide_zoom = """
+    <style>
+    [data-testid="stBaseButton-elementToolbar"] {
+        display: none;
+    }
+    </style>
+    """
+st.markdown(hide_zoom, unsafe_allow_html=True)
+
 # [STREAMLIT] ADJUST TOP PADDING
 top = """
     <style>
