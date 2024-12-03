@@ -68,7 +68,9 @@ logo = """
         """
 st.markdown(logo, unsafe_allow_html=True)
 
-st.write("nexbit")
+# [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
+if "crypto" not in st.session_state:
+    st.session_state.crypto = "Bitcoin"
 
 col1, col2, col3 = st.columns(3)
 
@@ -87,7 +89,9 @@ float_init()
 @st.dialog("Change Crypto")
 def open_options():
     options = ["Bitcoin", "Ethereum", "Solana"]
-    selection = st.segmented_control("Cryptocurrency", options, default="Bitcoin", selection_mode="single")
+    selection = st.segmented_control("Cryptocurrency", options, default=st.session_state.crypto, selection_mode="single")
+    st.session_state.crypto = selection
+    st.rerun()
                 
 button_container = st.container()
 with button_container:
