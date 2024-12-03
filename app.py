@@ -65,7 +65,7 @@ top = """
     .block-container {
         padding-top: 3rem;
         padding-bottom: 3rem;
-        margin-top: -3rem;
+        margin-top: -5rem;
     }
     </style>
     """
