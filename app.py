@@ -128,7 +128,7 @@ with info:
         else:
             st.image("assets/sol-logo.svg", use_container_width=True)
     with name:
-        st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 900; line-height: 0.5;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: left; font-size: 2rem; font-weight: 900; line-height: 0.5;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
     symbol, supply = st.columns([1,3])
     with symbol:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>{st.session_state.symbol}</h4>", unsafe_allow_html=True)
