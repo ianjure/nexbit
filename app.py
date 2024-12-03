@@ -168,6 +168,7 @@ with chart:
     from vega_datasets import data
     
     source = data.stocks()
+
     # Create a selection that tracks the mouse position
     hover = alt.selection_single(on='mouseover', empty='none')
     
@@ -202,7 +203,10 @@ with chart:
     ).transform_filter(
         hover
     )
-    st.altair_chart(chart + hover_dot, use_container_width=True)
+
+    # Combine the chart and the dot on hover
+    final_chart = btc_chart + hover_dot
+    st.altair_chart(final_chart, use_container_width=True)
     
 
 # [STREAMLIT] CRYPTO OPTIONS
