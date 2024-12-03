@@ -125,6 +125,7 @@ st.markdown(set_btn, unsafe_allow_html=True)
 hover_card = """
     <style>
     .news-card {
+        display: block;
         width: auto;
         height: auto;
         padding-top: 12px;
@@ -136,6 +137,8 @@ hover_card = """
         border-radius: 0.8rem;
         background-color: #575D59;
         transition: background-color 0.3s ease, transform 0.2s ease;
+        text-decoration: none;
+        color: inherit;
     }
     .news-card:hover {
         background-color: #6F7C78;
