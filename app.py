@@ -247,7 +247,15 @@ with chart:
         padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
     )
     st.altair_chart(chart, use_container_width=True)
-    
+
+ave_sentiment, latest_news = st.columns([2,1])
+
+with ave_sentiment:
+    ave_sentiment_title = "<h4 style='text-align: left; font-size: 1.2rem; font-weight: 700; color: #8DFB4E'>DAILY AVERAGE SENTIMENT</h4>"
+    st.markdown(ave_sentiment_title, unsafe_allow_html=True)
+with latest_news:
+    latest_news_title = "<h4 style='text-align: left; font-size: 1.2rem; font-weight: 700; color: #8DFB4E'>LATEST NEWS</h4>"
+    st.markdown(latest_news_title, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
