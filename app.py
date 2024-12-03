@@ -328,6 +328,7 @@ def open_options():
                 st.session_state.market_cap = crypto_info["market_cap"].iloc[0]
                 st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
                 st.session_state.website = crypto_info["website"].iloc[0]
+                st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
             elif selection == "Ethereum":
                 st.session_state.price = crypto_price[crypto_price["crypto_id"]==2]["close_price"].iloc[-1]
                 st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==2]
@@ -335,6 +336,7 @@ def open_options():
                 st.session_state.market_cap = crypto_info["market_cap"].iloc[1]
                 st.session_state.total_supply = crypto_info["total_supply"].iloc[1]
                 st.session_state.website = crypto_info["website"].iloc[1]
+                st.session_state.news = crypto_news[crypto_news["crypto_id"]==2]
             else:
                 st.session_state.price = crypto_price[crypto_price["crypto_id"]==3]["close_price"].iloc[-1]
                 st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==3]
@@ -342,6 +344,7 @@ def open_options():
                 st.session_state.market_cap = crypto_info["market_cap"].iloc[2]
                 st.session_state.total_supply = crypto_info["total_supply"].iloc[2]
                 st.session_state.website = crypto_info["website"].iloc[2]
+                st.session_state.news = crypto_news[crypto_news["crypto_id"]==3]
             st.rerun()
     with export:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>Export Dashboard as PDF</h4>", unsafe_allow_html=True)
