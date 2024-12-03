@@ -41,7 +41,7 @@ with open( "style.css" ) as css:
 header = """
     <style>
     [data-testid="stHeader"] {
-        height: 1rem;
+        height: 7rem;
         width: auto;
         z-index: 1;
     }
@@ -65,7 +65,7 @@ top = """
     .block-container {
         padding-top: 3rem;
         padding-bottom: 3rem;
-        margin-top: 0rem;
+        margin-top: -3rem;
     }
     </style>
     """
