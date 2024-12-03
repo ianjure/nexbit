@@ -264,13 +264,13 @@ with latest_news:
     news_1 = f"""
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
             <div>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>{news_df["title"].iloc[-1]}</span>
             </div>
             <div>
                 <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"].iloc[-1]}</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"].iloc[-1]}</span>
+                <span style='text-align: left; font-size: 0.6rem; font-weight: 300;'>Source: {news_df["source"].iloc[-1]}</span>
             </div>
         </div>
         """
@@ -278,13 +278,13 @@ with latest_news:
     news_2 = f"""
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
             <div>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>{news_df["title"].iloc[-2]}</span>
             </div>
             <div>
                 <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"].iloc[-2]}</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"].iloc[-2]}</span>
+                <span style='text-align: left; font-size: 0.6rem; font-weight: 300;'>Source: {news_df["source"].iloc[-2]}</span>
             </div>
         </div>
         """
@@ -292,13 +292,13 @@ with latest_news:
     news_3 = f"""
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
             <div>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>{news_df["title"].iloc[-3]}</span>
             </div>
             <div>
                 <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"].iloc[-3]}</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"].iloc[-3]}</span>
+                <span style='text-align: left; font-size: 0.6rem; font-weight: 300;'>Source: {news_df["source"].iloc[-3]}</span>
             </div>
         </div>
         """
