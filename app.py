@@ -134,7 +134,8 @@ def open_options():
             st.rerun()
     with export:
         st.write("**EXPORT DASHBOARD AS PDF**")
-        st.button("**Export**")
+        st.button(label="**Export**",
+                  use_container_width=True)
     #export_btn = st.download_button(label="**EXPORT**", data=None, file_name="large_df.pdf", mime="text/csv", use_container_width=True)
         
 button_container = st.container()
