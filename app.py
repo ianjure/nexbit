@@ -33,6 +33,18 @@ hide_menu = """
     """
 st.markdown(hide_menu, unsafe_allow_html=True)
 
+#  [STEAMLIT] CHANGE FONT STYLE
+streamlit_style = """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+    
+    html, body, [class*="css"]  {
+    font-family: 'Roboto', sans-serif;
+    }
+    </style>
+    """
+st.markdown(streamlit_style, unsafe_allow_html=True)
+
 # [STREAMLIT] CENTER SEGMENTED CONTROL
 seg_cent = """
     <style>
