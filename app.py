@@ -1,5 +1,6 @@
 import sqlite3
 import requests
+import altair as alt
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -154,6 +155,8 @@ crypto_price = fetch_data('nexbit.db', 'Price')
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "price" not in st.session_state:
     st.session_state.price = crypto_price[crypto_price["crypto_id"]==1]["close_price"].iloc[-1]
+if "price_data" not in st.session_state:
+    st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==1]
 if "crypto" not in st.session_state:
     st.session_state.crypto = crypto_info["name"].iloc[0]
 if "symbol" not in st.session_state:
@@ -221,14 +224,11 @@ with info:
     st.markdown(website, unsafe_allow_html=True)
 with chart:
     # PRICE CHART
-    import altair as alt
-    from vega_datasets import data
+    df = st.session_state.price_data
+    df = df[['date', 'close_price']]
+    df['date'] = pd.to_datetime(df['date'])
     
-    source = data.stocks()
-    
-    chart = alt.Chart(source).transform_filter(
-        'datum.symbol==="GOOG"'
-    ).mark_area(
+    chart = alt.Chart(df).mark_area(
         line={'color': '#8DFB4E'},
         color=alt.Gradient(
             gradient='linear',
@@ -268,18 +268,21 @@ def open_options():
             st.session_state.crypto = selection
             if selection == "Bitcoin":
                 st.session_state.price = crypto_price[crypto_price["crypto_id"]==1]["close_price"].iloc[-1]
+                st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==1]
                 st.session_state.symbol = crypto_info["symbol"].iloc[0]
                 st.session_state.market_cap = crypto_info["market_cap"].iloc[0]
                 st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
                 st.session_state.website = crypto_info["website"].iloc[0]
             elif selection == "Ethereum":
                 st.session_state.price = crypto_price[crypto_price["crypto_id"]==2]["close_price"].iloc[-1]
+                st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==2]
                 st.session_state.symbol = crypto_info["symbol"].iloc[1]
                 st.session_state.market_cap = crypto_info["market_cap"].iloc[1]
                 st.session_state.total_supply = crypto_info["total_supply"].iloc[1]
                 st.session_state.website = crypto_info["website"].iloc[1]
             else:
                 st.session_state.price = crypto_price[crypto_price["crypto_id"]==3]["close_price"].iloc[-1]
+                st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==3]
                 st.session_state.symbol = crypto_info["symbol"].iloc[2]
                 st.session_state.market_cap = crypto_info["market_cap"].iloc[2]
                 st.session_state.total_supply = crypto_info["total_supply"].iloc[2]
