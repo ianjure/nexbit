@@ -90,7 +90,7 @@ with col1:
     # CRYPTO NAME
     st.markdown(f"<h1 style='text-align: left; font-size: 3rem; font-weight: 500; line-height: 1.2;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
 with col3:
-    st.success('This is a success message!', icon=":expand_circle_up:")
+    st.success('This is a success message!', icon=":material/expand_circle_up:")
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
