@@ -118,9 +118,13 @@ set_btn = """
 st.markdown(set_btn, unsafe_allow_html=True)
 
 # [SQLITE3] FETCHING DATA FROM THE DATABASE
-conn = sqlite3.connect('nexbit.db')
-crypto_info = pd.read_sql_query("SELECT * FROM Cryptocurrency", conn)
-conn.close()
+def fetch_data(database, table):
+    conn = sqlite3.connect(database)
+    result = pd.read_sql_query(f"SELECT * FROM {table}", conn)
+    conn.close()
+    return result
+
+crypto_info = fetch_data('nexbit.db', 'Cryptocurrency')
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "crypto" not in st.session_state:
