@@ -153,7 +153,7 @@ crypto_price = fetch_data('nexbit.db', 'Price')
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "price" not in st.session_state:
-    st.session_state.price = crypto_price[crypto_price["crypto_id"]==0]["close_price"].iloc[-1]
+    st.session_state.price = crypto_price[crypto_price["crypto_id"]==1]["close_price"].iloc[-1]
 if "crypto" not in st.session_state:
     st.session_state.crypto = crypto_info["name"].iloc[0]
 if "symbol" not in st.session_state:
