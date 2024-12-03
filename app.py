@@ -152,9 +152,9 @@ with info:
     st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>$96,188.43</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
     increase = """
-        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E40;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Model Prediction: The price will increase.</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>Confidence: 67%</span>
+        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
+            <span style='text-align: left; font-size: 0.8rem; font-weight: 500;'>Prediction: The price will increase.</span>
+            <span style='text-align: right; font-size: 0.8rem; font-weight: 500;'>Confidence: 67%</span>
         </div>
         """
     st.markdown(increase, unsafe_allow_html=True)
