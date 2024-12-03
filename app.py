@@ -141,7 +141,7 @@ with info:
     # MODEL PREDICTION
     st.success('Price will increase.', icon=":material/expand_circle_up:")
     total_supply = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>TOTAL SUPPLY:</span>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{st.session_state.total_supply}</span>
         </div>
