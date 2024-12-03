@@ -267,16 +267,19 @@ def open_options():
         else:
             st.session_state.crypto = selection
             if selection == "Bitcoin":
+                st.session_state.price = crypto_price[crypto_price["crypto_id"]==1]["close_price"].iloc[-1]
                 st.session_state.symbol = crypto_info["symbol"].iloc[0]
                 st.session_state.market_cap = crypto_info["market_cap"].iloc[0]
                 st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
                 st.session_state.website = crypto_info["website"].iloc[0]
             elif selection == "Ethereum":
+                st.session_state.price = crypto_price[crypto_price["crypto_id"]==2]["close_price"].iloc[-1]
                 st.session_state.symbol = crypto_info["symbol"].iloc[1]
                 st.session_state.market_cap = crypto_info["market_cap"].iloc[1]
                 st.session_state.total_supply = crypto_info["total_supply"].iloc[1]
                 st.session_state.website = crypto_info["website"].iloc[1]
             else:
+                st.session_state.price = crypto_price[crypto_price["crypto_id"]==3]["close_price"].iloc[-1]
                 st.session_state.symbol = crypto_info["symbol"].iloc[2]
                 st.session_state.market_cap = crypto_info["market_cap"].iloc[2]
                 st.session_state.total_supply = crypto_info["total_supply"].iloc[2]
