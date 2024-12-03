@@ -157,8 +157,8 @@ hover_card = """
     }
     .news-card .source {
         text-align: left;
-        font-size: 0.6rem;
-        font-weight: 300;
+        font-size: 0.7rem;
+        font-weight: 400;
     }
     </style>
     """
@@ -305,7 +305,7 @@ with latest_news:
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_1 = f"""
-    <div class='news-card'>
+    <div class='news-card' href='{news_df["url"].iloc[-1]}'>
         <span class='title'>{news_df["title"].iloc[-1].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-1]}</span>
         <span class='source'>Source: {news_df["source"].iloc[-1]}</span>
@@ -313,7 +313,7 @@ with latest_news:
     """
     st.markdown(news_1, unsafe_allow_html=True)
     news_2 = f"""
-    <div class='news-card'>
+    <div class='news-card' href='{news_df["url"].iloc[-2]}'>
         <span class='title'>{news_df["title"].iloc[-2].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-2]}</span>
         <span class='source'>Source: {news_df["source"].iloc[-2]}</span>
@@ -321,7 +321,7 @@ with latest_news:
     """
     st.markdown(news_2, unsafe_allow_html=True)
     news_3 = f"""
-    <div class='news-card'>
+    <div class='news-card' href='{news_df["url"].iloc[-3]}'>
         <span class='title'>{news_df["title"].iloc[-3].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-3]}</span>
         <span class='source'>Source: {news_df["source"].iloc[-3]}</span>
