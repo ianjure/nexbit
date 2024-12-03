@@ -137,6 +137,7 @@ hover_card = """
     .news-card:hover {
         background-color: #6F7C78;
         transform: scale(1.02);
+        cursor: pointer;
     }
     .news-card span {
         display: block;
@@ -301,55 +302,29 @@ with latest_news:
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_1 = f"""
-        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
-            <div>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>{news_df["title"].iloc[-1]}</span>
-            </div>
-            <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"].iloc[-1]}</span>
-            </div>
-            <div>
-                <span style='text-align: left; font-size: 0.6rem; font-weight: 300;'>Source: {news_df["source"].iloc[-1]}</span>
-            </div>
-        </div>
-        """
+    <div class='news-card'>
+        <span class='title'>{news_df["title"].iloc[-1]}</span>
+        <span class='summary'>{news_df["summary"].iloc[-1]}</span>
+        <span class='source'>Source: {news_df["source"].iloc[-1]}</span>
+    </div>
+    """
     st.markdown(news_1, unsafe_allow_html=True)
     news_2 = f"""
-        <div class='news-card'>
-            <div>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>{news_df["title"].iloc[-2]}</span>
-            </div>
-            <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"].iloc[-2]}</span>
-            </div>
-            <div>
-                <span style='text-align: left; font-size: 0.6rem; font-weight: 300;'>Source: {news_df["source"].iloc[-2]}</span>
-            </div>
-        </div>
-        """
+    <div class='news-card'>
+        <span class='title'>{news_df["title"].iloc[-2]}</span>
+        <span class='summary'>{news_df["summary"].iloc[-2]}</span>
+        <span class='source'>Source: {news_df["source"].iloc[-2]}</span>
+    </div>
+    """
     st.markdown(news_2, unsafe_allow_html=True)
     news_3 = f"""
-        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
-            <div>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500;'>{news_df["title"].iloc[-3]}</span>
-            </div>
-            <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"].iloc[-3]}</span>
-            </div>
-            <div>
-                <span style='text-align: left; font-size: 0.6rem; font-weight: 300;'>Source: {news_df["source"].iloc[-3]}</span>
-            </div>
-        </div>
-        """
-    st.markdown(news_3, unsafe_allow_html=True)
-    news_4 = f"""
     <div class='news-card'>
         <span class='title'>{news_df["title"].iloc[-3]}</span>
         <span class='summary'>{news_df["summary"].iloc[-3]}</span>
         <span class='source'>Source: {news_df["source"].iloc[-3]}</span>
     </div>
     """
-    st.markdown(news_4, unsafe_allow_html=True)
+    st.markdown(news_3, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
