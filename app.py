@@ -72,6 +72,19 @@ logo = """
         """
 st.markdown(logo, unsafe_allow_html=True)
 
+# [STREAMLIT] CENTER SEGMENTED CONTROL
+seg_cent = """
+    <style>
+    [class="stElementContainer element-container st-emotion-cache-1c6qvx0 e1f1d6gn4"] {
+        justify-items: center;
+    }
+    [data-baseweb="button-group"] {
+        margin: 0;
+    }
+    </style>
+        """
+st.markdown(seg_cent, unsafe_allow_html=True)
+
 """
 # [STREAMLIT] ADJUST SETTINGS BUTTON
 set_btn = ""
