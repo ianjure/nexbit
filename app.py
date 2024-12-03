@@ -162,6 +162,12 @@ hover_card = """
         font-weight: 300;
         color: #FFFFFF;
     }
+    .news-card .source {
+        text-align: left;
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: #8F8F8F;
+    }
     .news-card .meta-info {
             text-align: left;
             font-size: 0.7rem;
@@ -339,7 +345,7 @@ with latest_news:
         <span class='title'>{news_df["title"].iloc[-3].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-3]}</span>
         <div class='meta-info'>
-            <span>Source: {news_df["source"].iloc[-3]}</span>
+            <span class='source'>Source: {news_df["source"].iloc[-3]}</span>
             <span class='sentiment'>Score: {news_df["sentiment"].iloc[-3]}</span>
         </div>
     </a>
