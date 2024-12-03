@@ -323,7 +323,10 @@ with latest_news:
     <a class='news-card' target='_blank' href='{news_df["url"].iloc[-1]}'>
         <span class='title'>{news_df["title"].iloc[-1].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-1]}</span>
-        <span class='source'>Source: {news_df["source"].iloc[-1]}</span>
+        <div class='meta-info'>
+            <span>Source: {news_df["source"].iloc[-1]}</span>
+            <span class='sentiment'>Score: {news_df["sentiment"].iloc[-1]}</span>
+        </div>
     </a>
     """
     st.markdown(news_1, unsafe_allow_html=True)
@@ -331,7 +334,10 @@ with latest_news:
     <a class='news-card' target='_blank' href='{news_df["url"].iloc[-2]}'>
         <span class='title'>{news_df["title"].iloc[-2].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-2]}</span>
-        <span class='source'>Source: {news_df["source"].iloc[-2]}</span>
+        <div class='meta-info'>
+            <span>Source: {news_df["source"].iloc[-2]}</span>
+            <span class='sentiment'>Score: {news_df["sentiment"].iloc[-2]}</span>
+        </div>
     </a>
     """
     st.markdown(news_2, unsafe_allow_html=True)
