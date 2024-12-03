@@ -164,15 +164,29 @@ with info:
     st.markdown(website, unsafe_allow_html=True)
 with chart:
     # PRICE CHART
-    chart_data = pd.DataFrame(
-        np.random.randn(20, 2), columns=["col1", "col2"])
+    import altair as alt
+    from vega_datasets import data
     
-    st.area_chart(
-        chart_data,
-        x="col1",
-        y="col2",
-        color="#FF0000",  # Optional
+    source = data.stocks()
+    
+    chart = alt.Chart(source).transform_filter(
+        'datum.symbol==="GOOG"'
+    ).mark_area(
+        line={'color':'darkgreen'},
+        color=alt.Gradient(
+            gradient='linear',
+            stops=[alt.GradientStop(color='white', offset=0),
+                   alt.GradientStop(color='darkgreen', offset=1)],
+            x1=1,
+            x2=1,
+            y1=1,
+            y2=0
+        )
+    ).encode(
+        alt.X('date:T'),
+        alt.Y('price:Q')
     )
+    st.altair_chart(chart, use_container_width=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
