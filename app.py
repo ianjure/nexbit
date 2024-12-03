@@ -235,7 +235,7 @@ with info:
         """
     st.markdown(date_acc, unsafe_allow_html=True)
     increase = f"""
-        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
+        <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
         </div>
         """
