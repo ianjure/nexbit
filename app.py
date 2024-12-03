@@ -205,7 +205,7 @@ with chart:
     )
 
     # Combine the chart and the dot on hover
-    final_chart = btc_chart + hover_dot
+    final_chart = chart + hover_dot
     st.altair_chart(final_chart, use_container_width=True)
     
 
