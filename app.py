@@ -123,7 +123,7 @@ if "crypto" not in st.session_state:
 if "symbol" not in st.session_state:
     st.session_state.symbol = "BTC"
 if "total_supply" not in st.session_state:
-    st.session_state.total_supply = "100000"
+    st.session_state.total_supply = "21,000,000"
 if "website" not in st.session_state:
     st.session_state.website = "https://bitcoin.org/en/"
 
