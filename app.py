@@ -305,28 +305,28 @@ with latest_news:
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_1 = f"""
-    <div class='news-card' href='{news_df["url"].iloc[-1]}'>
+    <a class='news-card' target='_blank' href='{news_df["url"].iloc[-1]}'>
         <span class='title'>{news_df["title"].iloc[-1].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-1]}</span>
         <span class='source'>Source: {news_df["source"].iloc[-1]}</span>
         <span class='source'>Source: {news_df["url"].iloc[-1]}</span>
-    </div>
+    </a>
     """
     st.markdown(news_1, unsafe_allow_html=True)
     news_2 = f"""
-    <div class='news-card' href='{news_df["url"].iloc[-2]}'>
+    <a class='news-card' target='_blank' href='{news_df["url"].iloc[-2]}'>
         <span class='title'>{news_df["title"].iloc[-2].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-2]}</span>
         <span class='source'>Source: {news_df["source"].iloc[-2]}</span>
-    </div>
+    </a>
     """
     st.markdown(news_2, unsafe_allow_html=True)
     news_3 = f"""
-    <div class='news-card' href='{news_df["url"].iloc[-3]}'>
+    <a class='news-card' target='_blank' href='{news_df["url"].iloc[-3]}'>
         <span class='title'>{news_df["title"].iloc[-3].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-3]}</span>
         <span class='source'>Source: {news_df["source"].iloc[-3]}</span>
-    </div>
+    </a>
     """
     st.markdown(news_3, unsafe_allow_html=True)
 
