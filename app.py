@@ -160,14 +160,14 @@ with info:
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>MARKET CAP:</span>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{st.session_state.market_cap}</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
         </div>
         """
     st.markdown(market_cap, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>TOTAL SUPPLY:</span>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{st.session_state.total_supply}</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
         </div>
         """
     st.markdown(total_supply, unsafe_allow_html=True)
