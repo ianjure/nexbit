@@ -166,7 +166,7 @@ hover_card = """
         text-align: left;
         font-size: 0.7rem;
         font-weight: 400;
-        color: #575D59;
+        color: #E1E1E1;
     }
     </style>
     """
@@ -332,7 +332,10 @@ with latest_news:
     <a class='news-card' target='_blank' href='{news_df["url"].iloc[-3]}'>
         <span class='title'>{news_df["title"].iloc[-3].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-3]}</span>
-        <span class='source'>Source: {news_df["source"].iloc[-3]}</span>
+        <div style='display: inline;'>
+            <span class='source'>Source: {news_df["source"].iloc[-3]}</span>
+            <span class='source'>Score: {news_df["sentiment"].iloc[-3]}</span>
+        </div>
     </a>
     """
     st.markdown(news_3, unsafe_allow_html=True)
