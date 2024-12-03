@@ -1,5 +1,6 @@
-from PIL import Image
 import streamlit as st
+from PIL import Image
+from streamlit_float import *
 
 # [STREAMLIT] PAGE CONFIGURATION
 icon = Image.open("icon.png")
