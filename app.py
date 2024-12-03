@@ -105,7 +105,7 @@ with prediction:
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
 
-@st.dialog("Dashboard Settings")
+@st.dialog("Dashboard Settings", width="small")
 def open_options():
     options = ["Bitcoin", "Ethereum", "Solana"]
     selection = st.segmented_control("Cryptocurrency", options, default=st.session_state.crypto, selection_mode="single")
