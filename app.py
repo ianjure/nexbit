@@ -171,7 +171,7 @@ with chart:
         chart_data,
         x="col1",
         y="col2",
-        color=["#FF0000"],  # Optional
+        color="#FF0000",  # Optional
     )
 
 # [STREAMLIT] CRYPTO OPTIONS
