@@ -155,12 +155,14 @@ hover_card = """
         font-size: 1rem;
         font-weight: 600;
         color: #FFFFFF;
+        margin-bottom: 8px;
     }
     .news-card .summary {
         text-align: justify;
         font-size: 0.8rem;
         font-weight: 300;
         color: #FFFFFF;
+        margin-bottom: 10px;
     }
     .news-card .meta-info {
         display: flex;
