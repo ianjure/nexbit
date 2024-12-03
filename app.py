@@ -121,7 +121,8 @@ float_init()
 @st.dialog("Dashboard Settings", width="small")
 def open_options():
     options = ["Bitcoin", "Ethereum", "Solana"]
-    selection = st.segmented_control(label="**CHOOSE A CRYPTOCURRENCY**",
+    st.write("**CHOOSE A CRYPTOCURRENCY**")
+    selection = st.segmented_control(label="",
                                      options=options,
                                      selection_mode="single",
                                      default=st.session_state.crypto)
@@ -137,11 +138,8 @@ def open_options():
             st.session_state.symbol = "SOL"
         st.rerun()
     st.write("**EXPORT DASHBOARD AS PDF**")
-    export_btn = st.download_button(label="**EXPORT**",
-                                    data=None,
-                                    file_name="large_df.pdf",
-                                    mime="text/csv",
-                                    use_container_width=True)
+    st.button("**EXPORT**")
+    #export_btn = st.download_button(label="**EXPORT**", data=None, file_name="large_df.pdf", mime="text/csv", use_container_width=True)
         
 button_container = st.container()
 with button_container:
