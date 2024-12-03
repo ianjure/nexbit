@@ -107,23 +107,36 @@ float_init()
 
 @st.dialog("Dashboard Settings", width="small")
 def open_options():
-    options = ["Bitcoin", "Ethereum", "Solana"]
-    selection = st.segmented_control("Cryptocurrency", options, default=st.session_state.crypto, selection_mode="single")
-    if selection == st.session_state.crypto:
-        print("None")
-    else:
-        st.session_state.crypto = selection
-        if selection == "Bitcoin":
-            st.session_state.symbol = "BTC"
-        elif selection == "Ethereum":
-            st.session_state.symbol = "ETH"
+    select, export = st.columns(2)
+    with select:
+        options = ["Bitcoin", "Ethereum", "Solana"]
+        selection = st.segmented_control(label="**CHOOSE A CRYPTOCURRENCY**",
+                                         options=options,
+                                         default=st.session_state.crypto,
+                                         selection_mode="single",
+                                         use_container_width=True)
+        if selection == st.session_state.crypto:
+            print("None")
         else:
-            st.session_state.symbol = "SOL"
-        st.rerun()
-                
+            st.session_state.crypto = selection
+            if selection == "Bitcoin":
+                st.session_state.symbol = "BTC"
+            elif selection == "Ethereum":
+                st.session_state.symbol = "ETH"
+            else:
+                st.session_state.symbol = "SOL"
+            st.rerun()
+    with export:
+        export_btn = st.download_button(label="**EXPORT DASHBOARD**",
+                                        data=None,
+                                        file_name="large_df.pdf",
+                                        mime="text/csv",
+                                        use_container_width=True)
+        
 button_container = st.container()
 with button_container:
-    if st.button("⚙️", type="secondary"):
+    if st.button(label="⚙️",
+                 type="secondary"):
         open_options()
     
 button_css = float_css_helper(width="1.8rem", height="2rem", right="3rem", top="2rem", transition=0)
