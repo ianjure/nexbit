@@ -183,8 +183,8 @@ with chart:
             y2=0
         )
     ).encode(
-        alt.X('date:T'),
-        alt.Y('price:Q')
+        alt.X('date:T', title=None),
+        alt.Y('price:Q', title=None)
     )
     st.altair_chart(chart, use_container_width=True)
 
