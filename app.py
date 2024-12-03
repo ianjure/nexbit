@@ -141,16 +141,16 @@ with info:
     # MODEL PREDICTION
     st.success('Price will increase.', icon=":material/expand_circle_up:")
     total_supply = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>TOTAL SUPPLY:</span>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8; text-align: right'>{st.session_state.total_supply}</span>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>TOTAL SUPPLY:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{st.session_state.total_supply}</span>
         </div>
         """
     st.markdown(total_supply, unsafe_allow_html=True)
     website = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>WEBSITE:</span>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8; text-align: right'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>WEBSITE:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>
                 <a href='{st.session_state.website}' style='color: #AFFD86'>{st.session_state.website}
                 </a>
             </span>
