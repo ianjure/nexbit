@@ -164,8 +164,15 @@ with info:
     st.markdown(website, unsafe_allow_html=True)
 with chart:
     # PRICE CHART
-    chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
-    st.line_chart(chart_data)
+    chart_data = pd.DataFrame(
+        np.random.randn(20, 3), columns=["col1", "col2"])
+    
+    st.area_chart(
+        chart_data,
+        x="col1",
+        y="col2",
+        color=["#FF0000"],  # Optional
+    )
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
