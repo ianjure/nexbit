@@ -226,6 +226,7 @@ with chart:
     # PRICE CHART
     df = st.session_state.price_data
     df = df[['date', 'close_price']]
+    df = df.copy()
     df['date'] = pd.to_datetime(df['date'])
     
     chart = alt.Chart(df).mark_area(
