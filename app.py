@@ -5,9 +5,9 @@ from PIL import Image
 from streamlit_float import *
 
 # [STREAMLIT] PAGE CONFIGURATION
-icon = Image.open("assets/icon.png")
+icon = Image.open("assets/nexbit-icon.png")
 st.set_page_config(page_title="Nexbit", page_icon=icon, layout="wide")
-st.logo("assets/logo.svg")
+st.logo("assets/nexbit-logo.svg")
 
 # [STREAMLIT] HIDE MENU
 hide_menu = """
