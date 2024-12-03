@@ -111,7 +111,7 @@ with prediction:
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
 
-@st.dialog("Dashboard Settings", width="small")
+@st.dialog("Dashboard Settings", width="large")
 def open_options():
     select, export = st.columns(2)
     with select:
