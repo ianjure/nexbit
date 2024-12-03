@@ -90,8 +90,11 @@ float_init()
 def open_options():
     options = ["Bitcoin", "Ethereum", "Solana"]
     selection = st.segmented_control("Cryptocurrency", options, default=st.session_state.crypto, selection_mode="single")
-    st.session_state.crypto = selection
-    st.rerun()
+    if selection == st.session_state.crypto:
+        print("None")
+    else:
+        st.session_state.crypto = selection
+        st.rerun()
                 
 button_container = st.container()
 with button_container:
