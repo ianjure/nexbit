@@ -165,7 +165,7 @@ with info:
 with chart:
     # PRICE CHART
     chart_data = pd.DataFrame(
-        np.random.randn(20, 3), columns=["col1", "col2"])
+        np.random.randn(20, 2), columns=["col1", "col2"])
     
     st.area_chart(
         chart_data,
