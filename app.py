@@ -135,7 +135,7 @@ with info:
         st.image("assets/eth-logo.png")
     else:
         st.image("assets/sol-logo.png")
-    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 500; line-height: 1; padding-top: 5px;'>$96,188.43</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 500; line-height: 0.8; padding-top: 3px;'>$96,188.43</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
     st.success('Price will increase.', icon=":material/expand_circle_up:")
     symbol, supply = st.columns([1,3])
