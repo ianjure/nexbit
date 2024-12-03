@@ -142,8 +142,8 @@ with info:
     st.success('Price will increase.', icon=":material/expand_circle_up:")
     sub_info1, sub_info2 = st.columns(2)
     with sub_info1:
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>TOTAL SUPPLY: {st.session_state.total_supply}</h4>", unsafe_allow_html=True)
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>WEBSITE: {st.session_state.total_supply}</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>TOTAL SUPPLY:</h4>", unsafe_allow_html=True)
+        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>WEBSITE:</h4>", unsafe_allow_html=True)
     with sub_info2:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>{st.session_state.total_supply}</h4>", unsafe_allow_html=True)
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>{st.session_state.website}</h4>", unsafe_allow_html=True)
