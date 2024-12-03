@@ -84,12 +84,13 @@ st.markdown(set_btn, unsafe_allow_html=True)
 if "crypto" not in st.session_state:
     st.session_state.crypto = "Bitcoin"
 
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns([1, 3])
 
 with col1:
     # CRYPTO NAME
     st.markdown(f"<h1 style='text-align: left; font-size: 3rem; font-weight: 500; line-height: 1.2;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
-with col3:
+with col2:
+    # MODEL PREDICTION
     st.success('This is a success message!', icon=":material/expand_circle_up:")
 
 # [STREAMLIT] CRYPTO OPTIONS
