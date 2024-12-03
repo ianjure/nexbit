@@ -89,17 +89,13 @@ col1, col2, col3 = st.columns(3)
 with col1:
     # CRYPTO NAME
     st.markdown(f"<h1 style='text-align: left; font-size: 3rem; font-weight: 500; line-height: 1.2;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
-with col2:
-    with st.popover("Change Crypto"):
-        st.markdown("Hello World 👋")
-        name = st.text_input("What's your name?")
 with col3:
-    st.metric("Prediction", "70 °F", "1.2 °F")
+    st.success('This is a success message!', icon="expand_circle_up")
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
 
-@st.dialog("Change Crypto")
+@st.dialog("Dashboard Settings")
 def open_options():
     options = ["Bitcoin", "Ethereum", "Solana"]
     selection = st.segmented_control("Cryptocurrency", options, default=st.session_state.crypto, selection_mode="single")
@@ -111,7 +107,7 @@ def open_options():
                 
 button_container = st.container()
 with button_container:
-    if st.button("💱", type="secondary"):
+    if st.button("⚙️", type="secondary"):
         open_options()
     
 button_css = float_css_helper(width="1.8rem", height="2rem", right="3rem", top="2rem", transition=0)
