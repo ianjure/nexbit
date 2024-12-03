@@ -1,3 +1,4 @@
+import sqlite3
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -116,6 +117,10 @@ set_btn = """
         """
 st.markdown(set_btn, unsafe_allow_html=True)
 
+# [SQLITE3] FETCHING DATA FROM THE DATABASE
+conn = sqlite3.connect('nexbit.db')
+crypto_info = pd.read_sql_query("SELECT * FROM Cryptocurrency", conn)
+conn.close()
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "crypto" not in st.session_state:
@@ -125,7 +130,7 @@ if "symbol" not in st.session_state:
 if "total_supply" not in st.session_state:
     st.session_state.total_supply = "21,000,000"
 if "website" not in st.session_state:
-    st.session_state.website = "https://bitcoin.org/en/"
+    st.session_state.website = crypto_info["website"][0]
 
 info, chart = st.columns([1,2])
 
@@ -209,10 +214,13 @@ def open_options():
             st.session_state.crypto = selection
             if selection == "Bitcoin":
                 st.session_state.symbol = "BTC"
+                st.session_state.website = crypto_info["website"][0]
             elif selection == "Ethereum":
                 st.session_state.symbol = "ETH"
+                st.session_state.website = crypto_info["website"][1]
             else:
                 st.session_state.symbol = "SOL"
+                st.session_state.website = crypto_info["website"][2]
             st.rerun()
     with export:
         st.write("**EXPORT DASHBOARD AS PDF**")
