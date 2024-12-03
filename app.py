@@ -49,6 +49,31 @@ header = """
         """
 st.markdown(header, unsafe_allow_html=True)
 
+# [STREAMLIT] HIDE TEXT ANCHOR
+hide_anchor = """
+    <style>
+    h1 > div > a {
+        display: none;
+    }
+    h2 > div > a {
+        display: none;
+    }
+    h3 > div > a {
+        display: none;
+    }
+    h4 > div > a {
+        display: none;
+    }
+    h5 > div > a {
+        display: none;
+    }
+    h6 > div > a {
+        display: none;
+    }
+    </style>
+    """
+st.markdown(hide_anchor, unsafe_allow_html=True)
+
 # [STREAMLIT] ADJUST TOP PADDING
 top = """
     <style>
