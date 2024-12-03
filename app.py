@@ -173,7 +173,7 @@ hover_card = """
         color: #8F8F8F;
     }
     .news-card .sentiment {
-        color: #8DFB4E;
+        color: #AFFD86;
     }
     </style>
     """
