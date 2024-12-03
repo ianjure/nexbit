@@ -155,23 +155,16 @@ with info:
     # CRYPTO PRICE
     st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>$96,188.43</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
-    accuracy = f"""
+    acc_date = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 0.7rem; font-weight: 500;'>Model Accuracy:</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500;'>{st.session_state.accuracy}</span>
+            <span style='text-align: left; font-size: 0.7rem; font-weight: 500;'>Model Accuracy: {st.session_state.accuracy}</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500;'>Date: {datetime.now().strftime("%B %d, %Y")}</span>
         </div>
         """
-    st.markdown(accuracy, unsafe_allow_html=True)
-    current_date = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 0.7rem; font-weight: 500;'>Model Accuracy:</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500;'>{datetime.now().strftime("%B %d, %Y")}</span>
-        </div>
-        """
-    st.markdown(current_date, unsafe_allow_html=True)
+    st.markdown(acc_date, unsafe_allow_html=True)
     increase = """
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
-            <span style='text-align: right; font-size: 0.8rem; font-weight: 500;'>The price will increase with 67% confidence tomorrow.</span>
+            <span style='text-align: right; font-size: 0.8rem; font-weight: 500;'>The price will increase tomorrow. (Conf: 67%)</span>
         </div>
         """
     st.markdown(increase, unsafe_allow_html=True)
