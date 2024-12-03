@@ -240,6 +240,8 @@ with chart:
     ).encode(
         alt.X('date:T', title=None),
         alt.Y('price:Q', title=None)
+    ).properties(
+        height=400
     )
 
     st.altair_chart(chart, use_container_width=True)
