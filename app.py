@@ -6,7 +6,7 @@ from streamlit_float import *
 
 # [STREAMLIT] PAGE CONFIGURATION
 icon = Image.open("icon.png")
-st.set_page_config(page_title="Nexbit", page_icon=icon)
+st.set_page_config(page_title="Nexbit", page_icon=icon, layout="wide")
 st.logo("logo.svg")
 
 # [STREAMLIT] HIDE MENU
