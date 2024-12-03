@@ -124,7 +124,7 @@ with prediction:
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
 
-@st.dialog("Dashboard Settings", width="large")
+@st.dialog("Dashboard Settings", width="small")
 def open_options():
     select, export = st.columns(2)
     with select:
@@ -148,6 +148,7 @@ def open_options():
     with export:
         st.write("**EXPORT DASHBOARD AS PDF**")
         st.button(label="**Export**",
+                  type="primary",
                   use_container_width=True)
     #export_btn = st.download_button(label="**EXPORT**", data=None, file_name="large_df.pdf", mime="text/csv", use_container_width=True)
         
