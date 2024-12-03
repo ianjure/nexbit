@@ -309,6 +309,7 @@ with latest_news:
         <span class='title'>{news_df["title"].iloc[-1].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-1]}</span>
         <span class='source'>Source: {news_df["source"].iloc[-1]}</span>
+        <span class='source'>Source: {news_df["url"].iloc[-1]}</span>
     </div>
     """
     st.markdown(news_1, unsafe_allow_html=True)
