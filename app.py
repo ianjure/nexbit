@@ -241,7 +241,7 @@ with chart:
         alt.X('date:T', title=None),
         alt.Y('price:Q', title=None)
     ).properties(
-        height=400
+        height=300
     )
 
     st.altair_chart(chart, use_container_width=True)
