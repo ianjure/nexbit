@@ -64,3 +64,18 @@ with col2:
         name = st.text_input("What's your name?")
 with col3:
     st.metric("Prediction", "70 °F", "1.2 °F")
+
+# [STREAMLIT] CRYPTO OPTIONS
+float_init()
+@st.dialog("Change Crypto")
+def open_options():
+    options = ["Bitcoin", "Ethereum", "Solana"]
+    selection = st.segmented_control("Cryptocurrency", options, default="Bitcoin", selection_mode="single")
+                
+button_container = st.container()
+with button_container:
+    if st.button("⚙️", type="secondary"):
+        open_options()
+    
+button_css = float_css_helper(width="1.8rem", height="2rem", right="3rem", top="2rem", transition=0)
+button_container.float(button_css)
