@@ -138,6 +138,8 @@ if "total_supply" not in st.session_state:
     st.session_state.total_supply = crypto_info["total_supply"][0]
 if "website" not in st.session_state:
     st.session_state.website = crypto_info["website"][0]
+if "accuracy" not in st.session_state:
+    st.session_state.accuracy = "54.07%"
 
 info, chart = st.columns([1,2])
 
@@ -153,15 +155,18 @@ with info:
     # MODEL PREDICTION
     increase = """
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
-            <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 500;'>The price will increase with 67% confidence.</span>
-            </div>
-            <div>
-                <span style='text-align: left; font-size: 0.8rem; font-weight: 500;'>Model Accuracy: 54%</span>
-            </div>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Prediction:</span>
+            <span style='text-align: right; font-size: 0.8rem; font-weight: 500;'The price will increase with 67% confidence.</span>
         </div>
         """
     st.markdown(increase, unsafe_allow_html=True)
+    accuracy = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
+            <span style='text-align: left; font-size: 0.7rem; font-weight: 500;'>Model Accuracy:</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500;'>{st.session_state.accuracy}</span>
+        </div>
+        """
+    st.markdown(accuracy, unsafe_allow_html=True)
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Market Cap:</span>
