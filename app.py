@@ -135,7 +135,7 @@ with info:
         st.image("assets/eth-logo.png")
     else:
         st.image("assets/sol-logo.png")
-    st.markdown(f"<h1 style='text-align: left; font-size: 3rem; font-weight: 900; line-height: 0.5;'>$96,188.43</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 900; line-height: 0.2;'>$96,188.43</h1>", unsafe_allow_html=True)
     symbol, supply = st.columns([1,3])
     with symbol:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>{st.session_state.symbol}</h4>", unsafe_allow_html=True)
