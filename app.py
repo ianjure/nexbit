@@ -151,6 +151,7 @@ def fetch_data(database, table):
     return result
 crypto_info = fetch_data('nexbit.db', 'Cryptocurrency')
 crypto_price = fetch_data('nexbit.db', 'Price')
+crypto_price = fetch_data('nexbit.db', 'News')
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "price" not in st.session_state:
@@ -169,6 +170,8 @@ if "website" not in st.session_state:
     st.session_state.website = crypto_info["website"].iloc[0]
 if "accuracy" not in st.session_state:
     st.session_state.accuracy = "54.07%"
+if "news" not in st.session_state:
+    st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
 
 info, chart = st.columns([1,2])
 
@@ -257,13 +260,17 @@ with ave_sentiment:
 with latest_news:
     latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
+    news_df = st.session_states.news
     news_1 = f"""
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
             <div>
                 <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.7rem; font-weight: 100;'>Taasdjhwakjhdkjhwajkhsjkdhwjkahsjkdhjkwha.</span>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"][-1]}</span>
+            </div>
+            <div>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"][-1]}</span>
             </div>
         </div>
         """
@@ -274,22 +281,28 @@ with latest_news:
                 <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.7rem; font-weight: 100;'>Taasdjhwakjhdkjhwajkhsjkdhwjkahsjkdhjkwha.</span>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"][-2]}</span>
+            </div>
+            <div>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"][-2]}</span>
             </div>
         </div>
         """
     st.markdown(news_2, unsafe_allow_html=True)
-    news_1 = f"""
+    news_3 = f"""
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
             <div>
                 <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
             </div>
             <div>
-                <span style='text-align: left; font-size: 0.7rem; font-weight: 100;'>Taasdjhwakjhdkjhwajkhsjkdhwjkahsjkdhjkwha.</span>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>{news_df["summary"][-3]}</span>
+            </div>
+            <div>
+                <span style='text-align: left; font-size: 0.8rem; font-weight: 300;'>Source: {news_df["source"][-3]}</span>
             </div>
         </div>
         """
-    st.markdown(news_2, unsafe_allow_html=True)
+    st.markdown(news_3, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
