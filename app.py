@@ -110,8 +110,7 @@ def open_options():
     select, export = st.columns(2)
     with select:
         options = ["Bitcoin", "Ethereum", "Solana"]
-        selection = st.segmented_control(label="**CHOOSE A CRYPTOCURRENCY**", options=options,
-                                         selection_mode="single", default=st.session_state.crypto, use_container_width=True)
+        selection = st.segmented_control(label="**CHOOSE A CRYPTOCURRENCY**", options=options, selection_mode="single", default=st.session_state.crypto, use_container_width=True)
         if selection == st.session_state.crypto:
             print("None")
         else:
