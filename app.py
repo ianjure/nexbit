@@ -26,9 +26,12 @@ hide_menu = """
         height: 0%;
         position: fixed;
     }
+    [data-testid="stToolbar"] {
+        display: none;
+    }
     </style>
     """
-st.markdown(hide_menu, unsafe_allow_html = True)
+st.markdown(hide_menu, unsafe_allow_html=True)
 
 # [STREAMLIT] ADJUST TOP PADDING
 top = """
