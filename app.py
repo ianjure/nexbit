@@ -159,21 +159,21 @@ with info:
     st.markdown(increase, unsafe_allow_html=True)
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>MARKET CAP:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Market Cap:</span>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
         </div>
         """
     st.markdown(market_cap, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>TOTAL SUPPLY:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Total Supply:</span>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
         </div>
         """
     st.markdown(total_supply, unsafe_allow_html=True)
     website = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>WEBSITE:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Website:</span>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>
                 <a href='{st.session_state.website}' style='color: #AFFD86'>{st.session_state.website}
                 </a>
