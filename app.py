@@ -136,13 +136,13 @@ with info:
     else:
         st.image("assets/sol-logo.png")
     st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 900; line-height: 0.2;'>$96,188.43</h1>", unsafe_allow_html=True)
-    symbol, supply = st.columns([1,3])
-    with symbol:
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>{st.session_state.symbol}</h4>", unsafe_allow_html=True)
-    with supply:
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>TOTAL SUPPLY: {st.session_state.total_supply}</h4>", unsafe_allow_html=True)
     # MODEL PREDICTION
     st.success('Price will increase.', icon=":material/expand_circle_up:")
+    symbol, supply = st.columns([1,3])
+    with symbol:
+        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>{st.session_state.symbol}</h4>", unsafe_allow_html=True)
+    with supply:
+        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>TOTAL SUPPLY: {st.session_state.total_supply}</h4>", unsafe_allow_html=True)
 with chart:
     # PRICE CHART
     chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
