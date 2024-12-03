@@ -151,7 +151,7 @@ def fetch_data(database, table):
     return result
 crypto_info = fetch_data('nexbit.db', 'Cryptocurrency')
 crypto_price = fetch_data('nexbit.db', 'Price')
-crypto_price = fetch_data('nexbit.db', 'News')
+crypto_news = fetch_data('nexbit.db', 'News')
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "price" not in st.session_state:
