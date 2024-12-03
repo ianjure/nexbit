@@ -1,2 +1,4 @@
 streamlit
 streamlit-float
+altair
+vega-datasets
