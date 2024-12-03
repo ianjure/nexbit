@@ -85,6 +85,15 @@ seg_cent = """
         """
 st.markdown(seg_cent, unsafe_allow_html=True)
 
+# [STREAMLIT] PRIMARY BUTTON COLOR
+primary = """
+    <style>
+    [data-testid="stBaseButton-primary"] {
+        color: #1A1C1B;
+    }
+    </style>
+        """
+st.markdown(primary, unsafe_allow_html=True)
 """
 # [STREAMLIT] ADJUST SETTINGS BUTTON
 set_btn = ""
