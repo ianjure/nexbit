@@ -129,14 +129,12 @@ info, chart = st.columns([1,2])
 
 with info:
     # CRYPTO INFO
-    logo, name = st.columns([1,5])
-    with logo:
-        if st.session_state.crypto == "Bitcoin":
-            st.image("assets/btc-logo.svg", use_container_width=True)
-        elif st.session_state.crypto == "Ethereum":
-            st.image("assets/eth-logo.svg", use_container_width=True)
-        else:
-            st.image("assets/sol-logo.svg", use_container_width=True)
+    if st.session_state.crypto == "Bitcoin":
+        st.image("assets/btc-logo.png")
+    elif st.session_state.crypto == "Ethereum":
+        st.image("assets/eth-logo.png")
+    else:
+        st.image("assets/sol-logo.png")
     with name:
         st.markdown(f"<h1 style='text-align: left; font-size: 2rem; font-weight: 900; line-height: 1;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
     symbol, supply = st.columns([1,3])
