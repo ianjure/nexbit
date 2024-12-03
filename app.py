@@ -252,10 +252,10 @@ with chart:
 ave_sentiment, latest_news = st.columns([2,1])
 
 with ave_sentiment:
-    ave_sentiment_title = "<h4 style='text-align: left; font-size: 1.2rem; font-weight: 700; color: #8DFB4E'>DAILY AVERAGE SENTIMENT</h4>"
+    ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
 with latest_news:
-    latest_news_title = "<h4 style='text-align: left; font-size: 1.2rem; font-weight: 700; color: #8DFB4E'>LATEST NEWS</h4>"
+    latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
