@@ -144,22 +144,16 @@ if "accuracy" not in st.session_state:
 info, chart = st.columns([1,2])
 
 with info:
-    # CRYPTO INFO
+    # CRYPTO LOGO AND NAME
     if st.session_state.crypto == "Bitcoin":
         st.image("assets/btc-logo.png")
     elif st.session_state.crypto == "Ethereum":
         st.image("assets/eth-logo.png")
     else:
         st.image("assets/sol-logo.png")
+    # CRYPTO PRICE
     st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>$96,188.43</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
-    increase = """
-        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Prediction:</span>
-            <span style='text-align: right; font-size: 0.8rem; font-weight: 500;'>The price will increase with 67% confidence.</span>
-        </div>
-        """
-    st.markdown(increase, unsafe_allow_html=True)
     accuracy = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 0.7rem; font-weight: 500;'>Model Accuracy:</span>
@@ -167,6 +161,14 @@ with info:
         </div>
         """
     st.markdown(accuracy, unsafe_allow_html=True)
+    increase = """
+        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
+            <span style='text-align: left; font-size: 0.8rem; font-weight: 500;'>Prediction:</span>
+            <span style='text-align: right; font-size: 0.8rem; font-weight: 500;'>The price will increase with 67% confidence.</span>
+        </div>
+        """
+    st.markdown(increase, unsafe_allow_html=True)
+    # CRYPTO INFO
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Market Cap:</span>
