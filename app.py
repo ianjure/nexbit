@@ -138,11 +138,12 @@ hover_card = """
         background-color: #575D59;
         transition: background-color 0.3s ease, transform 0.2s ease;
         text-decoration: none;
-        color: inherit;
+        color: white;
     }
     .news-card:hover {
         background-color: #6F7C78;
         transform: scale(1.02);
+        text-decoration: none;
         cursor: pointer;
     }
     .news-card span {
@@ -301,10 +302,10 @@ with chart:
 ave_sentiment, latest_news = st.columns([3,2])
 
 with ave_sentiment:
-    ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>DAILY AVERAGE SENTIMENT</h4>"
+    ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #AFFD86;'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
 with latest_news:
-    latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>LATEST NEWS</h4>"
+    latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #AFFD86;'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_1 = f"""
