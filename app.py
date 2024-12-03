@@ -121,6 +121,45 @@ set_btn = """
         """
 st.markdown(set_btn, unsafe_allow_html=True)
 
+# [STREAMLIT] HOVER EFFECT
+hover_card = """
+    <style>
+    .news-card {
+        width: auto;
+        height: auto;
+        padding: 12px;
+        margin: 0px;
+        margin-bottom: 15px;
+        border-radius: 0.8rem;
+        background-color: #575D59;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .news-card:hover {
+        background-color: #6F7C78;
+        transform: scale(1.02);
+    }
+    .news-card span {
+        display: block;
+    }
+    .news-card .title {
+        text-align: left;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    .news-card .summary {
+        text-align: left;
+        font-size: 0.8rem;
+        font-weight: 300;
+    }
+    .news-card .source {
+        text-align: left;
+        font-size: 0.6rem;
+        font-weight: 300;
+    }
+    </style>
+    """
+st.markdown(hover_card, unsafe_allow_html=True)
+
 # [CRYPTOCOMPARE API] FETCH CURRENT CRYPTO PRICE
 def get_crypto_price(api_key):
     crypto_symbols = ['BTC', 'ETH', 'SOL']
@@ -276,7 +315,7 @@ with latest_news:
         """
     st.markdown(news_1, unsafe_allow_html=True)
     news_2 = f"""
-        <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border-radius: 0.8rem; background-color: #575D59;'>
+        <div class='news-card'>
             <div>
                 <span style='text-align: left; font-size: 1rem; font-weight: 500;'>{news_df["title"].iloc[-2]}</span>
             </div>
