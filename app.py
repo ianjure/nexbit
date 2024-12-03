@@ -154,6 +154,7 @@ with info:
     increase = """
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
             <span style='text-align: left; font-size: 0.8rem; font-weight: 500;'>The price will increase with 67% confidence.</span>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=currency_exchange" />
             <span style='text-align: right;' class='material-symbols-rounded'>currency_exchange</span>
         </div>
         """
