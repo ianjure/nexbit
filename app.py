@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 from PIL import Image
 from streamlit_float import *
 
@@ -126,19 +128,22 @@ if "symbol" not in st.session_state:
 if "total_supply" not in st.session_state:
     st.session_state.total_supply = "100000"
 
-info, prediction = st.columns(2)
+info, chart = st.columns(2)
 
 with info:
-    # CRYPTO NAME
-    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 500; line-height: 0.5;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
-    symbol, supply = st.columns([1,2])
+    # CRYPTO INFO
+    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 900; line-height: 0.5;'>{st.session_state.crypto}</h1>", unsafe_allow_html=True)
+    symbol, supply = st.columns([1,3])
     with symbol:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>{st.session_state.symbol}</h4>", unsafe_allow_html=True)
     with supply:
         st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.2;'>TOTAL SUPPLY: {st.session_state.total_supply}</h4>", unsafe_allow_html=True)
-with prediction:
     # MODEL PREDICTION
     st.success('Price will increase.', icon=":material/expand_circle_up:")
+with chart:
+    # PRICE CHART
+    chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
+    st.line_chart(chart_data)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
