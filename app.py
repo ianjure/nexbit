@@ -67,6 +67,7 @@ with col3:
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
+
 @st.dialog("Change Crypto")
 def open_options():
     options = ["Bitcoin", "Ethereum", "Solana"]
@@ -74,7 +75,7 @@ def open_options():
                 
 button_container = st.container()
 with button_container:
-    if st.button("⚙️", type="secondary"):
+    if st.button("💱", type="secondary"):
         open_options()
     
 button_css = float_css_helper(width="1.8rem", height="2rem", right="3rem", top="2rem", transition=0)
