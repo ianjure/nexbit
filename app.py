@@ -84,7 +84,7 @@ st.markdown(set_btn, unsafe_allow_html=True)
 if "crypto" not in st.session_state:
     st.session_state.crypto = "Bitcoin"
 
-col1, col2 = st.columns([1, 3])
+col1, col2 = st.columns([1, 2])
 
 with col1:
     # CRYPTO NAME
