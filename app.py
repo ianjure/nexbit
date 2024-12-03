@@ -111,25 +111,28 @@ float_init()
 
 @st.dialog("Dashboard Settings", width="small")
 def open_options():
-    options = ["Bitcoin", "Ethereum", "Solana"]
-    st.write("**CHOOSE A CRYPTOCURRENCY**")
-    selection = st.segmented_control(label="",
-                                     options=options,
-                                     selection_mode="single",
-                                     default=st.session_state.crypto)
-    if selection == st.session_state.crypto:
-        print("None")
-    else:
-        st.session_state.crypto = selection
-        if selection == "Bitcoin":
-            st.session_state.symbol = "BTC"
-        elif selection == "Ethereum":
-            st.session_state.symbol = "ETH"
+    select, export = st.columns(2)
+    with select:
+        st.write("**CHOOSE A CRYPTOCURRENCY**")
+        options = ["Bitcoin", "Ethereum", "Solana"]
+        selection = st.segmented_control(label="",
+                                         options=options,
+                                         selection_mode="single",
+                                         default=st.session_state.crypto)
+        if selection == st.session_state.crypto:
+            print("None")
         else:
-            st.session_state.symbol = "SOL"
-        st.rerun()
-    st.write("**EXPORT DASHBOARD AS PDF**")
-    st.button("**EXPORT**")
+            st.session_state.crypto = selection
+            if selection == "Bitcoin":
+                st.session_state.symbol = "BTC"
+            elif selection == "Ethereum":
+                st.session_state.symbol = "ETH"
+            else:
+                st.session_state.symbol = "SOL"
+            st.rerun()
+    with export:
+        st.write("**EXPORT DASHBOARD AS PDF**")
+        st.button("**EXPORT**")
     #export_btn = st.download_button(label="**EXPORT**", data=None, file_name="large_df.pdf", mime="text/csv", use_container_width=True)
         
 button_container = st.container()
