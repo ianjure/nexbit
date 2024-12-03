@@ -135,13 +135,13 @@ hover_card = """
         margin: 0px;
         margin-bottom: 15px;
         border-radius: 0.8rem;
-        background-color: #575D59;
+        background-color: #2C2E2D;
         transition: background-color 0.3s ease, transform 0.2s ease;
         text-decoration: none;
         color: #FFFFFF;
     }
     .news-card:hover {
-        background-color: #6F7C78;
+        background-color: #575D59;
         transform: scale(1.02);
         text-decoration: none;
         color: #FFFFFF;
@@ -166,7 +166,7 @@ hover_card = """
         text-align: left;
         font-size: 0.7rem;
         font-weight: 400;
-        color: #FFFFFF;
+        color: #575D59;
     }
     </style>
     """
@@ -306,10 +306,10 @@ with chart:
 ave_sentiment, latest_news = st.columns([3,2])
 
 with ave_sentiment:
-    ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4;'>DAILY AVERAGE SENTIMENT</h4>"
+    ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
 with latest_news:
-    latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4;'>LATEST NEWS</h4>"
+    latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_1 = f"""
@@ -317,7 +317,6 @@ with latest_news:
         <span class='title'>{news_df["title"].iloc[-1].title()}</span>
         <span class='summary'>{news_df["summary"].iloc[-1]}</span>
         <span class='source'>Source: {news_df["source"].iloc[-1]}</span>
-        <span class='source'>Source: {news_df["url"].iloc[-1]}</span>
     </a>
     """
     st.markdown(news_1, unsafe_allow_html=True)
