@@ -162,7 +162,7 @@ with info:
         </div>
         """
     st.markdown(date_acc, unsafe_allow_html=True)
-    increase = """f
+    increase = f"""
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
             <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
                 <span style='text-align: left; font-size: 0.8rem; font-weight: 500;'>The price will increase tomorrow.</span>
