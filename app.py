@@ -119,7 +119,7 @@ info, chart = st.columns([1,2])
 
 with info:
     # CRYPTO INFO
-    logo, name = st.columns([1,3])
+    logo, name = st.columns([1,5])
     with logo:
         if st.session_state.crypto == "Bitcoin":
             st.image("assets/btc-logo.svg", use_container_width=True)
