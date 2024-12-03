@@ -178,6 +178,16 @@ with info:
         </div>
         """
     st.markdown(website, unsafe_allow_html=True)
+    website = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>DESCRIPTION:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>
+                <a href='{st.session_state.website}' style='color: #AFFD86'>{st.session_state.description}
+                </a>
+            </span>
+        </div>
+        """
+    st.markdown(website, unsafe_allow_html=True)
 with chart:
     # PRICE CHART
     import altair as alt
