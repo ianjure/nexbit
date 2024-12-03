@@ -153,8 +153,8 @@ with info:
     # MODEL PREDICTION
     increase = """
         <div style='width: auto; height: auto; padding: 12px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
-            <span style='text-align: left; font-size: 0.8rem; font-weight: 500;'>Prediction: The price will increase.</span>
-            <span style='text-align: right; font-size: 0.8rem; font-weight: 500;'>Confidence: 67%</span>
+            <span style='text-align: left; font-size: 0.8rem; font-weight: 500;'>The price will increase with 67% confidence.</span>
+            <span style='text-align: right;' class='material-symbols-rounded'>currency_exchange</span>
         </div>
         """
     st.markdown(increase, unsafe_allow_html=True)
