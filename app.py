@@ -225,20 +225,20 @@ def open_options():
             st.session_state.crypto = selection
             if selection == "Bitcoin":
                 st.session_state.symbol = crypto_info["symbol"][0]
-                st.session_state.website = crypto_info["market_cap"][0]
-                st.session_state.website = crypto_info["total_supply"][0]
+                st.session_state.market_cap = crypto_info["market_cap"][0]
+                st.session_state.total_supply = crypto_info["total_supply"][0]
                 st.session_state.website = crypto_info["website"][0]
                 st.session_state.description = crypto_info["description"][0]
             elif selection == "Ethereum":
                 st.session_state.symbol = crypto_info["symbol"][1]
-                st.session_state.website = crypto_info["market_cap"][1]
-                st.session_state.website = crypto_info["total_supply"][1]
+                st.session_state.market_cap = crypto_info["market_cap"][1]
+                st.session_state.total_supply = crypto_info["total_supply"][1]
                 st.session_state.website = crypto_info["website"][1]
                 st.session_state.description = crypto_info["description"][1]
             else:
                 st.session_state.symbol = crypto_info["symbol"][2]
-                st.session_state.website = crypto_info["market_cap"][2]
-                st.session_state.website = crypto_info["total_supply"][2]
+                st.session_state.market_cap = crypto_info["market_cap"][2]
+                st.session_state.total_supply = crypto_info["total_supply"][2]
                 st.session_state.website = crypto_info["website"][2]
                 st.session_state.description = crypto_info["description"][2]
             st.rerun()
