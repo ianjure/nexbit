@@ -142,15 +142,15 @@ with info:
     st.success('Price will increase.', icon=":material/expand_circle_up:")
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>TOTAL SUPPLY:</span>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>{st.session_state.total_supply}</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>TOTAL SUPPLY:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8; text-align: right'>{st.session_state.total_supply}</span>
         </div>
         """
     st.markdown(total_supply, unsafe_allow_html=True)
     website = f"""
         <div style='display: flex; justify-content: space-between; align-items: center;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5;'>WEBSITE:</span>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.5; text-align: right'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>WEBSITE:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8; text-align: right'>
                 <a href='{st.session_state.website}' style='color: #AFFD86'>{st.session_state.website}
                 </a>
             </span>
