@@ -172,11 +172,11 @@ with chart:
     chart = alt.Chart(source).transform_filter(
         'datum.symbol==="GOOG"'
     ).mark_area(
-        line={'color':'darkgreen'},
+        line={'color': 'lightred'},
         color=alt.Gradient(
             gradient='linear',
-            stops=[alt.GradientStop(color='white', offset=0),
-                   alt.GradientStop(color='darkgreen', offset=1)],
+            stops=[alt.GradientStop(color='#1A1C1B', offset=0),
+                   alt.GradientStop(color='darkred', offset=1)],
             x1=1,
             x2=1,
             y1=1,
