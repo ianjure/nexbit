@@ -168,18 +168,15 @@ with chart:
     from vega_datasets import data
     
     source = data.stocks()
-
-    # Create a selection that tracks the mouse position
-    hover = alt.selection_single(on='mouseover', empty='none')
     
     chart = alt.Chart(source).transform_filter(
         'datum.symbol==="GOOG"'
     ).mark_area(
-        line={'color': '#FB4E8D'},
+        line={'color': 'red'},
         color=alt.Gradient(
             gradient='linear',
             stops=[alt.GradientStop(color='#1A1C1B', offset=0),
-                   alt.GradientStop(color='red', offset=1)],
+                   alt.GradientStop(color='darkred', offset=1)],
             x1=1,
             x2=1,
             y1=1,
@@ -190,23 +187,7 @@ with chart:
         alt.Y('price:Q', title=None)
     )
 
-    # Add a dot that appears on hover, following the line
-    hover_dot = alt.Chart(source).mark_point(
-        filled=True,  # Filled circle
-        size=100,     # Dot size
-        color='#FB4E8D'  # Dot color
-    ).encode(
-        alt.X('date:T'),
-        alt.Y('price:Q')
-    ).add_selection(
-        hover
-    ).transform_filter(
-        hover
-    )
-
-    # Combine the chart and the dot on hover
-    final_chart = chart + hover_dot
-    st.altair_chart(final_chart, use_container_width=True)
+    st.altair_chart(chart, use_container_width=True)
     
 
 # [STREAMLIT] CRYPTO OPTIONS
