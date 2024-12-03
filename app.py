@@ -1,6 +1,5 @@
 from PIL import Image
 import streamlit as st
-from streamlit_lottie import st_lottie_spinner
 
 # [STREAMLIT] PAGE CONFIGURATION
 icon = Image.open("icon.png")
