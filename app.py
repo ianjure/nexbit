@@ -47,7 +47,7 @@ with open( "style.css" ) as css:
 header = """
     <style>
     [data-testid="stHeader"] {
-        height: 5.5rem;
+        height: 5.3rem;
         width: auto;
         z-index: 1;
     }
