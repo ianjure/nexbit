@@ -369,7 +369,7 @@ with sentiment_section:
         color=alt.condition(
             alt.datum.day_name == max_score_day,  # Condition for highlighting
             alt.value('#8DFB4E'),  # Highlight color
-            alt.value('darkgreen')  # Default color
+            alt.value('gray')  # Default color
         )
     ).properties(
         height=300,
