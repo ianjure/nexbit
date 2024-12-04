@@ -217,13 +217,11 @@ def get_crypto_price(api_key):
 def fetch_data(table, url, key):
     supabase: Client = create_client(url, key)
     response = supabase.table(table).select('*').execute()
-
-    if response.status_code == 200:
+    if response.data:
         data = pd.DataFrame(response.data)
         return data
     else:
         print(f"Error: {response.error_message}")
-        return None
         
 crypto_info = fetch_data('Cryptocurrency', SUPABASE_URL, SUPABASE_KEY)
 crypto_price = fetch_data('Price', SUPABASE_URL, SUPABASE_KEY)
