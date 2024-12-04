@@ -247,10 +247,10 @@ with info:
             <h1 style="font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;">
                 {"${:,.1f}".format(float(st.session_state.price))}
             </h1>
-            <span style="font-size: 3rem; padding-bottom: 2px; color: green;">
-                <i class="material-icons">arrow_drop_up</i> 
+            <span style="font-size: 5rem; padding-bottom: 10px; color: green;">
+                <i class="material-icons">arrow_drop_up</i>
             </span>
-            <h4 style="font-size: 1.2rem; font-weight: 700; color: green; margin: 0; padding-bottom: 2px">
+            <h4 style="font-size: 1.2rem; font-weight: 700; color: green; margin: 0; padding-bottom: 10px">
                 0.5%
             </h4>
         </div>
