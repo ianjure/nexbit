@@ -354,6 +354,24 @@ with sentiment_section:
     # DAILY AVERAGE SENTIMENT
     ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
+    news_df = st.session_state.news
+    news_df = news_df.copy()
+    news_df.loc[:, 'date'] = pd.to_datetime(news_df['date'])
+    news_df.loc[:, 'day_of_week'] = news_df['date'].dt.dayofweek
+    avg_sentiment_by_day = news_df.groupby('day_of_week')['sentiment_score'].mean().reset_index()
+    avg_sentiment_by_day['day_name'] = avg_sentiment_by_day['day_of_week'].map({
+        0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'
+    })
+    ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar().encode(
+        x=alt.X('day_name:N', title='Day of the Week'),
+        y=alt.Y('sentiment_score:Q', title='Average Sentiment Score'),
+        color=alt.value('skyblue')
+    ).properties(
+        title='Average Sentiment Score by Day of the Week',
+        width=600,
+        height=400
+    )
+    st.altair_chart(ave_sent_chart, use_container_width=True)
     # SENTIMENT STATISTIC
     sentiment_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
