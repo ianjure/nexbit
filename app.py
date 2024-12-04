@@ -247,11 +247,11 @@ with info:
             <h1 style="font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;">
                 {"${:,.2f}".format(float(st.session_state.price))}
             </h1>
-            <h4 style="font-size: 1.2rem; color: grey;"> 
-                <span style="font-size: 2rem; padding: 0 10px;">
+            <h4 style="font-size: 1.2rem; color: green;"> 
+                <span style="font-size: 2rem; padding: 0px;">
                     <i class="material-icons">arrow_upward</i> 
                 </span>
-                Your smaller text
+                0.5%
             </h4>
         </div>
         <style>
