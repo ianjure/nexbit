@@ -37,7 +37,7 @@ hide_menu = """
     }
     </style>
     """
-#st.markdown(hide_menu, unsafe_allow_html=True)
+st.markdown(hide_menu, unsafe_allow_html=True)
 
 #  [STEAMLIT] CHANGE FONT STYLE
 with open( "style.css" ) as css:
@@ -508,59 +508,51 @@ with news_section:
     st.markdown(news_3, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
-#float_init()
+float_init()
 
 @st.dialog("Dashboard Settings", width="small")
 def open_options():
-    select, export = st.columns(2)
-    with select:
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>Choose a Cryptocurrency</h4>", unsafe_allow_html=True)
-        options = ["Bitcoin", "Ethereum", "Solana"]
-        selection = st.selectbox(label="",
-                                 options=options,
-                                 index=options.index(st.session_state.crypto),
-                                 label_visibility="collapsed")
-        if selection == st.session_state.crypto:
-            print("None")
+    st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>Choose a Cryptocurrency</h4>", unsafe_allow_html=True)
+    options = ["Bitcoin", "Ethereum", "Solana"]
+    selection = st.selectbox(label="",
+                             options=options,
+                             index=options.index(st.session_state.crypto),
+                             label_visibility="collapsed")
+    if selection == st.session_state.crypto:
+        print("None")
+    else:
+        st.session_state.crypto = selection
+        if selection == "Bitcoin":
+            st.session_state.price = crypto_price[crypto_price["crypto_id"]==1]["close_price"].iloc[-1]
+            st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==1]
+            st.session_state.symbol = crypto_info["symbol"].iloc[0]
+            st.session_state.market_cap = crypto_info["market_cap"].iloc[0]
+            st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
+            st.session_state.website = crypto_info["website"].iloc[0]
+            st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
+        elif selection == "Ethereum":
+            st.session_state.price = crypto_price[crypto_price["crypto_id"]==2]["close_price"].iloc[-1]
+            st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==2]
+            st.session_state.symbol = crypto_info["symbol"].iloc[1]
+            st.session_state.market_cap = crypto_info["market_cap"].iloc[1]
+            st.session_state.total_supply = crypto_info["total_supply"].iloc[1]
+            st.session_state.website = crypto_info["website"].iloc[1]
+            st.session_state.news = crypto_news[crypto_news["crypto_id"]==2]
         else:
-            st.session_state.crypto = selection
-            if selection == "Bitcoin":
-                st.session_state.price = crypto_price[crypto_price["crypto_id"]==1]["close_price"].iloc[-1]
-                st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==1]
-                st.session_state.symbol = crypto_info["symbol"].iloc[0]
-                st.session_state.market_cap = crypto_info["market_cap"].iloc[0]
-                st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
-                st.session_state.website = crypto_info["website"].iloc[0]
-                st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
-            elif selection == "Ethereum":
-                st.session_state.price = crypto_price[crypto_price["crypto_id"]==2]["close_price"].iloc[-1]
-                st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==2]
-                st.session_state.symbol = crypto_info["symbol"].iloc[1]
-                st.session_state.market_cap = crypto_info["market_cap"].iloc[1]
-                st.session_state.total_supply = crypto_info["total_supply"].iloc[1]
-                st.session_state.website = crypto_info["website"].iloc[1]
-                st.session_state.news = crypto_news[crypto_news["crypto_id"]==2]
-            else:
-                st.session_state.price = crypto_price[crypto_price["crypto_id"]==3]["close_price"].iloc[-1]
-                st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==3]
-                st.session_state.symbol = crypto_info["symbol"].iloc[2]
-                st.session_state.market_cap = crypto_info["market_cap"].iloc[2]
-                st.session_state.total_supply = crypto_info["total_supply"].iloc[2]
-                st.session_state.website = crypto_info["website"].iloc[2]
-                st.session_state.news = crypto_news[crypto_news["crypto_id"]==3]
-            st.rerun()
-    with export:
-        st.markdown(f"<h4 style='text-align: left; font-size: 1rem; font-weight: 500; line-height: 0.8;'>Export Dashboard as PDF</h4>", unsafe_allow_html=True)
-        st.button(label="**Export**",
-                  type="primary",
-                  use_container_width=True)
-    #export_btn = st.download_button(label="**EXPORT**", data=None, file_name="large_df.pdf", mime="text/csv", use_container_width=True)
-        
+            st.session_state.price = crypto_price[crypto_price["crypto_id"]==3]["close_price"].iloc[-1]
+            st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==3]
+            st.session_state.symbol = crypto_info["symbol"].iloc[2]
+            st.session_state.market_cap = crypto_info["market_cap"].iloc[2]
+            st.session_state.total_supply = crypto_info["total_supply"].iloc[2]
+            st.session_state.website = crypto_info["website"].iloc[2]
+            st.session_state.news = crypto_news[crypto_news["crypto_id"]==3]
+        st.rerun()
+
 button_container = st.container()
 with button_container:
     if st.button(label="⚙️",
                  type="secondary"):
         open_options()
     
-#button_css = float_css_helper(width="1.8rem", height="2rem", right="2rem", top="1.3rem", transition=0)
-#button_container.float(button_css)
+button_css = float_css_helper(width="1.8rem", height="2rem", right="2rem", top="1.3rem", transition=0)
+button_container.float(button_css)
