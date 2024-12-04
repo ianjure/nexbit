@@ -368,7 +368,7 @@ with sentiment_section:
         y=alt.Y('sentiment:Q', title=None, axis=alt.Axis(grid=True, gridColor='#2C2E2D')),
         color=alt.condition(
             alt.datum.day_name == max_score_day,  # Condition for highlighting
-            alt.value('#8DFB4E'),  # Highlight color
+            alt.value('#AFFD86'),  # Highlight color
             alt.value('#C7C7C7')  # Default color
         )
     ).properties(
