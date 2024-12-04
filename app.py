@@ -499,7 +499,7 @@ with sentiment_section:
     ).facet(
         facet=alt.Facet('sentiment:N', title=None),
         columns=3,
-        spacing=-20
+        spacing=-100
     ).properties(
         autosize='fit',
     )
