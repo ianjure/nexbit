@@ -18,6 +18,8 @@ color1_dark = "#8DFB4E"
 color1_light = "#AFFD86"
 color2_dark = "#3a1a1d"
 color2_light = "#e2352f"
+text_light = "#becbdc"
+text_dark = "#8293a7"
 black_dark = "#0d1216"
 black_light = "#1b242d"
 
@@ -178,10 +180,7 @@ hover_card = """
         align-items: center;
         font-size: 0.7rem;
         font-weight: 400;
-        color: #8F8F8F;
-    }
-    .news-card .sentiment {
-        color: """ + color1_light + """;
+        color: """ + text_dark """;
     }
     </style>
     """
@@ -220,17 +219,29 @@ crypto_price = fetch_data('nexbit.db', 'Price')
 crypto_news = fetch_data('nexbit.db', 'News')
 
 # [STREAMLIT] CATEGORIZE SCORE FOR NEWS CARD
-def categorize_score(score):
-    if score > 0.5:
-        return 'Strong Positive'
-    elif 0 < score <= 0.5:
-        return 'Moderate Positive'
-    elif score == 0:
-        return 'Neutral'
-    elif -0.5 <= score < 0:
-        return 'Moderate Negative'
+def categorize_score(score, color=False):
+    if color:
+        if score > 0.5:
+            return color1_light
+        elif 0 < score <= 0.5:
+            return color1_light
+        elif score == 0:
+            return text_light
+        elif -0.5 <= score < 0:
+            return color2_light
+        else:
+            return color2_light
     else:
-        return 'Strong Negative'
+        if score > 0.5:
+            return 'Strong Positive'
+        elif 0 < score <= 0.5:
+            return 'Moderate Positive'
+        elif score == 0:
+            return 'Neutral'
+        elif -0.5 <= score < 0:
+            return 'Moderate Negative'
+        else:
+            return 'Strong Negative'
 
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "price" not in st.session_state:
@@ -266,9 +277,11 @@ with info:
     price_df = st.session_state.price_data
     pct_change = ((st.session_state.price - price_df["close_price"].iloc[-2]) / price_df["close_price"].iloc[-2]) * 100
     if pct_change > 0:
+        color = color1_light
         margin = "-6px"
         arrow = "arrow_drop_up"
     else:
+        color = color2_light
         margin = "-2px"
         arrow = "arrow_drop_down"
     price_change = f"""
@@ -277,9 +290,9 @@ with info:
                 {"${:,.1f}".format(float(st.session_state.price))}
             </h1>
             <span>
-                <i class="material-icons" style="font-size: 2rem; position: relative; top: {margin}; color: {color2_light};">{arrow}</i> 
+                <i class="material-icons" style="font-size: 2rem; position: relative; top: {margin}; color: {color};">{arrow}</i> 
             </span>
-            <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: {color2_light};">{"{:.2f}".format(float(pct_change))}%</h4>
+            <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: {color};">{"{:.2f}".format(float(pct_change))}%</h4>
         </div>
         <style>
             @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
@@ -289,9 +302,9 @@ with info:
     # MODEL PREDICTION
     date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 0.7rem; font-weight: 500;'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
-            <span style='text-align: center; font-size: 0.7rem; font-weight: 500;'>Accuracy: {st.session_state.accuracy}</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500;'>Confidence: {st.session_state.accuracy}</span>
+            <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
+            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: {st.session_state.accuracy}</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.accuracy}</span>
         </div>
         """
     st.markdown(date_acc, unsafe_allow_html=True)
@@ -304,21 +317,21 @@ with info:
     # CRYPTO INFO
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #C7C7C7;'>Market Cap:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Market Cap:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
         </div>
         """
     st.markdown(market_cap, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #C7C7C7;'>Total Supply:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Total Supply:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
         </div>
         """
     st.markdown(total_supply, unsafe_allow_html=True)
     website = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #C7C7C7;'>Website:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Website:</span>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>
                 <a href='{st.session_state.website}' style='text-decoration: none; color: {color1_light};'>{st.session_state.website.replace("https://", "").replace("/", "").replace("www.","")}
                 </a>
@@ -345,8 +358,8 @@ with chart:
             y2=0
         )
     ).encode(
-        alt.X('date:T', title=None),
-        alt.Y('close_price:Q', title=None, axis=alt.Axis(orient='right',  grid=True, gridColor='#1b242d'))
+        alt.X('date:T', title=None, color=f'{text_dark}'),
+        alt.Y('close_price:Q', title=None, color=f'{text_dark}',axis=alt.Axis(orient='right',  grid=True, gridColor=f'{text_dark}'))
     ).properties(
         height=315,
         padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
@@ -357,7 +370,7 @@ sentiment_section, news_section = st.columns([3,2])
 
 with sentiment_section:
     # DAILY AVERAGE SENTIMENT
-    ave_sentiment_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {color1_light};'>DAILY AVERAGE SENTIMENT</h4>"
+    ave_sentiment_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_df = news_df.copy()
@@ -382,12 +395,14 @@ with sentiment_section:
         )
     ).encode(
         x=alt.X('day_name:N', 
-                sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
+                sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                color=f'{text_dark}',
                 title=None, 
                 axis=alt.Axis(labelAngle=0)),
-        y=alt.Y('sentiment:Q', 
+        y=alt.Y('sentiment:Q',
+                color=f'{text_dark}',
                 title=None, 
-                axis=alt.Axis(grid=True, gridColor='#1b242d'))
+                axis=alt.Axis(grid=True, gridColor=f'{text_dark}'))
     ).properties(
         height=300,
         width='container'
@@ -437,11 +452,11 @@ with sentiment_section:
     )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
     # SENTIMENT STATISTIC
-    sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {color1_light};'>SENTIMENT STATISTIC</h4>"
+    sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 with news_section:
     # NEWS STATISTIC
-    news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {color1_light};'>NEWS STATISTIC</h4>"
+    news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_df = news_df.copy()
@@ -452,7 +467,7 @@ with news_section:
     current_month_news_count = current_month_news.shape[0]
     news_count_m = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #C7C7C7;'>Monthly News Count:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Monthly News Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{current_month_news_count}</span>
         </div>
         """
@@ -461,7 +476,7 @@ with news_section:
     current_year_news_count = current_year_news.shape[0]
     news_count_y = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #C7C7C7;'>Annual News Count:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Annual News Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{current_year_news_count}</span>
         </div>
         """
@@ -469,13 +484,13 @@ with news_section:
     top_news_source_name = news_df['source'].value_counts().idxmax()
     top_news_source = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #C7C7C7;'>Top News Source:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Top News Source:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{top_news_source_name}</span>
         </div>
         """
     st.markdown(top_news_source, unsafe_allow_html=True)
     # LATEST NEWS
-    latest_news_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {color1_light};'>LATEST NEWS</h4>"
+    latest_news_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_1 = f"""
@@ -484,7 +499,7 @@ with news_section:
         <span class='summary'>{news_df["summary"].iloc[-1]}</span>
         <div class='meta-info'>
             <span>Source: {news_df["source"].iloc[-1]}</span>
-            <span class='sentiment'>{categorize_score(news_df["sentiment"].iloc[-1])}</span>
+            <span style='color: {categorize_score(news_df["sentiment"].iloc[-1], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-1])}</span>
         </div>
     </a>
     """
@@ -495,7 +510,7 @@ with news_section:
         <span class='summary'>{news_df["summary"].iloc[-2]}</span>
         <div class='meta-info'>
             <span>Source: {news_df["source"].iloc[-2]}</span>
-            <span class='sentiment'>{categorize_score(news_df["sentiment"].iloc[-2])}</span>
+            <span style='color: {categorize_score(news_df["sentiment"].iloc[-1], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-2])}</span>
         </div>
     </a>
     """
@@ -506,7 +521,7 @@ with news_section:
         <span class='summary'>{news_df["summary"].iloc[-3]}</span>
         <div class='meta-info'>
             <span>Source: {news_df["source"].iloc[-3]}</span>
-            <span class='sentiment'>{categorize_score(news_df["sentiment"].iloc[-3])}</span>
+            <span style='color: {categorize_score(news_df["sentiment"].iloc[-1], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-3])}</span>
         </div>
     </a>
     """
