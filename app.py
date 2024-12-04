@@ -346,7 +346,7 @@ with chart:
         )
     ).encode(
         alt.X('date:T', title=None),
-        alt.Y('close_price:Q', title=None, axis=alt.Axis(orient='right',  grid=True, gridColor='#2C2E2D'))
+        alt.Y('close_price:Q', title=None, axis=alt.Axis(orient='right',  grid=True, gridColor='#1b242d'))
     ).properties(
         height=315,
         padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
@@ -387,7 +387,7 @@ with sentiment_section:
                 axis=alt.Axis(labelAngle=0)),
         y=alt.Y('sentiment:Q', 
                 title=None, 
-                axis=alt.Axis(grid=True, gridColor='#2C2E2D'))
+                axis=alt.Axis(grid=True, gridColor='#1b242d'))
     ).properties(
         height=300,
         width='container'
@@ -423,7 +423,7 @@ with sentiment_section:
         baseline='bottom',
         fontSize=14,
         dy=-5,
-        color=f'{color2_dark}'
+        color=f'{color1_light}'
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).encode(
