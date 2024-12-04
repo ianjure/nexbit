@@ -138,25 +138,12 @@ st.markdown(
         font-size: 3.5rem;
         font-weight: 600;
         line-height: 0.8;
-        margin-top: -2rem;
+        padding-bottom: 2rem;
         color: white;
     }
     </style>
     """,
-    unsafe_allow_html=True,
-)
-
-st.markdown(
-    """
-    <style>
-        [data-testid="stIFrame"] {
-            padding: 0 !important;
-            margin: 0 !important;
-            border: none; /* Remove any border, if present */
-            display: block; /* Ensure full-width display */
-        }
-    </style>
-    """, unsafe_allow_html=True)
+    unsafe_allow_html=True)
 
 # [STREAMLIT] HOVER EFFECT
 hover_card = """
