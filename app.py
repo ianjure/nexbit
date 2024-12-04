@@ -244,13 +244,13 @@ with info:
     # CRYPTO PRICE
     #st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{"${:,.2f}".format(float(st.session_state.price))}</h1>", unsafe_allow_html=True)
     # Display the animated number
-    st.markdown("<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>Animated Price</h1>", unsafe_allow_html=True)
+    #st.markdown("<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>Animated Price</h1>", unsafe_allow_html=True)
     price_value = st.session_state['price']
     st.components.v1.html(
         """
-        <div style="text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;" id="price-counter">
+        <h1 style="text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;" id="price-counter">
             $0.00
-        </div>
+        </h1>
         <script>
             (function() {
                 const targetPrice = """ + str(price_value) + """;
