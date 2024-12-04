@@ -211,6 +211,19 @@ crypto_info = fetch_data('nexbit.db', 'Cryptocurrency')
 crypto_price = fetch_data('nexbit.db', 'Price')
 crypto_news = fetch_data('nexbit.db', 'News')
 
+# [STREAMLIT] CATEGORIZE SCORE FOR NEWS CARD
+def categorize_score(score):
+    if score > 0.5:
+        return 'Strong Positive'
+    elif 0 < score <= 0.5:
+        return 'Moderate Positive'
+    elif score == 0:
+        return 'Neutral'
+    elif -0.5 <= score < 0:
+        return 'Moderate Negative'
+    else:
+        return 'Strong Negative'
+
 # [STREAMLIT] SESSION STATE FOR CRYPTO SELECTED
 if "price" not in st.session_state:
     st.session_state.price = crypto_price[crypto_price["crypto_id"]==1]["close_price"].iloc[-1]
@@ -350,7 +363,7 @@ with latest_news:
         <span class='summary'>{news_df["summary"].iloc[-1]}</span>
         <div class='meta-info'>
             <span>Source: {news_df["source"].iloc[-1]}</span>
-            <span class='sentiment'>Score: {news_df["sentiment"].iloc[-1]}</span>
+            <span class='sentiment'>{categorize_score(news_df["sentiment"].iloc[-1])}</span>
         </div>
     </a>
     """
@@ -361,7 +374,7 @@ with latest_news:
         <span class='summary'>{news_df["summary"].iloc[-2]}</span>
         <div class='meta-info'>
             <span>Source: {news_df["source"].iloc[-2]}</span>
-            <span class='sentiment'>Score: {news_df["sentiment"].iloc[-2]}</span>
+            <span class='sentiment'>{categorize_score(news_df["sentiment"].iloc[-2])}</span>
         </div>
     </a>
     """
@@ -372,7 +385,7 @@ with latest_news:
         <span class='summary'>{news_df["summary"].iloc[-3]}</span>
         <div class='meta-info'>
             <span>Source: {news_df["source"].iloc[-3]}</span>
-            <span class='sentiment'>Score: {news_df["sentiment"].iloc[-3]}</span>
+            <span class='sentiment'>{categorize_score(news_df["sentiment"].iloc[-3])}</span>
         </div>
     </a>
     """
