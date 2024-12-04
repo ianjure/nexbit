@@ -377,10 +377,25 @@ with sentiment_section:
         y=alt.Y('sentiment:Q', 
                 title=None, 
                 axis=alt.Axis(grid=True, gridColor='#2C2E2D')),
-        color=alt.condition(
-            alt.datum.day_name == max_score_day,
-            alt.value('#8DFB4E'),
-            alt.value('#C7C7C7'))
+    ).properties(
+        height=300,
+        width='container'
+    )
+    highlighted_bar = alt.Chart(avg_sentiment_by_day).mark_bar(
+        cornerRadiusTopLeft=5,
+        cornerRadiusTopRight=5,
+        fill='#8DFB4E',
+        strokeWidth=0
+    ).encode(
+        x=alt.X('day_name:N', 
+                sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
+                title=None, 
+                axis=alt.Axis(labelAngle=0)),
+        y=alt.Y('sentiment:Q', 
+                title=None, 
+                axis=alt.Axis(grid=True, gridColor='#2C2E2D')),
+    ).transform_filter(
+        alt.datum.day_name == max_score_day
     ).properties(
         height=300,
         width='container'
@@ -399,19 +414,7 @@ with sentiment_section:
         y=alt.Y('sentiment:Q'),
         text=alt.Text('sentiment:Q', format='.2f')
     )
-    highlighted_chart = alt.Chart(avg_sentiment_by_day).mark_bar(
-        fill='#8DFB4E',
-        strokeWidth=0
-    ).encode(
-        x=alt.X('day_name:N', 
-                sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
-                title=None, 
-                axis=alt.Axis(labelAngle=0)),
-        y=alt.Y('sentiment:Q', 
-                title=None, 
-                axis=alt.Axis(grid=True, gridColor='#2C2E2D'))
-    )
-    final_ave_sent_chart = alt.layer(ave_sent_chart, highlighted_chart, text_format).resolve_scale(
+    final_ave_sent_chart = alt.layer(highlighted_bar, ave_sent_chart, text_format).resolve_scale(
         color='independent'
     )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
