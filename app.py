@@ -299,7 +299,7 @@ with info:
         """
     st.markdown(date_acc, unsafe_allow_html=True)
     increase = f"""
-        <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid #AFFD86; border-radius: 0.8rem; background-color: #8DFB4E1A;'>
+        <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color1_light}; border-radius: 0.8rem; background-color: {color1_dark}1A;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
         </div>
         """
@@ -323,7 +323,7 @@ with info:
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #C7C7C7;'>Website:</span>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>
-                <a href='{st.session_state.website}' style='text-decoration: none; color: #AFFD86;'>{st.session_state.website.replace("https://", "").replace("/", "").replace("www.","")}
+                <a href='{st.session_state.website}' style='text-decoration: none; color: {color1_light};'>{st.session_state.website.replace("https://", "").replace("/", "").replace("www.","")}
                 </a>
             </span>
         </div>
@@ -337,11 +337,11 @@ with chart:
     df['date'] = pd.to_datetime(df['date'])
     
     price_chart = alt.Chart(df).mark_area(
-        line={'color': '#8DFB4E'},
+        line={'color': f'{color2_light}'},
         color=alt.Gradient(
             gradient='linear',
-            stops=[alt.GradientStop(color='#1A1C1B', offset=0),
-                   alt.GradientStop(color='darkgreen', offset=1)],
+            stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
+                   alt.GradientStop(color=f'{color2_dark}', offset=1)],
             x1=1,
             x2=1,
             y1=1,
@@ -360,7 +360,7 @@ sentiment_section, news_section = st.columns([3,2])
 
 with sentiment_section:
     # DAILY AVERAGE SENTIMENT
-    ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>DAILY AVERAGE SENTIMENT</h4>"
+    ave_sentiment_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {color1_light};'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_df = news_df.copy()
@@ -440,11 +440,11 @@ with sentiment_section:
     )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
     # SENTIMENT STATISTIC
-    sentiment_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>SENTIMENT STATISTIC</h4>"
+    sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {color1_light};'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 with news_section:
     # NEWS STATISTIC
-    news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>NEWS STATISTIC</h4>"
+    news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {color1_light};'>NEWS STATISTIC</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_df = news_df.copy()
@@ -478,7 +478,7 @@ with news_section:
         """
     st.markdown(top_news_source, unsafe_allow_html=True)
     # LATEST NEWS
-    latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>LATEST NEWS</h4>"
+    latest_news_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {color1_light};'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_1 = f"""
