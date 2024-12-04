@@ -266,11 +266,9 @@ with info:
     price_df = st.session_state.price_data
     pct_change = ((st.session_state.price - price_df["close_price"].iloc[-2]) / price_df["close_price"].iloc[-2]) * 100
     if pct_change > 0:
-        color = "#8DFB4E"
         margin = "-6px"
         arrow = "arrow_drop_up"
     else:
-        color = "#F34509"
         margin = "-2px"
         arrow = "arrow_drop_down"
     price_change = f"""
@@ -279,9 +277,9 @@ with info:
                 {"${:,.1f}".format(float(st.session_state.price))}
             </h1>
             <span>
-                <i class="material-icons" style="font-size: 2rem; position: relative; top: {margin}; color: {color};">{arrow}</i> 
+                <i class="material-icons" style="font-size: 2rem; position: relative; top: {margin}; color: {color2_light};">{arrow}</i> 
             </span>
-            <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: {color};">{"{:.2f}".format(float(pct_change))}%</h4>
+            <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: {color2_light};">{"{:.2f}".format(float(pct_change))}%</h4>
         </div>
         <style>
             @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
