@@ -299,21 +299,21 @@ with info:
     # CRYPTO INFO
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Market Cap:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>Market Cap:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
         </div>
         """
     st.markdown(market_cap, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Total Supply:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>Total Supply:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
         </div>
         """
     st.markdown(total_supply, unsafe_allow_html=True)
     website = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Website:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>Website:</span>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>
                 <a href='{st.session_state.website}' style='text-decoration: none; color: #AFFD86;'>{st.session_state.website.replace("https://", "").replace("/", "")}
                 </a>
@@ -367,8 +367,8 @@ with news_section:
     current_month_news_count = current_month_news.shape[0]
     news_count_m = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Monthly News Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>{current_month_news_count}</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>Monthly News Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{current_month_news_count}</span>
         </div>
         """
     st.markdown(news_count_m, unsafe_allow_html=True)
@@ -376,16 +376,16 @@ with news_section:
     current_year_news_count = current_year_news.shape[0]
     news_count_y = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Annual News Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>{current_year_news_count}</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>Annual News Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{current_year_news_count}</span>
         </div>
         """
     st.markdown(news_count_y, unsafe_allow_html=True)
     top_news_source_name = news_df['source'].value_counts().idxmax()
     top_news_source = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Top News Source:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>{top_news_source_name}</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: #BDBDBD;'>Top News Source:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{top_news_source_name}</span>
         </div>
         """
     st.markdown(top_news_source, unsafe_allow_html=True)
