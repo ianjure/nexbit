@@ -376,7 +376,7 @@ with sentiment_section:
         color=alt.Gradient(
             gradient='linear',
             stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
-                   alt.GradientStop(color=f'{color1_dark}', offset=1)],
+                   alt.GradientStop(color=f'#040e0f', offset=1)],
             x1=1,
             x2=1,
             y1=1,
