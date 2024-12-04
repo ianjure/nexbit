@@ -437,7 +437,7 @@ with sentiment_section:
         align='center',
         baseline='bottom',
         fontSize=14,
-        dy=5,
+        dy=20,
         color=f'{black_dark}'
     ).transform_filter(
         alt.datum.day_name == max_score_day
