@@ -364,12 +364,12 @@ with sentiment_section:
     })
     max_score_day = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'day_name']
     ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar().encode(
-        x=alt.X('day_name:N', axis=alt.Axis(title=None, labelAngle=0)),
-        y=alt.Y('sentiment:Q', axis=alt.Axis(title=None)),
+        x=alt.X('day_name:N', title=None, axis=alt.Axis(labelAngle=0)),
+        y=alt.Y('sentiment:Q', title=None, axis=alt.Axis(grid=True, gridColor='#2C2E2D')),
         color=alt.condition(
             alt.datum.day_name == max_score_day,  # Condition for highlighting
-            alt.value('orange'),  # Highlight color
-            alt.value('skyblue')  # Default color
+            alt.value('#8DFB4E'),  # Highlight color
+            alt.value('#AFFD86')  # Default color
         )
     ).properties(
         height=400,
