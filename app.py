@@ -1,4 +1,3 @@
-import os
 import requests
 import altair as alt
 import streamlit as st
@@ -15,8 +14,8 @@ st.set_page_config(page_title="Nexbit: Analytics & Forecasting", page_icon=icon,
 st.logo("assets/nexbit-logo.svg")
 
 # [SUPABASE] SECRETS CONFIGURATION
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
 # [STREAMLIT] COLOR PALETTE
 color1_dark = "#8DFB4E"
