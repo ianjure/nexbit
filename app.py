@@ -562,5 +562,5 @@ with button_container:
                  type="secondary"):
         open_options()
     
-button_css = float_css_helper(width="1.8rem", height="2rem", right="2rem", top="1.3rem", transition=0)
-button_container.float(button_css)
+#button_css = float_css_helper(width="1.8rem", height="2rem", right="2rem", top="1.3rem", transition=0)
+#button_container.float(button_css)
