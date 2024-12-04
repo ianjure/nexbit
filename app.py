@@ -500,7 +500,7 @@ with news_section:
     st.markdown(news_count_y, unsafe_allow_html=True)
     top_news_source_name = news_df['source'].value_counts().idxmax()
     top_news_source = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Top News Source:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{top_news_source_name}</span>
         </div>
