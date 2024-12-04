@@ -219,10 +219,7 @@ def fetch_data(table, url, key):
     response = supabase.table(table).select('*').execute()
     if response.data:
         data = pd.DataFrame(response.data)
-        print("Got it!")
         return data
-    else:
-        print("Missing!")
         
 crypto_info = fetch_data('Cryptocurrency', SUPABASE_URL, SUPABASE_KEY)
 crypto_price = fetch_data('Price', SUPABASE_URL, SUPABASE_KEY)
