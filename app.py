@@ -210,9 +210,19 @@ def get_crypto_price(api_key):
 
 # [SQLITE3] FETCHING DATA FROM THE DATABASE
 def fetch_data(database, table):
-    conn = sqlite3.connect(database)
-    result = pd.read_sql_query(f"SELECT * FROM {table}", conn)
-    conn.close()
+    try:
+        conn = sqlite3.connect(database)
+        query = "SELECT * FROM ?"
+        result = pd.read_sql_query(query, conn, params=(table,))
+    except sqlite3.DatabaseError as e:
+        print(f"Database error: {e}")
+        result = None
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        result = None
+    finally:
+        if conn:
+            conn.close()
     return result
 crypto_info = fetch_data('nexbit.db', 'Cryptocurrency')
 crypto_price = fetch_data('nexbit.db', 'Price')
