@@ -249,7 +249,7 @@ with info:
             </h1>
             <h4 style="font-size: 1.2rem; color: green;"> 
                 <span style="font-size: 2rem; padding: 0px;">
-                    <i class="material-icons">arrow_upward</i> 
+                    <i class="material-icons">arrow_drop_up</i> 
                 </span>
                 0.5%
             </h4>
