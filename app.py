@@ -358,24 +358,33 @@ with news_section:
     # NEWS STATISTICS
     news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>NEWS STATISTICS</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
+    news_df = st.session_state.news
+    news_df['date'] = pd.to_datetime(news_df['date'])
+    current_month = datetime.now().month
+    current_year = datetime.now().year
+    current_month_news = news_df[(news_df['date'].dt.year == current_year) & (news_df['date'].dt.month == current_month)]
+    current_month_news_count = current_month_news.shape[0]
     news_count_m = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Monthly News Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{current_month_news_count}</span>
         </div>
         """
     st.markdown(news_count_m, unsafe_allow_html=True)
+    current_year_news = news_df[news_df['date'].dt.year == current_year]
+    current_year_news_count = current_year_news.shape[0]
     news_count_y = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Annual News Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{current_year_news_count}</span>
         </div>
         """
     st.markdown(news_count_y, unsafe_allow_html=True)
+    top_news_source_name = news_df['source'].value_counts().idxmax()
     top_news_source = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Top News Source:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{top_news_source_name}</span>
         </div>
         """
     st.markdown(top_news_source, unsafe_allow_html=True)
