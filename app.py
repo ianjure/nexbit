@@ -138,7 +138,7 @@ st.markdown(
         font-size: 3.5rem;
         font-weight: 600;
         line-height: 0.8;
-        padding-top: -50px;
+        margin-top: -2rem;
         color: white;
     }
     </style>
