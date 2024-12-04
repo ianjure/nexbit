@@ -490,13 +490,13 @@ with sentiment_section:
     sentiment_counts = sent_count_data.reset_index()
     sentiment_counts.columns = ['sentiment', 'count']
     
-    sent_count_chart = alt.Chart(sentiment_counts).mark_arc(innerRadius=90, outerRadius=120).encode(
+    sent_count_chart = alt.Chart(sentiment_counts).mark_arc(innerRadius=10, outerRadius=50).encode(
         theta=alt.Theta(field='count', type='quantitative'),
         color=alt.Color(field='sentiment', type='nominal'),
         tooltip=['sentiment', 'count']
     ).facet(
-        facet=alt.Facet('sentiment:N', title='Sentiment Category'),
-        columns=3
+        facet=alt.Facet('sentiment:N'),
+        columns=1
     ).properties(
         autosize='fit',
     )
