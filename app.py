@@ -10,7 +10,7 @@ from streamlit_float import *
 
 # [STREAMLIT] PAGE CONFIGURATION
 icon = Image.open("assets/nexbit-icon.png")
-st.set_page_config(page_title="Nexbit: Cryptocurrency Analytics & Forecasting Dashboard", page_icon=icon, layout="wide")
+st.set_page_config(page_title="Nexbit: Analytics & Forecasting", page_icon=icon, layout="wide")
 st.logo("assets/nexbit-logo.svg")
 
 # [STREAMLIT] COLOR PALETTE
