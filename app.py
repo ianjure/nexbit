@@ -366,9 +366,6 @@ with sentiment_section:
     ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar(
         cornerRadiusTopLeft=5,
         cornerRadiusTopRight=5,
-        stroke='#C7C7C7',
-        strokeWidth=2,
-        fill='#2C2E2D',
     ).encode(
         x=alt.X('day_name:N', 
                 sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
@@ -377,6 +374,10 @@ with sentiment_section:
         y=alt.Y('sentiment:Q', 
                 title=None, 
                 axis=alt.Axis(grid=True, gridColor='#2C2E2D')),
+        color=alt.Color('sentiment:Q',
+                   scale=alt.Scale(
+                       domain=[0, 1],
+                       range=['#1A1C1B', 'darkgreen']))
     ).properties(
         height=300,
         width='container'
@@ -384,9 +385,7 @@ with sentiment_section:
     highlighted_bar = alt.Chart(avg_sentiment_by_day).mark_bar(
         cornerRadiusTopLeft=5,
         cornerRadiusTopRight=5,
-        stroke='#8DFB4E',
         fill='#8DFB4E',
-        strokeWidth=2,
     ).encode(
         x=alt.X('day_name:N', 
                 sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
@@ -404,7 +403,7 @@ with sentiment_section:
     text_format = alt.Chart(avg_sentiment_by_day).mark_text(
         align='center',
         baseline='bottom',
-        fontSize=12,
+        fontSize=14,
         dy=-5,
         color='#8DFB4E'
     ).transform_filter(
@@ -415,7 +414,7 @@ with sentiment_section:
         y=alt.Y('sentiment:Q'),
         text=alt.Text('sentiment:Q', format='.2f')
     )
-    final_ave_sent_chart = alt.layer(highlighted_bar, ave_sent_chart, text_format).resolve_scale(
+    final_ave_sent_chart = alt.layer(ave_sent_chart, highlighted_bar, text_format).resolve_scale(
         color='independent'
     )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
