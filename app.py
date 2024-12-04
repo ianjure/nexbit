@@ -449,7 +449,7 @@ with sentiment_section:
         align='center',
         baseline='bottom',
         fontSize=14,
-        font = 'Verdana',
+        font = 'Roboto',
         dy=-5,
         color=f'{color1_light}'
     ).transform_filter(
