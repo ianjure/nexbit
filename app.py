@@ -14,12 +14,12 @@ st.set_page_config(page_title="Nexbit: Crypto Analysis and Forecasting Dashboard
 st.logo("assets/nexbit-logo.svg")
 
 # [STREAMLIT] COLOR PALETTE
-color1_dark = "#095d67"
+color1_dark = "#8DFB4E"
 color1_light = "#02807d"
 color2_dark = "#c36211"
 color2_light = "#de9050"
-black_dark = "#060606"
-black_light = "#151515"
+black_dark = "#0d1216"
+black_light = "#1b242d"
 
 # [STREAMLIT] HIDE MENU
 hide_menu = """
