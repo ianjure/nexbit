@@ -500,7 +500,8 @@ with sentiment_section:
     ).properties(
         autosize='fit',
     )
-    st.altair_chart(sent_count_chart, use_container_width=True)
+    with st.container():
+        st.altair_chart(sent_count_chart, use_container_width=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
