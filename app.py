@@ -171,7 +171,7 @@ hover_card = """
         text-align: justify;
         font-size: 0.8rem;
         font-weight: 300;
-        color: #FFFFFF;
+        color: """ + text_light + """;
         margin-bottom: 10px;
     }
     .news-card .meta-info {
@@ -437,8 +437,8 @@ with sentiment_section:
         align='center',
         baseline='bottom',
         fontSize=14,
-        dy=-5,
-        color=f'{color1_light}'
+        dy=5,
+        color=f'{black_dark}'
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).encode(
@@ -512,7 +512,7 @@ with news_section:
         <span class='summary'>{news_df["summary"].iloc[-2]}</span>
         <div class='meta-info'>
             <span>Source: {news_df["source"].iloc[-2]}</span>
-            <span style='color: {categorize_score(news_df["sentiment"].iloc[-1], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-2])}</span>
+            <span style='color: {categorize_score(news_df["sentiment"].iloc[-2], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-2])}</span>
         </div>
     </a>
     """
@@ -523,7 +523,7 @@ with news_section:
         <span class='summary'>{news_df["summary"].iloc[-3]}</span>
         <div class='meta-info'>
             <span>Source: {news_df["source"].iloc[-3]}</span>
-            <span style='color: {categorize_score(news_df["sentiment"].iloc[-1], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-3])}</span>
+            <span style='color: {categorize_score(news_df["sentiment"].iloc[-3], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-3])}</span>
         </div>
     </a>
     """
