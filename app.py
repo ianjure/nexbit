@@ -368,7 +368,7 @@ with sentiment_section:
         cornerRadiusTopRight=5,
         stroke='#C7C7C7',
         strokeWidth=2,
-        fillOpacity=0
+        fill='#2C2E2D',
     ).encode(
         x=alt.X('day_name:N', 
                 sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
@@ -384,8 +384,9 @@ with sentiment_section:
     highlighted_bar = alt.Chart(avg_sentiment_by_day).mark_bar(
         cornerRadiusTopLeft=5,
         cornerRadiusTopRight=5,
+        stroke='#8DFB4E',
         fill='#8DFB4E',
-        strokeWidth=0
+        strokeWidth=2,
     ).encode(
         x=alt.X('day_name:N', 
                 sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
