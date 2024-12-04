@@ -242,7 +242,14 @@ with info:
     else:
         st.image("assets/sol-logo.png")
     # CRYPTO PRICE
-    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{"${:,.2f}".format(float(st.session_state.price))}</h1>", unsafe_allow_html=True)
+    price_change = f"""
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h1 style="font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;">{"${:,.2f}".format(float(st.session_state.price))}</h1>
+            <p style="font-size: 1.2rem; color: grey;">Your smaller text</p>
+        </div>
+        """
+    st.markdown(price_change, unsafe_allow_html=True)
+    #st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{"${:,.2f}".format(float(st.session_state.price))}</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
     date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
