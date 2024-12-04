@@ -385,15 +385,18 @@ with sentiment_section:
     # DAILY AVERAGE SENTIMENT
     ave_sentiment_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
+    
     news_df = st.session_state.news
     news_df = news_df.copy()
+    
     news_df['date'] = pd.to_datetime(news_df['date'])
     news_df['day_of_week'] = news_df['date'].dt.dayofweek
+    
     avg_sentiment_by_day = news_df.groupby('day_of_week')['sentiment'].mean().reset_index()
     avg_sentiment_by_day['day_name'] = avg_sentiment_by_day['day_of_week'].map({
-        0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'
-    })
+        0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'})
     max_score_day = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'day_name']
+    
     ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar(
         opacity=0.7,
         cornerRadiusTopLeft=5,
@@ -419,6 +422,7 @@ with sentiment_section:
         height=300,
         width='container'
     )
+    
     highlighted_bar = alt.Chart(avg_sentiment_by_day).mark_bar(
         cornerRadiusTopLeft=5,
         cornerRadiusTopRight=5,
@@ -445,6 +449,7 @@ with sentiment_section:
         height=300,
         width='container'
     )
+    
     text_format = alt.Chart(avg_sentiment_by_day).mark_text(
         align='center',
         baseline='bottom',
@@ -461,6 +466,7 @@ with sentiment_section:
         y=alt.Y('sentiment:Q'),
         text=alt.Text('sentiment:Q', format='.2f')
     )
+    
     final_ave_sent_chart = alt.layer(ave_sent_chart, highlighted_bar, text_format).resolve_scale(
         color='independent'
     ).configure_axis(
@@ -468,20 +474,39 @@ with sentiment_section:
         gridWidth=0.2
     )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
+    
     # SENTIMENT STATISTIC
     sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
+
+    sent_count_data = pd.read_excel('btc_final(2).xlsx')
+    sentiment_counts = sent_count_data['sentiment'].value_counts().reset_index()
+    sentiment_counts.columns = ['sentiment', 'count']
+    
+    sent_count_chart = alt.Chart(sentiment_counts).mark_arc(innerRadius=50).encode(
+        theta=alt.Theta(field='count', type='quantitative'),
+        color=alt.Color(field='sentiment', type='nominal'),
+        tooltip=['sentiment', 'count']
+    ).facet(
+        facet=alt.Facet('sentiment:N', title='Sentiment Category'),
+        columns=5
+    )
+    st.altair_chart(sent_count_chart, use_container_width=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
+    
     news_df = st.session_state.news
     news_df = news_df.copy()
     news_df['date'] = pd.to_datetime(news_df['date'])
+    
     current_month = datetime.now().month
     current_year = datetime.now().year
+    
     current_month_news = news_df[(news_df['date'].dt.year == current_year) & (news_df['date'].dt.month == current_month)]
     current_month_news_count = current_month_news.shape[0]
+    
     news_count_m = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Monthly News Count:</span>
@@ -489,6 +514,7 @@ with news_section:
         </div>
         """
     st.markdown(news_count_m, unsafe_allow_html=True)
+    
     current_year_news = news_df[news_df['date'].dt.year == current_year]
     current_year_news_count = current_year_news.shape[0]
     news_count_y = f"""
@@ -498,6 +524,7 @@ with news_section:
         </div>
         """
     st.markdown(news_count_y, unsafe_allow_html=True)
+    
     top_news_source_name = news_df['source'].value_counts().idxmax()
     top_news_source = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;'>
@@ -506,6 +533,7 @@ with news_section:
         </div>
         """
     st.markdown(top_news_source, unsafe_allow_html=True)
+    
     # LATEST NEWS
     latest_news_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
