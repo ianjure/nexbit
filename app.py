@@ -311,7 +311,7 @@ with info:
                 updateCounter();
             })();
         </script>
-        """, height=100)
+        """, height=50)
     # MODEL PREDICTION
     date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
