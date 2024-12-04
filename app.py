@@ -245,36 +245,38 @@ with info:
     #st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{"${:,.2f}".format(float(st.session_state.price))}</h1>", unsafe_allow_html=True)
     # Display the animated number
     st.markdown("<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>Animated Price</h1>", unsafe_allow_html=True)
-    
-    # Use Streamlit's HTML component to add JavaScript for animation
-    st.components.v1.html(f"""
+    price_value = st.session_state['price']
+    st.components.v1.html(
+        """
         <div style="text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;" id="price-counter">
             $0.00
         </div>
         <script>
-            const targetPrice = {st.session_state.price};
-            const duration = 2000;  // Animation duration in milliseconds
-            const frameRate = 60;   // Number of frames per second
-            const totalFrames = Math.round((duration / 1000) * frameRate);
-            const increment = targetPrice / totalFrames;
+            (function() {
+                const targetPrice = """ + str(price_value) + """;
+                const duration = 2000;  // Animation duration in milliseconds
+                const frameRate = 60;   // Number of frames per second
+                const totalFrames = Math.round((duration / 1000) * frameRate);
+                const increment = targetPrice / totalFrames;
     
-            let currentPrice = 0;
-            let frame = 0;
+                let currentPrice = 0;
+                let frame = 0;
     
-            function updateCounter() {
-                if (frame < totalFrames) {
-                    currentPrice += increment;
-                    document.getElementById("price-counter").innerText = "$" + currentPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-                    frame++;
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    document.getElementById("price-counter").innerText = "$" + targetPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                function updateCounter() {
+                    if (frame < totalFrames) {
+                        currentPrice += increment;
+                        document.getElementById("price-counter").innerText = "$" + currentPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                        frame++;
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        document.getElementById("price-counter").innerText = "$" + targetPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                    }
                 }
-            }
     
-            updateCounter();
+                updateCounter();
+            })();
         </script>
-    """, height=100)
+        """, height=100)
     # MODEL PREDICTION
     date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
