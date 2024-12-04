@@ -366,6 +366,15 @@ with sentiment_section:
     ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar(
         cornerRadiusTopLeft=5,
         cornerRadiusTopRight=5,
+        color=alt.Gradient(
+            gradient='linear',
+            stops=[alt.GradientStop(color='#1A1C1B', offset=0),
+                   alt.GradientStop(color='darkgreen', offset=1)],
+            x1=1,
+            x2=1,
+            y1=1,
+            y2=0
+        )
     ).encode(
         x=alt.X('day_name:N', 
                 sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
@@ -373,11 +382,7 @@ with sentiment_section:
                 axis=alt.Axis(labelAngle=0)),
         y=alt.Y('sentiment:Q', 
                 title=None, 
-                axis=alt.Axis(grid=True, gridColor='#2C2E2D')),
-        color=alt.Color('sentiment:Q',
-                   scale=alt.Scale(
-                       domain=[0, 1],
-                       range=['#1A1C1B', 'darkgreen']))
+                axis=alt.Axis(grid=True, gridColor='#2C2E2D'))
     ).properties(
         height=300,
         width='container'
