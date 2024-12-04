@@ -242,13 +242,15 @@ with info:
     else:
         st.image("assets/sol-logo.png")
     # CRYPTO PRICE
+    red = "#8D0000"
+    green = "#8DFB4E"
     price_change = f"""
         <div style="display: flex; justify-content: flex-start; align-items: center;">
             <h1 style="font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;">
                 {"${:,.1f}".format(float(st.session_state.price))}
             </h1>
             <span padding: 0 10px;"">
-                <i class="material-icons" style="font-size: 2rem; color: #8DFB4E;">arrow_drop_up</i> 
+                <i class="material-icons" style="font-size: 2rem; color: {red};">arrow_drop_up</i> 
             </span>
             <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: #8DFB4E;">0.5%</h4>
         </div>
