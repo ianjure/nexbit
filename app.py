@@ -244,12 +244,19 @@ with info:
     # CRYPTO PRICE
     price_change = f"""
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h1 style="font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;">{"${:,.1f}".format(float(st.session_state.price))}</h1>
-            <h4 style="font-size: 1.2rem; color: green;"> 
-                <span style="font-size: 2rem; padding: 0 10px;">↑</span>
-            0.5%
+            <h1 style="font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;">
+                {"${:,.2f}".format(float(st.session_state.price))}
+            </h1>
+            <h4 style="font-size: 1.2rem; color: grey;"> 
+                <span style="font-size: 2rem; padding: 0 10px;">
+                    <i class="material-icons">arrow_upward</i> 
+                </span>
+                Your smaller text
             </h4>
         </div>
+        <style>
+            @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+        </style>
         """
     st.markdown(price_change, unsafe_allow_html=True)
     #st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{"${:,.2f}".format(float(st.session_state.price))}</h1>", unsafe_allow_html=True)
