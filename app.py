@@ -146,6 +146,24 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# Add custom CSS to remove padding around the iframe
+st.markdown(
+    """
+    <style>
+        iframe[width="0"][height="0"] {
+            padding: 0;
+            margin: 0;
+            display: block; /* Ensure it behaves like a block element */
+        }
+        .stComponent {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # [STREAMLIT] HOVER EFFECT
 hover_card = """
     <style>
