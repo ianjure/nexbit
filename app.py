@@ -207,6 +207,7 @@ def get_crypto_price(api_key):
             return None
     #return price_list
 #prices = get_crypto_price('29f6b8bc885d1ec56c7612acdd69a9a9f1c4575666aa752220805a7a8dd01df9')
+#pass = lSwEVpkPlxYq9kls
 
 # [SQLITE3] FETCHING DATA FROM THE DATABASE
 def fetch_data(database, table):
