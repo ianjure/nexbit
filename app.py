@@ -354,9 +354,12 @@ with sentiment_section:
     # DAILY AVERAGE SENTIMENT
     ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
+    # SENTIMENT STATISTIC
+    sentiment_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>SENTIMENT STATISTIC</h4>"
+    st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 with news_section:
-    # NEWS STATISTICS
-    news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>NEWS STATISTICS</h4>"
+    # NEWS STATISTIC
+    news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>NEWS STATISTIC</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_df = news_df.copy()
