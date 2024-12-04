@@ -328,7 +328,7 @@ with chart:
     df = df.copy()
     df['date'] = pd.to_datetime(df['date'])
     
-    chart = alt.Chart(df).mark_area(
+    price_chart = alt.Chart(df).mark_area(
         line={'color': '#8DFB4E'},
         color=alt.Gradient(
             gradient='linear',
@@ -346,14 +346,16 @@ with chart:
         height=315,
         padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
     )
-    st.altair_chart(chart, use_container_width=True)
+    st.altair_chart(price_chart, use_container_width=True)
 
 sentiment_section, news_section = st.columns([3,2])
 
 with sentiment_section:
+    # DAILY AVERAGE SENTIMENT
     ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
 with news_section:
+    # NEWS STATISTICS
     news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>NEWS STATISTICS</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
     news_count_m = f"""
@@ -377,7 +379,7 @@ with news_section:
         </div>
         """
     st.markdown(top_news_source, unsafe_allow_html=True)
-    
+    # LATEST NEWS
     latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_df = st.session_state.news
