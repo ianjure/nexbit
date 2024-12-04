@@ -369,7 +369,7 @@ with sentiment_section:
         color=alt.Gradient(
             gradient='linear',
             stops=[alt.GradientStop(color='#1A1C1B', offset=0),
-                   alt.GradientStop(color='darkgreen', offset=1)],
+                   alt.GradientStop(color='#C7C7C7', offset=1)],
             x1=1,
             x2=1,
             y1=1,
@@ -390,7 +390,7 @@ with sentiment_section:
     highlighted_bar = alt.Chart(avg_sentiment_by_day).mark_bar(
         cornerRadiusTopLeft=5,
         cornerRadiusTopRight=5,
-        fill='#8DFB4E',
+        fill='#AFFD86',
     ).encode(
         x=alt.X('day_name:N', 
                 sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
@@ -410,7 +410,7 @@ with sentiment_section:
         baseline='bottom',
         fontSize=14,
         dy=-5,
-        color='#8DFB4E'
+        color='#AFFD86'
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).encode(
