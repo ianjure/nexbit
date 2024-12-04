@@ -14,6 +14,10 @@ icon = Image.open("assets/nexbit-icon.png")
 st.set_page_config(page_title="Nexbit: Analytics & Forecasting", page_icon=icon, layout="wide")
 st.logo("assets/nexbit-logo.svg")
 
+# [SUPABASE] SECRETS CONFIGURATION
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
 # [STREAMLIT] COLOR PALETTE
 color1_dark = "#8DFB4E"
 color1_light = "#AFFD86"
@@ -211,11 +215,8 @@ def get_crypto_price(api_key):
 #pass = lSwEVpkPlxYq9kls
 
 # [SUPABASE] FETCHING DATA FROM THE DATABASE
-def fetch_data(table):
-    SUPABASE_URL = os.getenv("SUPABASE_URL")
-    SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-    
-    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+def fetch_data(table, url, key):
+    supabase: Client = create_client(url, key)
     response = supabase.table(table).select('*').execute()
 
     if response.status_code == 200:
@@ -225,9 +226,9 @@ def fetch_data(table):
         print(f"Error: {response.error_message}")
         return None
         
-crypto_info = fetch_data('Cryptocurrency')
-crypto_price = fetch_data('Price')
-crypto_news = fetch_data('News')
+crypto_info = fetch_data('Cryptocurrency', SUPABASE_URL, SUPABASE_KEY)
+crypto_price = fetch_data('Price', SUPABASE_URL, SUPABASE_KEY)
+crypto_news = fetch_data('News', SUPABASE_URL, SUPABASE_KEY)
 
 # [STREAMLIT] CATEGORIZE SCORE FOR NEWS CARD
 def categorize_score(score, color=False):
