@@ -255,8 +255,8 @@ with info:
             <h1 style="font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;">
                 {"${:,.1f}".format(float(st.session_state.price))}
             </h1>
-            <span padding: 0 10px;"">
-                <i class="material-icons" style="font-size: 2rem; color: {color};">{arrow}</i> 
+            <span>
+                <i class="material-icons" style="font-size: 2rem; position: relative; top: -5px; color: {color};">{arrow}</i> 
             </span>
             <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: {color};">{"{:.2f}".format(float(pct_change))}%</h4>
         </div>
