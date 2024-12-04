@@ -242,19 +242,21 @@ with info:
     else:
         st.image("assets/sol-logo.png")
     # CRYPTO PRICE
-    red = "#D50000"
-    green = "#8DFB4E"
     price_df = st.session_state.price_data
     pct_change = ((st.session_state.price - price_df["close_price"].iloc[-2]) / price_df["close_price"].iloc[-2]) * 100
+    if pct_change > 0:
+        color = "#8DFB4E"
+    else:
+        color = "#D50000"
     price_change = f"""
         <div style="display: flex; justify-content: flex-start; align-items: center;">
             <h1 style="font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;">
                 {"${:,.1f}".format(float(st.session_state.price))}
             </h1>
             <span padding: 0 10px;"">
-                <i class="material-icons" style="font-size: 2rem; color: {red};">arrow_drop_up</i> 
+                <i class="material-icons" style="font-size: 2rem; color: {color};">arrow_drop_up</i> 
             </span>
-            <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: {red};">{"{:.2f}".format(float(pct_change))}%</h4>
+            <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: {color};">{"{:.2f}".format(float(pct_change))}%</h4>
         </div>
         <style>
             @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
