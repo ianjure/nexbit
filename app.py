@@ -406,8 +406,6 @@ with sentiment_section:
     ).properties(
         height=300,
         width='container'
-    ).configure_axis(
-        labelColor=f'{text_dark}'
     )
     highlighted_bar = alt.Chart(avg_sentiment_by_day).mark_bar(
         cornerRadiusTopLeft=5,
@@ -451,6 +449,8 @@ with sentiment_section:
     )
     final_ave_sent_chart = alt.layer(ave_sent_chart, highlighted_bar, text_format).resolve_scale(
         color='independent'
+    ).configure_axis(
+        labelColor=f'{text_dark}'
     )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
     # SENTIMENT STATISTIC
