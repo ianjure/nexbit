@@ -3,6 +3,7 @@ import altair as alt
 import streamlit as st
 import pandas as pd
 import numpy as np
+import plotly.express as px
 from datetime import datetime
 from PIL import Image
 from streamlit_float import *
@@ -489,20 +490,8 @@ with sentiment_section:
                                        'Strong Negative']].sum(axis=0)
     sentiment_counts = sent_count_data.reset_index()
     sentiment_counts.columns = ['sentiment', 'count']
-    sentiment_counts['proportion'] = sentiment_counts['count'] / sentiment_counts['count'].sum()
-    
-    sent_count_chart = alt.Chart(sentiment_counts).mark_bar().encode(
-        x=alt.X('sentiment:N', title='Sentiment Category', sort=None),
-        y=alt.Y('proportion:Q', title='Proportion'),
-        color=alt.Color('sentiment:N', legend=None),
-        tooltip=['sentiment', 'count', 'proportion']
-    ).properties(
-        width='container',
-        height=200
-    ).configure_view(
-        stroke=None  # Remove the border around the chart
-    )
-    st.altair_chart(sent_count_chart, use_container_width=True)
+    fig = px.treemap(sentiment_counts, path=['sentiment'], values='count', color='sentiment')
+    st.plotly_chart(fig, use_container_width=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
