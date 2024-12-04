@@ -256,7 +256,7 @@ with info:
                 {"${:,.1f}".format(float(st.session_state.price))}
             </h1>
             <span>
-                <i class="material-icons" style="font-size: 2rem; position: relative; top: -5px; color: {color};">arrow_drop_up</i> 
+                <i class="material-icons" style="font-size: 2rem; position: relative; top: -7px; color: {color};">arrow_drop_up</i> 
             </span>
             <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: {color};">{"{:.2f}".format(float(pct_change))}%</h4>
         </div>
