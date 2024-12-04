@@ -220,8 +220,6 @@ def fetch_data(table, url, key):
     if response.data:
         data = pd.DataFrame(response.data)
         return data
-    else:
-        print(f"Error: {response.error_message}")
         
 crypto_info = fetch_data('Cryptocurrency', SUPABASE_URL, SUPABASE_KEY)
 crypto_price = fetch_data('Price', SUPABASE_URL, SUPABASE_KEY)
