@@ -388,7 +388,8 @@ with sentiment_section:
         y=alt.Y('sentiment:Q'),
         text=alt.Text('sentiment:Q', format='.2f')
     )
-    st.altair_chart(ave_sent_chart + text_format, use_container_width=True)
+    ave_sent_chart = ave_sent_chart + text_format
+    st.altair_chart(ave_sent_chart, use_container_width=True)
     # SENTIMENT STATISTIC
     sentiment_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
