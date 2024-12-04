@@ -362,7 +362,7 @@ with sentiment_section:
     avg_sentiment_by_day['day_name'] = avg_sentiment_by_day['day_of_week'].map({
         0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'
     })
-    max_score_day = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment_score'].idxmax(), 'day_name']
+    max_score_day = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'day_name']
     ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar().encode(
         x=alt.X('day_name:N', axis=alt.Axis(title=None, labelAngle=0)),
         y=alt.Y('sentiment:Q', axis=alt.Axis(title=None)),
