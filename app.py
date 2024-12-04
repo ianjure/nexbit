@@ -437,7 +437,7 @@ with sentiment_section:
         align='center',
         baseline='bottom',
         fontSize=15,
-        fontWeight='bold'
+        fontWeight='bold',
         dy=20,
         color=f'{black_dark}'
     ).transform_filter(
