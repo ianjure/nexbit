@@ -356,7 +356,7 @@ with sentiment_section:
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
 with news_section:
     # NEWS STATISTICS
-    news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>NEWS STATISTICS</h4>"
+    news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; margin-bottom: 5px; color: #8DFB4E;'>NEWS STATISTICS</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_df['date'] = pd.to_datetime(news_df['date'])
