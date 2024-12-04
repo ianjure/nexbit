@@ -180,7 +180,7 @@ hover_card = """
         align-items: center;
         font-size: 0.7rem;
         font-weight: 400;
-        color: """ + text_dark """;
+        color: """ + text_dark + """;
     }
     </style>
     """
