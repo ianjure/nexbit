@@ -364,8 +364,8 @@ with sentiment_section:
     })
     ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar().encode(
         x=alt.X('day_name:N', title='Day of the Week'),
-        y=alt.Y('sentiment_score:Q', title='Average Sentiment Score'),
-        color=alt.value('skyblue')
+        y=alt.Y('sentiment:Q', title='Average Sentiment Score'),
+        color=alt.value('#AFFD86')
     ).properties(
         title='Average Sentiment Score by Day of the Week',
         width=600,
