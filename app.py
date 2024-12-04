@@ -252,7 +252,7 @@ with info:
             <span padding: 0 10px;"">
                 <i class="material-icons" style="font-size: 2rem; color: {red};">arrow_drop_up</i> 
             </span>
-            <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: #8DFB4E;">0.5%</h4>
+            <h4 style="font-size: 1.2rem; font-weight: 700; margin: 0; position: relative; top: -5px; color: {red};">0.5%</h4>
         </div>
         <style>
             @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
