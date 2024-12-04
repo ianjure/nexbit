@@ -358,11 +358,13 @@ with chart:
             y2=0
         )
     ).encode(
-        alt.X('date:T', title=None, color=f'{text_dark}'),
-        alt.Y('close_price:Q', title=None, color=f'{text_dark}',axis=alt.Axis(orient='right',  grid=True, gridColor=f'{text_dark}'))
+        alt.X('date:T', title=None),
+        alt.Y('close_price:Q', title=None, axis=alt.Axis(orient='right',  grid=True, gridColor=f'{text_dark}'))
     ).properties(
         height=315,
         padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
+    ).configure_axis(
+        labelColor=f'{text_dark}'
     )
     st.altair_chart(price_chart, use_container_width=True)
 
@@ -396,16 +398,16 @@ with sentiment_section:
     ).encode(
         x=alt.X('day_name:N', 
                 sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-                color=f'{text_dark}',
                 title=None, 
                 axis=alt.Axis(labelAngle=0)),
         y=alt.Y('sentiment:Q',
-                color=f'{text_dark}',
                 title=None, 
                 axis=alt.Axis(grid=True, gridColor=f'{text_dark}'))
     ).properties(
         height=300,
         width='container'
+    ).configure_axis(
+        labelColor=f'{text_dark}'
     )
     highlighted_bar = alt.Chart(avg_sentiment_by_day).mark_bar(
         cornerRadiusTopLeft=5,
