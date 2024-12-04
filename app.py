@@ -355,6 +355,7 @@ with sentiment_section:
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
 with news_section:
     news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>NEWS STATISTICS</h4>"
+    st.markdown(news_stat_title, unsafe_allow_html=True)
     news_count_m = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Monthly News Count:</span>
