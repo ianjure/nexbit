@@ -212,8 +212,8 @@ def get_crypto_price(api_key):
 def fetch_data(database, table):
     try:
         conn = sqlite3.connect(database)
-        query = "SELECT * FROM ?"
-        result = pd.read_sql_query(query, conn, params=(table,))
+        query = f"SELECT * FROM {table}"
+        result = pd.read_sql_query(query, conn)
     except sqlite3.DatabaseError as e:
         print(f"Database error: {e}")
         result = None
