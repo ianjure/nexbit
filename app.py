@@ -262,7 +262,7 @@ with info:
         margin = "-6px"
         arrow = "arrow_drop_up"
     else:
-        color = "#D50000"
+        color = "#F34509"
         margin = "-2px"
         arrow = "arrow_drop_down"
     price_change = f"""
