@@ -369,11 +369,11 @@ with sentiment_section:
         color=alt.condition(
             alt.datum.day_name == max_score_day,  # Condition for highlighting
             alt.value('#8DFB4E'),  # Highlight color
-            alt.value('#AFFD86')  # Default color
+            alt.value('darkgreen')  # Default color
         )
     ).properties(
-        height=400,
-        padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
+        height=300,
+        padding={'top': 10, 'bottom': 10, 'left': 2, 'right': 2}
     )
     st.altair_chart(ave_sent_chart, use_container_width=True)
     # SENTIMENT STATISTIC
