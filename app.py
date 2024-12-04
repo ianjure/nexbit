@@ -121,30 +121,6 @@ set_btn = """
         """
 st.markdown(set_btn, unsafe_allow_html=True)
 
-st.markdown(
-    """
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=currency_exchange');
-    
-    h1 {
-        font-family: 'Poppins', sans-serif !important;
-        font-weight: 600;
-    }
-    .animated-price {
-        font-family: 'Poppins', sans-serif !important;
-        text-align: left;
-        font-size: 3.5rem;
-        font-weight: 600;
-        line-height: 0.8;
-        padding-bottom: 2rem;
-        color: white;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True)
-
 # [STREAMLIT] HOVER EFFECT
 hover_card = """
     <style>
@@ -266,51 +242,7 @@ with info:
     else:
         st.image("assets/sol-logo.png")
     # CRYPTO PRICE
-    #st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{"${:,.2f}".format(float(st.session_state.price))}</h1>", unsafe_allow_html=True)
-    # Display the animated number
-    #st.markdown("<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>Animated Price</h1>", unsafe_allow_html=True)
-    price_value = st.session_state['price']
-    st.components.v1.html(
-        """
-        <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        #price-counter {
-            font-family: 'Poppins', sans-serif !important;
-            text-align: left;
-            font-size: 3.5rem;
-            font-weight: 600;
-            line-height: 0.8;
-            padding-top: 3px;
-            color: white;
-        }
-        </style>
-        <h1 class="animated-price" id="price-counter">$0.00</h1>
-        <script>
-            (function() {
-                const targetPrice = """ + str(price_value) + """;
-                const duration = 2000;  // Animation duration in milliseconds
-                const frameRate = 60;   // Number of frames per second
-                const totalFrames = Math.round((duration / 1000) * frameRate);
-                const increment = targetPrice / totalFrames;
-    
-                let currentPrice = 0;
-                let frame = 0;
-    
-                function updateCounter() {
-                    if (frame < totalFrames) {
-                        currentPrice += increment;
-                        document.getElementById("price-counter").innerText = "$" + currentPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-                        frame++;
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        document.getElementById("price-counter").innerText = "$" + targetPrice.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-                    }
-                }
-    
-                updateCounter();
-            })();
-        </script>
-        """, height=80)
+    st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{"${:,.2f}".format(float(st.session_state.price))}</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
     date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
