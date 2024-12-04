@@ -363,17 +363,22 @@ with sentiment_section:
         0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'
     })
     max_score_day = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'day_name']
-    ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar(cornerRadiusTopLeft=5, cornerRadiusTopRight=5).encode(
-        x=alt.X('day_name:N', sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], title=None, axis=alt.Axis(labelAngle=0)),
-        y=alt.Y('sentiment:Q', title=None, axis=alt.Axis(grid=True, gridColor='#2C2E2D')),
+    ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar(
+    ).encode(
+        x=alt.X('day_name:N', 
+                sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
+                title=None, 
+                axis=alt.Axis(labelAngle=0)),
+        y=alt.Y('sentiment:Q', 
+                title=None, 
+                axis=alt.Axis(grid=True, gridColor='#2C2E2D')),
         color=alt.condition(
-            alt.datum.day_name == max_score_day,  # Condition for highlighting
-            alt.value('#AFFD86'),  # Highlight color
-            alt.value('#C7C7C7')  # Default color
-        )
+            alt.datum.day_name == max_score_day,
+            alt.value('#AFFD86'),
+            alt.value('#C7C7C7'))
     ).properties(
         height=300,
-        padding={'top': 10, 'bottom': 10, 'left': 2, 'right': 2}
+        width='container'
     )
     text_format = alt.Chart(avg_sentiment_by_day).mark_text(
         align='center',
@@ -384,11 +389,13 @@ with sentiment_section:
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).encode(
-        x=alt.X('day_name:N', sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']),
+        x=alt.X('day_name:N'),
         y=alt.Y('sentiment:Q'),
         text=alt.Text('sentiment:Q', format='.2f')
     )
-    final_ave_sent_chart = alt.layer(ave_sent_chart, text_format)
+    final_ave_sent_chart = alt.layer(ave_sent_chart, text_format).resolve_scale(
+        color='independent'
+    )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
     # SENTIMENT STATISTIC
     sentiment_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>SENTIMENT STATISTIC</h4>"
