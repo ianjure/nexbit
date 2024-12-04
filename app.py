@@ -242,7 +242,7 @@ with info:
     else:
         st.image("assets/sol-logo.png")
     # CRYPTO PRICE
-    red = "#8D0000"
+    red = "#D50000"
     green = "#8DFB4E"
     price_change = f"""
         <div style="display: flex; justify-content: flex-start; align-items: center;">
