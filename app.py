@@ -245,7 +245,7 @@ with info:
     price_change = f"""
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <h1 style="font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;">
-                {"${:,.2f}".format(float(st.session_state.price))}
+                {"${:,.1f}".format(float(st.session_state.price))}
             </h1>
             <h4 style="font-size: 1.2rem; color: green;"> 
                 <span style="font-size: 2rem; padding: 0px;">
