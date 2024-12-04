@@ -15,7 +15,7 @@ st.logo("assets/nexbit-logo.svg")
 
 # [STREAMLIT] COLOR PALETTE
 color1_dark = "#8DFB4E"
-color1_light = "#02807d"
+color1_light = "#AFFD86"
 color2_dark = "#3a1a1d"
 color2_light = "#e2352f"
 black_dark = "#0d1216"
