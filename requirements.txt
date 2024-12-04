@@ -2,3 +2,4 @@ streamlit
 streamlit-float
 altair
 supabase
+openpyxl
