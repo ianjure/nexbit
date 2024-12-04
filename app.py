@@ -489,17 +489,18 @@ with sentiment_section:
                                        'Strong Negative']].sum(axis=0)
     sentiment_counts = sent_count_data.reset_index()
     sentiment_counts.columns = ['sentiment', 'count']
+    sentiment_counts['proportion'] = sentiment_counts['count'] / sentiment_counts['count'].sum()
     
     sent_count_chart = alt.Chart(sentiment_counts).mark_bar().encode(
-        theta=alt.Theta(field='sentiment', type='nominal', sort=None),
-        radius=alt.Radius(field='count', type='quantitative', scale=alt.Scale(type='linear')),
-        color=alt.Color(field='sentiment', type='nominal', legend=None),
-        tooltip=['sentiment', 'count']
+        x=alt.X('sentiment:N', title='Sentiment Category', sort=None),
+        y=alt.Y('proportion:Q', title='Proportion'),
+        color=alt.Color('sentiment:N', legend=None),
+        tooltip=['sentiment', 'count', 'proportion']
     ).properties(
-        width=300,
-        height=300
+        width='container',
+        height=200
     ).configure_view(
-        stroke=None
+        stroke=None  # Remove the border around the chart
     )
     st.altair_chart(sent_count_chart, use_container_width=True)
 with news_section:
