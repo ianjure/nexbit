@@ -138,7 +138,7 @@ st.markdown(
         font-size: 3.5rem;
         font-weight: 600;
         line-height: 0.8;
-        padding-top: 3px;
+        padding-top: -15px;
         color: white;
     }
     </style>
@@ -311,7 +311,7 @@ with info:
                 updateCounter();
             })();
         </script>
-        """, height=50)
+        """, height=0)
     # MODEL PREDICTION
     date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
