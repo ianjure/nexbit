@@ -364,7 +364,8 @@ with chart:
         height=315,
         padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
     ).configure_axis(
-        labelColor=f'{text_dark}'
+        labelColor=f'{text_dark}',
+        gridWidth=0.5
     )
     st.altair_chart(price_chart, use_container_width=True)
 
@@ -384,6 +385,7 @@ with sentiment_section:
     })
     max_score_day = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'day_name']
     ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar(
+        opacity=0.5,
         cornerRadiusTopLeft=5,
         cornerRadiusTopRight=5,
         color=alt.Gradient(
@@ -451,7 +453,8 @@ with sentiment_section:
     final_ave_sent_chart = alt.layer(ave_sent_chart, highlighted_bar, text_format).resolve_scale(
         color='independent'
     ).configure_axis(
-        labelColor=f'{text_dark}'
+        labelColor=f'{text_dark}',
+        gridWidth=0.5
     )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
     # SENTIMENT STATISTIC
