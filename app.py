@@ -449,8 +449,8 @@ with sentiment_section:
         align='center',
         baseline='bottom',
         fontSize=14,
-        fon ='Roboto',
-        fontWeight = 'bold',
+        font='Roboto',
+        fontWeight='bold',
         dy=-5,
         color=f'{color1_light}'
     ).transform_filter(
