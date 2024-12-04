@@ -13,6 +13,14 @@ icon = Image.open("assets/nexbit-icon.png")
 st.set_page_config(page_title="Nexbit: Crypto Analysis and Forecasting Dashboard", page_icon=icon, layout="wide")
 st.logo("assets/nexbit-logo.svg")
 
+# [STREAMLIT] COLOR PALETTE
+color1_dark = "#095d67"
+color1_light = "#02807d"
+color2_dark = "#c36211"
+color2_light = "#de9050"
+black_dark = "#060606"
+black_light = "#151515"
+
 # [STREAMLIT] HIDE MENU
 hide_menu = """
     <style>
@@ -135,13 +143,13 @@ hover_card = """
         margin: 0px;
         margin-bottom: 15px;
         border-radius: 0.8rem;
-        background-color: #2C2E2D;
+        background-color: """ + black_light + """;
         transition: background-color 0.3s ease, transform 0.2s ease;
         text-decoration: none;
         color: #FFFFFF;
     }
     .news-card:hover {
-        background-color: #575D59;
+        background-color: """ + black_light + """;
         transform: scale(1.02);
         text-decoration: none;
         color: #FFFFFF;
@@ -173,7 +181,7 @@ hover_card = """
         color: #8F8F8F;
     }
     .news-card .sentiment {
-        color: #AFFD86;
+        color: """ + color1_light + """;
     }
     </style>
     """
