@@ -300,14 +300,14 @@ with info:
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Market Cap:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #AFFD86;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #575D59;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
         </div>
         """
     st.markdown(market_cap, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Total Supply:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #AFFD86;'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #575D59;'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
         </div>
         """
     st.markdown(total_supply, unsafe_allow_html=True)
@@ -368,7 +368,7 @@ with news_section:
     news_count_m = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Monthly News Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #AFFD86;'>{current_month_news_count}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #575D59;'>{current_month_news_count}</span>
         </div>
         """
     st.markdown(news_count_m, unsafe_allow_html=True)
@@ -377,7 +377,7 @@ with news_section:
     news_count_y = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Annual News Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #AFFD86;'>{current_year_news_count}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #575D59;'>{current_year_news_count}</span>
         </div>
         """
     st.markdown(news_count_y, unsafe_allow_html=True)
@@ -385,7 +385,7 @@ with news_section:
     top_news_source = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Top News Source:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #AFFD86;'>{top_news_source_name}</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500; color: #575D59;'>{top_news_source_name}</span>
         </div>
         """
     st.markdown(top_news_source, unsafe_allow_html=True)
