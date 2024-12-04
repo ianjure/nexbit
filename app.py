@@ -37,7 +37,7 @@ hide_menu = """
     }
     </style>
     """
-st.markdown(hide_menu, unsafe_allow_html=True)
+#st.markdown(hide_menu, unsafe_allow_html=True)
 
 #  [STEAMLIT] CHANGE FONT STYLE
 with open( "style.css" ) as css:
