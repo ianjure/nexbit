@@ -496,7 +496,7 @@ with sentiment_section:
         tooltip=['sentiment', 'count']
     ).facet(
         facet=alt.Facet('sentiment:N', title='Sentiment Category'),
-        columns=5
+        columns=3
     ).properties(
         width=150,
         height=150
