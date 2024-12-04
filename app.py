@@ -348,12 +348,35 @@ with chart:
     )
     st.altair_chart(chart, use_container_width=True)
 
-ave_sentiment, latest_news = st.columns([3,2])
+sentiment_section, news_section = st.columns([3,2])
 
-with ave_sentiment:
+with sentiment_section:
     ave_sentiment_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>DAILY AVERAGE SENTIMENT</h4>"
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
-with latest_news:
+with news_section:
+    news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>NEWS STATISTICS</h4>"
+    news_count_m = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Monthly News Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
+        </div>
+        """
+    st.markdown(news_count_m, unsafe_allow_html=True)
+    news_count_y = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Annual News Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
+        </div>
+        """
+    st.markdown(news_count_y, unsafe_allow_html=True)
+    top_news_source = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Top News Source:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
+        </div>
+        """
+    st.markdown(top_news_source, unsafe_allow_html=True)
+    
     latest_news_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>LATEST NEWS</h4>"
     st.markdown(latest_news_title, unsafe_allow_html=True)
     news_df = st.session_state.news
