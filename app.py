@@ -356,7 +356,7 @@ with sentiment_section:
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
 with news_section:
     # NEWS STATISTICS
-    news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; margin-bottom: -5px; color: #8DFB4E;'>NEWS STATISTICS</h4>"
+    news_stat_title = "<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: #8DFB4E;'>NEWS STATISTICS</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
     news_df = st.session_state.news
     news_df['date'] = pd.to_datetime(news_df['date'])
@@ -365,7 +365,7 @@ with news_section:
     current_month_news = news_df[(news_df['date'].dt.year == current_year) & (news_df['date'].dt.month == current_month)]
     current_month_news_count = current_month_news.shape[0]
     news_count_m = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -10px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500;'>Monthly News Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{current_month_news_count}</span>
         </div>
