@@ -477,7 +477,17 @@ with sentiment_section:
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 
     sent_count_data = pd.read_excel('btc_final(2).xlsx')
-    sentiment_counts = sent_count_data['sentiment'].value_counts().reset_index()
+    sent_count_data.rename(columns={'AV_sentiment_category_Strong Positive': 'Strong Positive',
+                       'AV_sentiment_category_Moderate Positive': 'Moderate Positive',
+                       'AV_sentiment_category_Neutral': 'Neutral',
+                       'AV_sentiment_category_Moderate Negative': 'Moderate Negative',
+                       'AV_sentiment_category_Strong Negative': 'Strong Negative'}, inplace=True)
+    sent_count_data = sent_count_data[['Strong Positive',
+                                       'Moderate Positive',
+                                       'Neutral',
+                                       'Moderate Negative',
+                                       'Strong Negative']].sum(axis=0)
+    sentiment_counts = sent_count_data.reset_index()
     sentiment_counts.columns = ['sentiment', 'count']
     
     sent_count_chart = alt.Chart(sentiment_counts).mark_arc(innerRadius=50).encode(
