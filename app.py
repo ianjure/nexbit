@@ -358,7 +358,7 @@ with sentiment_section:
     news_df = news_df.copy()
     news_df['date'] = pd.to_datetime(news_df['date'])
     news_df['day_of_week'] = news_df['date'].dt.dayofweek
-    avg_sentiment_by_day = news_df.groupby('day_of_week')['sentiment_score'].mean().reset_index()
+    avg_sentiment_by_day = news_df.groupby('day_of_week')['sentiment'].mean().reset_index()
     avg_sentiment_by_day['day_name'] = avg_sentiment_by_day['day_of_week'].map({
         0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'
     })
