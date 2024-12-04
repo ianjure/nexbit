@@ -490,21 +490,18 @@ with sentiment_section:
     sentiment_counts = sent_count_data.reset_index()
     sentiment_counts.columns = ['sentiment', 'count']
     
-    sent_count_chart = alt.Chart(sentiment_counts).mark_arc(innerRadius=10, outerRadius=50).encode(
-        theta=alt.Theta(field='count', type='quantitative'),
+    sent_count_chart = alt.Chart(sentiment_counts).mark_bar().encode(
+        theta=alt.Theta(field='sentiment', type='nominal', sort=None),
+        radius=alt.Radius(field='count', type='quantitative', scale=alt.Scale(type='linear')),
         color=alt.Color(field='sentiment', type='nominal', legend=None),
         tooltip=['sentiment', 'count']
-    ).transform_calculate(
-        total_count='datum.count + datum.category_count'
-    ).facet(
-        facet=alt.Facet('sentiment:N', title=None),
-        columns=3,
-        spacing=-100
     ).properties(
-        autosize='fit',
+        width=300,
+        height=300
+    ).configure_view(
+        stroke=None
     )
-    with st.container():
-        st.altair_chart(sent_count_chart, use_container_width=True)
+    st.altair_chart(sent_count_chart, use_container_width=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
