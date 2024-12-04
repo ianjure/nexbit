@@ -498,6 +498,10 @@ with sentiment_section:
         facet=alt.Facet('sentiment:N', title='Sentiment Category'),
         columns=3
     ).properties(
+        autosize='fit',
+    ).configure_view(
+        stroke=None
+    ).properties(
         width=150,
         height=150
     )
