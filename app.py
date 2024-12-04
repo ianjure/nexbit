@@ -373,8 +373,8 @@ with sentiment_section:
         cornerRadiusTopRight=5,
         color=alt.Gradient(
             gradient='linear',
-            stops=[alt.GradientStop(color='#0a3c21', offset=0),
-                   alt.GradientStop(color=f'{color1_dark}', offset=1)],
+            stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
+                   alt.GradientStop(color='#0a2f1e', offset=1)],
             x1=1,
             x2=1,
             y1=1,
