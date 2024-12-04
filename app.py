@@ -156,8 +156,7 @@ st.markdown(
             display: block; /* Ensure full-width display */
         }
     </style>
-    """,
-   
+    """, unsafe_allow_html=True)
 
 # [STREAMLIT] HOVER EFFECT
 hover_card = """
