@@ -499,11 +499,6 @@ with sentiment_section:
         columns=3
     ).properties(
         autosize='fit',
-    ).configure_view(
-        stroke=None
-    ).properties(
-        width=150,
-        height=150
     )
     st.altair_chart(sent_count_chart, use_container_width=True)
 with news_section:
