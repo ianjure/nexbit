@@ -3,3 +3,4 @@ streamlit-float
 altair
 supabase
 openpyxl
+plotly
