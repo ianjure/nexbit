@@ -1,4 +1,4 @@
-import sqlite3
+import os
 import requests
 import altair as alt
 import streamlit as st
@@ -7,6 +7,7 @@ import numpy as np
 from datetime import datetime
 from PIL import Image
 from streamlit_float import *
+from supabase import create_client, Client
 
 # [STREAMLIT] PAGE CONFIGURATION
 icon = Image.open("assets/nexbit-icon.png")
@@ -209,25 +210,24 @@ def get_crypto_price(api_key):
 #prices = get_crypto_price('29f6b8bc885d1ec56c7612acdd69a9a9f1c4575666aa752220805a7a8dd01df9')
 #pass = lSwEVpkPlxYq9kls
 
-# [SQLITE3] FETCHING DATA FROM THE DATABASE
-def fetch_data(database, table):
-    try:
-        conn = sqlite3.connect(database)
-        query = f"SELECT * FROM {table}"
-        result = pd.read_sql_query(query, conn)
-    except sqlite3.DatabaseError as e:
-        print(f"Database error: {e}")
-        result = None
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        result = None
-    finally:
-        if conn:
-            conn.close()
-    return result
-crypto_info = fetch_data('nexbit.db', 'Cryptocurrency')
-crypto_price = fetch_data('nexbit.db', 'Price')
-crypto_news = fetch_data('nexbit.db', 'News')
+# [SUPABASE] FETCHING DATA FROM THE DATABASE
+def fetch_data(table):
+    SUPABASE_URL = os.getenv("SUPABASE_URL")
+    SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+    
+    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+    response = supabase.table(table).select('*').execute()
+
+    if response.status_code == 200:
+        data = pd.DataFrame(response.data)
+        return data
+    else:
+        print(f"Error: {response.error_message}")
+        return None
+        
+crypto_info = fetch_data('Cryptocurrency')
+crypto_price = fetch_data('Price')
+crypto_news = fetch_data('News')
 
 # [STREAMLIT] CATEGORIZE SCORE FOR NEWS CARD
 def categorize_score(score, color=False):
