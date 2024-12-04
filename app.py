@@ -436,10 +436,10 @@ with sentiment_section:
     text_format = alt.Chart(avg_sentiment_by_day).mark_text(
         align='center',
         baseline='bottom',
-        fontSize=15,
+        fontSize=14,
         fontWeight='bold',
-        dy=20,
-        color=f'{black_dark}'
+        dy=-5,
+        color=f'{color1_light}'
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).encode(
