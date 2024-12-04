@@ -508,7 +508,7 @@ with news_section:
     st.markdown(news_3, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
-float_init()
+#float_init()
 
 @st.dialog("Dashboard Settings", width="small")
 def open_options():
