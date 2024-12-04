@@ -365,7 +365,7 @@ with chart:
         padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
     ).configure_axis(
         labelColor=f'{text_dark}',
-        gridWidth=0.3
+        gridWidth=0.2
     )
     st.altair_chart(price_chart, use_container_width=True)
 
@@ -454,7 +454,7 @@ with sentiment_section:
         color='independent'
     ).configure_axis(
         labelColor=f'{text_dark}',
-        gridWidth=0.3
+        gridWidth=0.2
     )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
     # SENTIMENT STATISTIC
