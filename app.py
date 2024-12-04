@@ -498,7 +498,8 @@ with sentiment_section:
         total_count='datum.count + datum.category_count'
     ).facet(
         facet=alt.Facet('sentiment:N', title=None),
-        columns=3
+        columns=3,
+        spacing=10
     ).properties(
         autosize='fit',
     )
