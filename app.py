@@ -436,7 +436,8 @@ with sentiment_section:
     text_format = alt.Chart(avg_sentiment_by_day).mark_text(
         align='center',
         baseline='bottom',
-        fontSize=14,
+        fontSize=15,
+        fontWeight='bold'
         dy=20,
         color=f'{black_dark}'
     ).transform_filter(
