@@ -288,7 +288,6 @@ with info:
         </style>
         """
     st.markdown(price_change, unsafe_allow_html=True)
-    #st.markdown(f"<h1 style='text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;'>{"${:,.2f}".format(float(st.session_state.price))}</h1>", unsafe_allow_html=True)
     # MODEL PREDICTION
     date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
@@ -376,8 +375,8 @@ with sentiment_section:
         cornerRadiusTopRight=5,
         color=alt.Gradient(
             gradient='linear',
-            stops=[alt.GradientStop(color='#1A1C1B', offset=0),
-                   alt.GradientStop(color='#263321', offset=1)],
+            stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
+                   alt.GradientStop(color=f'{color1_dark}', offset=1)],
             x1=1,
             x2=1,
             y1=1,
@@ -400,8 +399,8 @@ with sentiment_section:
         cornerRadiusTopRight=5,
         color=alt.Gradient(
             gradient='linear',
-            stops=[alt.GradientStop(color='#1A1C1B', offset=0),
-                   alt.GradientStop(color='#AFFD86', offset=1)],
+            stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
+                   alt.GradientStop(color=f'{color2_dark}', offset=1)],
             x1=1,
             x2=1,
             y1=1,
@@ -426,7 +425,7 @@ with sentiment_section:
         baseline='bottom',
         fontSize=14,
         dy=-5,
-        color='#AFFD86'
+        color=f'{color2_dark}'
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).encode(
