@@ -250,7 +250,7 @@ with info:
         arrow = "arrow_drop_up"
     else:
         color = "#D50000"
-        margin = "-3px"
+        margin = "0px"
         arrow = "arrow_drop_down"
     price_change = f"""
         <div style="display: flex; justify-content: flex-start; align-items: center;">
