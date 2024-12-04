@@ -121,8 +121,8 @@ set_btn = """
         """
 st.markdown(set_btn, unsafe_allow_html=True)
 
-# [STREAMLIT] HOVER EFFECT
-hover_card = """
+st.markdown(
+    """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -132,6 +132,23 @@ hover_card = """
         font-family: 'Poppins', sans-serif !important;
         font-weight: 600;
     }
+    .animated-price {
+        font-family: 'Poppins', sans-serif !important;
+        text-align: left;
+        font-size: 3.5rem;
+        font-weight: 600;
+        line-height: 0.8;
+        padding-top: 3px;
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# [STREAMLIT] HOVER EFFECT
+hover_card = """
+    <style>
     .news-card {
         display: block;
         width: auto;
@@ -256,9 +273,7 @@ with info:
     price_value = st.session_state['price']
     st.components.v1.html(
         """
-        <h1 style="text-align: left; font-size: 3.5rem; font-weight: 600; line-height: 0.8; padding-top: 3px;" id="price-counter">
-            $0.00
-        </h1>
+        <h1 class="animated-price" id="price-counter">$0.00</h1>
         <script>
             (function() {
                 const targetPrice = """ + str(price_value) + """;
