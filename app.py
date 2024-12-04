@@ -363,8 +363,7 @@ with sentiment_section:
         0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'
     })
     max_score_day = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'day_name']
-    ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar(
-    ).encode(
+    ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar(cornerRadiusTopLeft=5, cornerRadiusTopRight=5).encode(
         x=alt.X('day_name:N', 
                 sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 
                 title=None, 
@@ -383,13 +382,14 @@ with sentiment_section:
     text_format = alt.Chart(avg_sentiment_by_day).mark_text(
         align='center',
         baseline='bottom',
-        fontSize=12,
+        fontSize=15,
         dy=-5,
         color='#AFFD86'
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).encode(
-        x=alt.X('day_name:N'),
+        x=alt.X('day_name:N',
+               sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']),
         y=alt.Y('sentiment:Q'),
         text=alt.Text('sentiment:Q', format='.2f')
     )
