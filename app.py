@@ -367,7 +367,10 @@ with chart:
         )
     ).encode(
         alt.X('date:T', title=None),
-        alt.Y('close_price:Q', title=None, axis=alt.Axis(orient='right',  grid=True, gridColor=f'{text_dark}'))
+        alt.Y('close_price:Q', title=None, axis=alt.Axis(orient='right',  grid=True, gridColor=f'{text_dark}')),
+        tooltip=[
+            alt.Tooltip("date:T", title="Date"),
+            alt.Tooltip("close_price:Q", title="Closing Price")]
     ).properties(
         height=315,
         padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
