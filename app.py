@@ -881,8 +881,8 @@ with news_section:
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Sentiment Score")]
     ).configure_view(
-        step=13,
-        strokeWidth=0
+        step=5,
+        strokeWidth=1
     ).configure_axis(
         domain=False,
         tickColor=f"{text_dark}",
