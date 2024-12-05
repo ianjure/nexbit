@@ -511,7 +511,7 @@ with sentiment_section:
             width=250,
             height=20
         )
-        return alt.vconcat(title, donut).configure_concat(spacing=10)
+        return alt.vconcat(title, donut).resolve_legend(color="independent")
         
     chart1 = create_donut_chart(sentiment_counts, "Alpha Vantage")
     chart2 = create_donut_chart(sentiment_counts, "TextBlob")
