@@ -535,7 +535,7 @@ with sentiment_section:
                     x2=1,
                     y1=0,
                     y2=0
-        )).encode(
+        ))).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
         ).properties(
