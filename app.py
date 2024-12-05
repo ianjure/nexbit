@@ -420,7 +420,7 @@ sentiment_section, news_section = st.columns([3,2])
 with sentiment_section:
     # DAILY AVERAGE SENTIMENT
     ave_sentiment_title = f"""
-        <div style='display: flex; align-items: left; gap: 5px;'>
+        <div style='display: flex; align-items: center; gap: 5px;'>
             <h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>
                 DAILY AVERAGE SENTIMENT
             </h4>
