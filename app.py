@@ -920,6 +920,17 @@ with news_section:
     </a>
     """
     st.markdown(news_4, unsafe_allow_html=True)
+    news_5 = f"""
+    <a class='news-card' target='_blank' href='{news_df["url"].iloc[-5]}'>
+        <span class='title'>{news_df["title"].iloc[-5].title()}</span>
+        <span class='summary'>{news_df["summary"].iloc[-5]}</span>
+        <div class='meta-info'>
+            <span>Source: {news_df["source"].iloc[-5]}</span>
+            <span style='color: {categorize_score(news_df["sentiment"].iloc[-5], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-5])}</span>
+        </div>
+    </a>
+    """
+    st.markdown(news_5, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
