@@ -191,6 +191,49 @@ hover_card = """
     """
 st.markdown(hover_card, unsafe_allow_html=True)
 
+# [STREAMLIT] INFO EFFECT
+info_hover = """
+    <style>
+    .info-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .info-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+    }
+    
+    .info-button:hover + .info-box,
+    .info-container:hover .info-box {
+      display: block;
+    }
+    
+    .info-box {
+      display: none;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      color: #333;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      white-space: nowrap;
+    }
+    </style>
+    """
+
 # [CRYPTOCOMPARE API] FETCH CURRENT CRYPTO PRICE
 def get_crypto_price(api_key):
     crypto_symbols = ['BTC', 'ETH', 'SOL']
@@ -384,7 +427,17 @@ sentiment_section, news_section = st.columns([3,2])
 
 with sentiment_section:
     # DAILY AVERAGE SENTIMENT
-    ave_sentiment_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>DAILY AVERAGE SENTIMENT</h4>"
+    ave_sentiment_title = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center;'>
+            <h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>
+                DAILY AVERAGE SENTIMENT
+            </h4>
+            <div class="info-container">
+              <button class="info-button">i</button>
+              <div class="info-box">This is your information text.</div>
+            </div>
+        </div>
+        """
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
     
     news_df = st.session_state.news
@@ -392,6 +445,7 @@ with sentiment_section:
     
     news_df['date'] = pd.to_datetime(news_df['date'])
     news_df['day_of_week'] = news_df['date'].dt.dayofweek
+    news_df['sentiment'] = (news_df['sentiment'] + 1) / 2
     
     avg_sentiment_by_day = news_df.groupby('day_of_week')['sentiment'].mean().reset_index()
     avg_sentiment_by_day['day_name'] = avg_sentiment_by_day['day_of_week'].map({
