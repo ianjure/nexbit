@@ -649,7 +649,7 @@ with sentiment_section:
             y=alt.Y('sentiment:O', title=None, sort=['Strong Positive', 'Moderate Positive', 'Neutral', 'Moderate Negative', 'Strong Negative']),
             tooltip=[
                 alt.Tooltip("count:Q", title="Count"),
-                alt.Tooltip("sentiment:O", title="Sentiment Category")]
+                alt.Tooltip("sentiment:O", title="Category")]
         ).properties(
             height=300,
             width='container'
@@ -673,7 +673,7 @@ with sentiment_section:
             y=alt.Y('sentiment:O', title=None, sort=['Strong Positive', 'Moderate Positive', 'Neutral', 'Moderate Negative', 'Strong Negative']),
             tooltip=[
                 alt.Tooltip("count:Q", title="Count"),
-                alt.Tooltip("sentiment:O", title="Sentiment Category")]
+                alt.Tooltip("sentiment:O", title="Category")]
         ).transform_filter(
             alt.datum.sentiment == max_count_TB
         ).properties(
