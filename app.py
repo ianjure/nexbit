@@ -574,35 +574,35 @@ with sentiment_section:
         
         # TOTAL SENTIMENT COUNT (AV)
         strong_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -30px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Strong Positive']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(strong_p, unsafe_allow_html=True)
         moderate_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Moderate Positive']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(moderate_p, unsafe_allow_html=True)
         neutral = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Neutral']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(neutral, unsafe_allow_html=True)
         moderate_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Moderate Negative']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(moderate_n, unsafe_allow_html=True)
         strong_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 25px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 25px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Strong Negative']['count'].iloc[0]}</span>
         </div>
@@ -676,35 +676,35 @@ with sentiment_section:
         
         # TOTAL SENTIMENT COUNT (TB)
         strong_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -30px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Strong Positive']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(strong_p, unsafe_allow_html=True)
         moderate_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Moderate Positive']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(moderate_p, unsafe_allow_html=True)
         neutral = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Neutral']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(neutral, unsafe_allow_html=True)
         moderate_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Moderate Negative']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(moderate_n, unsafe_allow_html=True)
         strong_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 25px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 25px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Strong Negative']['count'].iloc[0]}</span>
         </div>
