@@ -894,23 +894,6 @@ with news_section:
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Sentiment Score")]
-    )
-
-    lgd_min_sentiment = -1
-    lgd_max_sentiment = 1
-    lgd_mid_lower = -0.1
-    lgd_mid_upper = 0.1 
-    
-    legend = alt.Chart(daily_sentiment).mark_rect().encode(
-        alt.Color("sentiment:Q", title=None, scale=alt.Scale(
-            domain=[lgd_min_sentiment, lgd_mid_lower, lgd_mid_upper, lgd_max_sentiment],
-            range=[f"{color1_light}", f"{black_light}", f"{black_light}", f"{color2_light}"]
-        ),
-        legend=alt.Legend(padding=0, labelFontSize=10)),
-    )
-
-    final_heatmap = alt.hconcat(heatmap, legend).resolve_legend(
-        color='independent'
     ).configure_view(
         step=13,
         strokeWidth=0
@@ -919,8 +902,25 @@ with news_section:
         labelColor=f'{text_dark}',
         offset=0
     )
-            
-    st.altair_chart(final_heatmap, use_container_width=True)
+
+    heatmap = heatmap.encode(
+        color=alt.Color("sentiment:Q", scale=alt.Scale(
+            domain=[min_sentiment, mid_lower, mid_upper, max_sentiment],
+            range=[f"{color1_light}", f"{black_light}", f"{black_light}", f"{color2_light}"]
+        ),
+        legend=alt.Legend(
+            padding=0,
+            labelFontSize=10,
+            title=None
+        ))
+    )
+
+    lgd_min_sentiment = -1
+    lgd_max_sentiment = 1
+    lgd_mid_lower = -0.1
+    lgd_mid_upper = 0.1 
+          
+    st.altair_chart(heatmap, use_container_width=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
