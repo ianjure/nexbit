@@ -504,6 +504,9 @@ with sentiment_section:
     sentiment_counts_AV.columns = ['sentiment', 'count']
     sentiment_counts_TB.columns = ['sentiment', 'count']
     with chart_1:
+        av_title = f"<h4 style='text-align: left; font-size: 0.8rem; font-weight: 500; margin-top: -10px; color: #FFFFFF;'>Alpha Vantage Sentiment Score</h4>"
+        st.markdown(av_title, unsafe_allow_html=True)
+        
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None),
@@ -511,8 +514,8 @@ with sentiment_section:
         ).properties(
             height=300,
             width='container',
-            title='Alpha Vantage',
-            padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
+            title=None,
+            padding={'top': 0, 'bottom': 20, 'left': 0, 'right': 0}
         ).configure_axis(
             labels=False,
             ticks=False,
@@ -571,6 +574,9 @@ with sentiment_section:
         """
         st.markdown(strong_n, unsafe_allow_html=True)
     with chart_2:
+        tb_title = f"<h4 style='text-align: left; font-size: 0.8rem; font-weight: 500; margin-top: -10px; color: #FFFFFF;'>TextBlob Sentiment Score</h4>"
+        st.markdown(tb_title, unsafe_allow_html=True)
+        
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None),
@@ -578,8 +584,8 @@ with sentiment_section:
         ).properties(
             height=300,
             width='container',
-            title='TextBlob',
-            padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
+            title=None,
+            padding={'top': 0, 'bottom': 20, 'left': 0, 'right': 0}
         ).configure_axis(
             labels=False,
             ticks=False,
