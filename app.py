@@ -529,7 +529,7 @@ with sentiment_section:
             anchor='middle',
             color='white'
         ).configure_view(
-            bounds='flush'
+            step=0
         )
         st.altair_chart(AV_chart, use_container_width=True)
     with chart_2:
@@ -558,7 +558,7 @@ with sentiment_section:
             anchor='middle',
             color='white'
         ).configure_view(
-            bounds='flush'
+            step=0
         )
         st.altair_chart(TB_chart, use_container_width=True)
         
