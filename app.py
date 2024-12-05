@@ -200,6 +200,7 @@ info_hover = """
     }
     .info-tooltip {
         display: none;
+        cursor: default;
         position: absolute;
         top: 75%;
         left: 50%;
