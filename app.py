@@ -504,7 +504,7 @@ with sentiment_section:
     sentiment_counts_AV.columns = ['sentiment', 'count']
     sentiment_counts_TB.columns = ['sentiment', 'count']
     with chart_1:
-        av_title = f"<h4 style='text-align: left; font-size: 0.8rem; font-weight: 500; margin-top: -15px; color: #FFFFFF;'>Alpha Vantage Sentiment Score</h4>"
+        av_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>Alpha Vantage Sentiment Score</h4>"
         st.markdown(av_title, unsafe_allow_html=True)
         
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
@@ -561,14 +561,14 @@ with sentiment_section:
         """
         st.markdown(moderate_n, unsafe_allow_html=True)
         strong_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
         </div>
         """
         st.markdown(strong_n, unsafe_allow_html=True)
     with chart_2:
-        tb_title = f"<h4 style='text-align: left; font-size: 0.8rem; font-weight: 500; margin-top: -15px; color: #FFFFFF;'>TextBlob Sentiment Score</h4>"
+        tb_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>TextBlob Sentiment Score</h4>"
         st.markdown(tb_title, unsafe_allow_html=True)
         
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
@@ -625,7 +625,7 @@ with sentiment_section:
         """
         st.markdown(moderate_n, unsafe_allow_html=True)
         strong_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
         </div>
