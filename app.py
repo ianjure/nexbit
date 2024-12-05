@@ -477,7 +477,7 @@ with sentiment_section:
     sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 
-    chart, stats = st.columns(2)
+    chart, stats = st.columns([2,1])
     with chart:
         sent_count_data = pd.read_excel('btc_final(2).xlsx')
         sent_count_data.rename(columns={'AV_sentiment_category_Strong Positive': 'Alpha Vantage_Strong Positive',
@@ -511,7 +511,7 @@ with sentiment_section:
             color='sentiment_set:N',
             row='sentiment:N'
         ).properties(
-            height=1000,
+            height=500,
             width='container'
         )
         st.altair_chart(group_bar, use_container_width=True)
