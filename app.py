@@ -511,10 +511,12 @@ with sentiment_section:
         ).properties(height=300, width='container', title='Alpha Vantage').configure_axis(
             labelAngle=0,
             labels=False,
-            ticks=False
+            ticks=False,
+            title=None
         ).configure_legend(
             labelFontSize=0,
-            symbolSize=0
+            symbolSize=0,
+            title=None
         )
         st.altair_chart(AV_chart, use_container_width=True)
     with chart_2:
