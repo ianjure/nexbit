@@ -512,7 +512,6 @@ with sentiment_section:
         columns=1,
         padding=10
     ).properties(
-        title=None,
         bounds="flush"
     )
     st.altair_chart(combined_chart_with_legend, use_container_width=True)
