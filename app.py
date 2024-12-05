@@ -394,13 +394,13 @@ with chart:
     
     if pct_change > 0:
         color_line = color1_dark
-        color_fill = "#0a2f1e"
+        color_fill = "#0a3c21"
     else:
         color_line = color2_light
         color_fill = color2_dark
 
-    color_line = color1_dark
-    color_fill = "#0a3c21"
+    #color_line = color1_dark
+    #color_fill = "#0a3c21"
     
     price_chart = alt.Chart(df).mark_area(
         line={'color': f'{color_line}'},
