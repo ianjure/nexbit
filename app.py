@@ -885,9 +885,8 @@ with news_section:
         strokeWidth=0
     ).configure_axis(
         domain=False,
-        tickColor="gray",
         labelColor=f'{text_dark}',
-        tickColor='white',
+        tickColor=f'{text_dark}',
         offset=0,
         tickWidth=0.2
     )
