@@ -508,7 +508,7 @@ with sentiment_section:
             x='count:Q',
             y="sentiment:O",
             color='sentiment:N'
-        ).properties(height=300, width='container', title='Alpha Vantage', font='Roboto').configure_axis(
+        ).properties(height=300, width='container', title='Alpha Vantage').configure_axis(
             labelAngle=0,
             labels=False,
             ticks=False,
@@ -517,6 +517,11 @@ with sentiment_section:
             labelFontSize=0,
             symbolSize=0,
             title=None
+        ).configure_title(
+            font='Roboto',
+            fontSize=20,
+            anchor='middle',
+            color='white'
         )
         st.altair_chart(AV_chart, use_container_width=True)
     with chart_2:
@@ -524,7 +529,7 @@ with sentiment_section:
             x='count:Q',
             y="sentiment:O",
             color='sentiment:N'
-        ).properties(height=300, width='container', title='TextBlob', font='Roboto').configure_axis(
+        ).properties(height=300, width='container', title='TextBlob').configure_axis(
             labelAngle=0,
             labels=False,
             ticks=False,
@@ -533,6 +538,11 @@ with sentiment_section:
             labelFontSize=0,
             symbolSize=0,
             title=None
+        ).configure_title(
+            font='Roboto',
+            fontSize=20,
+            anchor='middle',
+            color='white'
         )
         st.altair_chart(TB_chart, use_container_width=True)
         
