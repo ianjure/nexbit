@@ -428,14 +428,16 @@ sentiment_section, news_section = st.columns([3,2])
 with sentiment_section:
     # DAILY AVERAGE SENTIMENT
     ave_sentiment_title = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center;'>
+        <div style='display: flex; align-items: left;'>
             <h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>
                 DAILY AVERAGE SENTIMENT
             </h4>
-            <div class="info-container">
-              <button class="info-button">i</button>
-              <div class="info-box">This is your information text.</div>
-            </div>
+            <span>
+                <i class="material-icons" style="font-size: 2rem; position: relative; color: {text_light};">info</i> 
+            </span>
+            <style>
+                @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+            </style>
         </div>
         """
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
