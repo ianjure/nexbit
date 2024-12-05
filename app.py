@@ -194,42 +194,27 @@ st.markdown(hover_card, unsafe_allow_html=True)
 # [STREAMLIT] INFO EFFECT
 info_hover = """
     <style>
-    .info-container {
-      position: relative;
-      display: inline-block;
+    .info-icon {
+        position: relative;
+        cursor: pointer;
     }
-    
-    .info-button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      font-size: 16px;
-      cursor: pointer;
-      text-align: center;
+    .info-tooltip {
+        display: none;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        background-color: white;
+        color: black;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 0.75rem;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        white-space: nowrap;
     }
-    
-    .info-button:hover + .info-box,
-    .info-container:hover .info-box {
-      display: block;
-    }
-    
-    .info-box {
-      display: none;
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #fff;
-      color: #333;
-      padding: 8px 12px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      white-space: nowrap;
+    .info-icon:hover .info-tooltip {
+        display: block;
     }
     </style>
     """
@@ -428,12 +413,15 @@ sentiment_section, news_section = st.columns([3,2])
 with sentiment_section:
     # DAILY AVERAGE SENTIMENT
     ave_sentiment_title = f"""
-        <div style='display: flex; align-items: left;'>
+        <div style='display: flex; align-items: left; gap: 5px;'>
             <h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>
                 DAILY AVERAGE SENTIMENT
             </h4>
-            <span>
-                <i class="material-icons" style="font-size: 2rem; position: relative; color: {text_light};">info</i> 
+            <span class="info-icon">
+                <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: pointer;">info</i>
+                <div class="info-tooltip">
+                    This is your information text.
+                </div>
             </span>
             <style>
                 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
