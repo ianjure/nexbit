@@ -210,7 +210,7 @@ def get_crypto_price(api_key):
         else:
             print("Error fetching data from CryptoCompare API")
             return None
-    #return price_list
+#return price_list
 #prices = get_crypto_price('29f6b8bc885d1ec56c7612acdd69a9a9f1c4575666aa752220805a7a8dd01df9')
 #pass = lSwEVpkPlxYq9kls
 
@@ -530,7 +530,7 @@ with sentiment_section:
         
         # Apply faceting
         final_chart = layered_chart.facet(
-            row=alt.Row('sentiment:N', title=None, header=alt.Header(labelAngle=0, labelPadding=5))
+            row=alt.Row('sentiment:N', title=None, header=alt.Header(labelAngle=0, labelPadding=5, axis=None))
         )
         st.altair_chart(final_chart, use_container_width=True)
     with stats:
