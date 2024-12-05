@@ -508,10 +508,10 @@ with sentiment_section:
         group_bar = alt.Chart(sentiment_counts).mark_bar().encode(
             x='count:Q',
             y='sentiment_set:O',
-            color='sentiment_set:N',
+            color=alt.Color('sentiment_set:N', legend=None),
             row='sentiment:N'
         ).properties(
-            height=500,
+            height=200,
             width='container'
         )
         st.altair_chart(group_bar, use_container_width=True)
