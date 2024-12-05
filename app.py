@@ -574,7 +574,7 @@ with sentiment_section:
         
         # TOTAL SENTIMENT COUNT (AV)
         total_sentiment_count_AV = f"""
-        <div style='margin-top: -30px; margin-bottom: 5px;'>
+        <div style='margin-top: -30px; margin-bottom: 25px;'>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
                 <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Strong Positive']['count'].iloc[0]}</span>
@@ -583,15 +583,15 @@ with sentiment_section:
                 <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Moderate Positive']['count'].iloc[0]}</span>
             </div>
-            <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 5px;'>
+            <div style='display: flex; justify-content: space-between; align-items: center;'>
                 <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Neutral']['count'].iloc[0]}</span>
             </div>
-            <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 5px;'>
+            <div style='display: flex; justify-content: space-between; align-items: center;'>
                 <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Moderate Negative']['count'].iloc[0]}</span>
             </div>
-            <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -20px; margin-bottom: 25px;'>
+            <div style='display: flex; justify-content: space-between; align-items: center;'>
                 <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Strong Negative']['count'].iloc[0]}</span>
             </div>
