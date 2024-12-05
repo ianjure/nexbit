@@ -516,11 +516,13 @@ with sentiment_section:
         ).configure_axis(
             labels=False,
             ticks=False,
-            title=None
+            title=None,
+            offset=0
         ).configure_legend(
             labelFontSize=0,
             symbolSize=0,
-            title=None
+            title=None,
+            offset=0
         ).configure_title(
             font='Roboto',
             fontSize=15,
@@ -541,11 +543,13 @@ with sentiment_section:
         ).configure_axis(
             labels=False,
             ticks=False,
-            title=None
+            title=None,
+            offset=0
         ).configure_legend(
             labelFontSize=0,
             symbolSize=0,
-            title=None
+            title=None,
+            offset=0
         ).configure_title(
             font='Roboto',
             fontSize=15,
