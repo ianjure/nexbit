@@ -490,8 +490,15 @@ with sentiment_section:
                                        'Strong Negative']].sum(axis=0)
     sentiment_counts = sent_count_data.reset_index()
     sentiment_counts.columns = ['sentiment', 'count']
-    fig = px.treemap(sentiment_counts, path=['sentiment'], values='count', color='sentiment')
-    st.plotly_chart(fig, use_container_width=True)
+    polar_chart = alt.Chart(sentiment_counts).mark_arc(innerRadius=50).encode(
+        theta=alt.Theta(field="count", type="quantitative"),
+        color=alt.Color(field="sentiment", type="nominal"),
+        tooltip=["sentiment", "count"]
+    ).properties(
+        width='container'
+        height=400,
+    )
+    st.altair_chart(polar_chart, use_container_width=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
