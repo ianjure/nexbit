@@ -424,7 +424,7 @@ with sentiment_section:
                 </div>
             </span>
             <style>
-                @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+                @import url('https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined');
             </style>
         </div>
         """
