@@ -507,7 +507,7 @@ with sentiment_section:
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None),
-            color='sentiment:N'
+            color=alt.Color('sentiment:N', legend=None)
         ).properties(
             height=300,
             width='container',
@@ -574,7 +574,7 @@ with sentiment_section:
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None),
-            color='sentiment:N'
+            color=alt.Color('sentiment:N', legend=None)
         ).properties(
             height=300,
             width='container',
