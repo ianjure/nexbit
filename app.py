@@ -514,7 +514,7 @@ with sentiment_section:
         ).properties(
             height=300,
             width='container',
-            padding={'top': 0, 'bottom': 20, 'left': 0, 'right': 0}
+            padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
         ).configure_axis(
             labels=False,
             ticks=False,
@@ -578,7 +578,7 @@ with sentiment_section:
         ).properties(
             height=300,
             width='container',
-            padding={'top': 0, 'bottom': 20, 'left': 0, 'right': 0}
+            padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
         ).configure_axis(
             labels=False,
             ticks=False,
