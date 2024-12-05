@@ -554,48 +554,6 @@ with sentiment_section:
     sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 
-    #heatmap_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>ANNUAL SENTIMENT HEATMAP</h4>"
-    #st.markdown(heatmap_title, unsafe_allow_html=True)
-
-    heatmap_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>Annual Sentiment Score Heatmap</h4>"
-    st.markdown(heatmap_title, unsafe_allow_html=True)
-    
-    heatmap_df = st.session_state.news
-    heatmap_df = heatmap_df.copy()
-
-    heatmap_df['date'] = pd.to_datetime(heatmap_df['date'])
-    daily_sentiment = heatmap_df.groupby(heatmap_df['date'].dt.date).agg({'sentiment': 'mean'}).reset_index()
-    daily_sentiment['date'] = pd.to_datetime(daily_sentiment['date'])
-
-    min_sentiment = daily_sentiment['sentiment'].min()
-    max_sentiment = daily_sentiment['sentiment'].max()
-    mid_sentiment = (min_sentiment + max_sentiment) / 2
-
-    range_sentiment = max_sentiment - min_sentiment
-
-    upper_mid_sentiment = mid_sentiment + 0.15 * range_sentiment
-    lower_mid_sentiment = mid_sentiment - 0.15 * range_sentiment
-
-    heatmap = alt.Chart(daily_sentiment).mark_rect().encode(
-        alt.X("date(date):O").axis(format="%e", labelAngle=0, title=None),
-        alt.Y("month(date):O").axis(title=None),
-        alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, lower_mid_sentiment, upper_mid_sentiment, max_sentiment],
-                                                             range=[f"{color2_light}", f"{black_light}", f"{black_light}", f"{color1_light}"]),
-                  legend=alt.Legend(padding=0, labelFontSize=10, tickMinStep=1)),
-        tooltip=[
-            alt.Tooltip("date(date):T", title="Date"),
-            alt.Tooltip("sentiment:Q", title="Sentiment Score")]
-    ).configure_view(
-        step=13,
-        strokeWidth=0
-    ).configure_axis(
-        domain=False,
-        labelColor=f'{text_dark}',
-        offset=0
-    )
-          
-    st.altair_chart(heatmap, use_container_width=True)
-
     chart_1, chart_2 = st.columns(2)
     
     if st.session_state.symbol == "BTC":
@@ -833,6 +791,46 @@ with sentiment_section:
         st.markdown(total_sentiment_count_TB, unsafe_allow_html=True)
         
 with news_section:
+    # ANNUAL SENTIMENT HEATMAP
+    heatmap_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>ANNUAL SENTIMENT HEATMAP</h4>"
+    st.markdown(heatmap_title, unsafe_allow_html=True)
+    
+    heatmap_df = st.session_state.news
+    heatmap_df = heatmap_df.copy()
+
+    heatmap_df['date'] = pd.to_datetime(heatmap_df['date'])
+    daily_sentiment = heatmap_df.groupby(heatmap_df['date'].dt.date).agg({'sentiment': 'mean'}).reset_index()
+    daily_sentiment['date'] = pd.to_datetime(daily_sentiment['date'])
+
+    min_sentiment = daily_sentiment['sentiment'].min()
+    max_sentiment = daily_sentiment['sentiment'].max()
+    mid_sentiment = (min_sentiment + max_sentiment) / 2
+
+    range_sentiment = max_sentiment - min_sentiment
+
+    upper_mid_sentiment = mid_sentiment + 0.15 * range_sentiment
+    lower_mid_sentiment = mid_sentiment - 0.15 * range_sentiment
+
+    heatmap = alt.Chart(daily_sentiment).mark_rect().encode(
+        alt.X("date(date):O").axis(format="%e", labelAngle=0, title=None),
+        alt.Y("month(date):O").axis(title=None),
+        alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, lower_mid_sentiment, upper_mid_sentiment, max_sentiment],
+                                                             range=[f"{color2_light}", f"{black_light}", f"{black_light}", f"{color1_light}"]),
+                  legend=alt.Legend(padding=0, labelFontSize=10, tickMinStep=1, labelColor=f"{text_dark}")),
+        tooltip=[
+            alt.Tooltip("date(date):T", title="Date"),
+            alt.Tooltip("sentiment:Q", title="Sentiment Score")]
+    ).configure_view(
+        step=13,
+        strokeWidth=0
+    ).configure_axis(
+        domain=False,
+        labelColor=f'{text_dark}',
+        offset=0
+    )
+          
+    st.altair_chart(heatmap, use_container_width=True)
+    
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
@@ -937,7 +935,7 @@ with news_section:
         alt.Y("month(date):O").axis(title=None),
         alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, lower_mid_sentiment, upper_mid_sentiment, max_sentiment],
                                                              range=[f"{color2_light}", f"{black_light}", f"{black_light}", f"{color1_light}"]),
-                  legend=alt.Legend(padding=0, labelFontSize=10, tickMinStep=1)),
+                  legend=alt.Legend(padding=0, labelFontSize=10, tickMinStep=1, labelColor=f"{text_dark}")),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Sentiment Score")]
