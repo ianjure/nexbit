@@ -876,12 +876,7 @@ with news_section:
     heatmap = alt.Chart(daily_sentiment).mark_rect().encode(
         alt.X("date(date):O").axis(format="%e", labelAngle=0, title=None),
         alt.Y("month(date):O").axis(title=None),
-        alt.Color("sentiment:Q", title="Sentiment Score", scale=alt.Scale(scheme="viridis"), legend=alt.Legend(orient="right",
-                                                                                                               labelAlign="center",
-                                                                                                               title=None,
-                                                                                                               padding=0,
-                                                                                                               symbolSize=150,
-                                                                                                               labelFontSize=10)),
+        alt.Color("sentiment:Q", title=None, scale=alt.Scale(scheme="viridis"), legend=alt.Legend(padding=0, labelFontSize=10)),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Sentiment Score")]
