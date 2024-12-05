@@ -507,7 +507,7 @@ with sentiment_section:
                                   'AV_sentiment_category_Moderate Positive': 'Moderate Positive',
                                   'AV_sentiment_category_Neutral': 'Neutral',
                                   'AV_sentiment_category_Moderate Negative': 'Moderate Negative',
-                                  'AV_sentiment_category_Strong Negative': 'Strong Negative'}, inplace=True).sum(axis=0)
+                                  'AV_sentiment_category_Strong Negative': 'Strong Negative'}, inplace=True)
     sent_count_TB = sent_count_data[['TB_sentiment_category_Strong Positive',
                                      'TB_sentiment_category_Moderate Positive',
                                      'TB_sentiment_category_Neutral',
@@ -517,7 +517,9 @@ with sentiment_section:
                                   'TB_sentiment_category_Moderate Positive': 'Moderate Positive',
                                   'TB_sentiment_category_Neutral': 'Neutral',
                                   'TB_sentiment_category_Moderate Negative': 'Moderate Negative',
-                                  'TB_sentiment_category_Strong Negative': 'Strong Negative'}, inplace=True).sum(axis=0)
+                                  'TB_sentiment_category_Strong Negative': 'Strong Negative'}, inplace=True)
+    sent_count_AV = sent_count_AV.sum(axis=0)
+    sent_count_TB = sent_count_TB.sum(axis=0)
     sentiment_counts_AV = sent_count_AV.reset_index()
     sentiment_counts_TB = sent_count_TB.reset_index()
     sentiment_counts_AV.columns = ['sentiment', 'count']
