@@ -507,7 +507,18 @@ with sentiment_section:
         av_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>Alpha Vantage Sentiment Score</h4>"
         st.markdown(av_title, unsafe_allow_html=True)
         
-        AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
+        AV_chart = alt.Chart(sentiment_counts_AV).mark_bar(
+            cornerRadiusTopLeft=5,
+            cornerRadiusTopRight=5,
+            color=alt.Gradient(
+                gradient='linear',
+                stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
+                       alt.GradientStop(color='#4a6382', offset=1)],
+                x1=1,
+                x2=1,
+                y1=1,
+                y2=0
+        )).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
             color=alt.Color('sentiment:N', legend=None)
@@ -571,7 +582,18 @@ with sentiment_section:
         tb_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>TextBlob Sentiment Score</h4>"
         st.markdown(tb_title, unsafe_allow_html=True)
         
-        TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
+        TB_chart = alt.Chart(sentiment_counts_TB).mark_bar(
+            cornerRadiusTopLeft=5,
+            cornerRadiusTopRight=5,
+            color=alt.Gradient(
+                gradient='linear',
+                stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
+                       alt.GradientStop(color='#4a6382', offset=1)],
+                x1=1,
+                x2=1,
+                y1=1,
+                y2=0
+        )).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
             color=alt.Color('sentiment:N', legend=None)
