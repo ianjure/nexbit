@@ -117,7 +117,7 @@ st.markdown(logo, unsafe_allow_html=True)
 primary = """
     <style>
     [data-testid="stBaseButton-primary"] {
-        color: #1A1C1B;
+        color: """ + color1_dark + """;
     }
     </style>
         """
@@ -126,7 +126,7 @@ st.markdown(primary, unsafe_allow_html=True)
 # [STREAMLIT] ADJUST SETTINGS BUTTON
 set_btn = """
     <style>
-    [class="st-emotion-cache-11t4yo9 ef3psqc19"] {
+    [class="st-emotion-cache-1jgd3dq ef3psqc19"] {
         border-radius: 5rem;
         border: 2px solid #FFFFFF;
         width: 2.5rem;
