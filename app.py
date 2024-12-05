@@ -532,7 +532,7 @@ with sentiment_section:
             width='container'
         )
 
-        highlighted_bar = alt.Chart(sentiment_counts_AV).mark_bar(
+        highlighted_bar_AV = alt.Chart(sentiment_counts_AV).mark_bar(
             cornerRadiusBottomRight=5,
             cornerRadiusTopRight=5,
             color=alt.Gradient(
@@ -555,7 +555,7 @@ with sentiment_section:
             width='container'
         )
         
-        final_AV_chart = alt.layer(AV_chart, highlighted_bar).configure_axis(
+        final_AV_chart = alt.layer(AV_chart, highlighted_bar_AV).configure_axis(
             labels=False,
             ticks=False,
             title=None,
@@ -574,7 +574,7 @@ with sentiment_section:
         
         # TOTAL SENTIMENT COUNT (AV)
         strong_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -15px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Strong Positive']['count'].iloc[0]}</span>
         </div>
@@ -613,24 +613,51 @@ with sentiment_section:
         st.markdown(tb_title, unsafe_allow_html=True)
         
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar(
+            opacity=0.7,
             cornerRadiusBottomRight=5,
             cornerRadiusTopRight=5,
             color=alt.Gradient(
                 gradient='linear',
-                stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
-                       alt.GradientStop(color='#4a6382', offset=1)],
+                stops=[
+                    alt.GradientStop(color=f'{black_dark}', offset=0),
+                    alt.GradientStop(color=f'{black_light}', offset=1)
+                ],
                 x1=0,
                 x2=1,
                 y1=0,
-                y2=0
-        )).encode(
+                y2=0)
+        ).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
+            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
         ).properties(
             height=300,
-            width='container',
-            padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
-        ).configure_axis(
+            width='container'
+        )
+
+        highlighted_bar_TB = alt.Chart(sentiment_counts_TB).mark_bar(
+            cornerRadiusBottomRight=5,
+            cornerRadiusTopRight=5,
+            color=alt.Gradient(
+                gradient='linear',
+                stops=[
+                    alt.GradientStop(color=f'{black_dark}', offset=0),
+                    alt.GradientStop(color='#4a6382', offset=1)
+                ],
+                x1=0,
+                x2=1,
+                y1=0,
+                y2=0)
+        ).encode(
+            x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
+            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
+        ).transform_filter(
+            alt.datum.sentiment == max_count_TB
+        ).properties(
+            height=300,
+            width='container'
+        )
+        
+        final_TB_chart = alt.layer(TB_chart, highlighted_bar_TB).configure_axis(
             labels=False,
             ticks=False,
             title=None,
@@ -644,11 +671,12 @@ with sentiment_section:
         ).configure_view(
             step=0
         )
-        st.altair_chart(TB_chart, use_container_width=True)
+
+        st.altair_chart(final_TB_chart, use_container_width=True)
         
         # TOTAL SENTIMENT COUNT (TB)
         strong_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -15px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -25px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Strong Positive']['count'].iloc[0]}</span>
         </div>
