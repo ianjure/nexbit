@@ -513,7 +513,10 @@ with sentiment_section:
         
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar(
             cornerRadiusBottomRight=5,
-            cornerRadiusTopRight=5,
+            cornerRadiusTopRight=5
+        ).encode(
+            x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
+            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
             color=alt.condition(
                 alt.datum.highlight == True,
                 alt.Gradient(
@@ -529,16 +532,16 @@ with sentiment_section:
                 ),
                 alt.Gradient(
                     gradient='linear',
-                    stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
-                           alt.GradientStop(color=f'{black_light}', offset=1)],
+                    stops=[
+                        alt.GradientStop(color=f'{black_dark}', offset=0),
+                        alt.GradientStop(color=f'{black_light}', offset=1)
+                    ],
                     x1=0,
                     x2=1,
                     y1=0,
                     y2=0
-        ))).encode(
-            x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
-        ).properties(
+                    )
+        )).properties(
             height=300,
             width='container',
             padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
