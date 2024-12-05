@@ -512,7 +512,7 @@ with sentiment_section:
             height=300,
             width='container',
             title='Alpha Vantage',
-            padding={'top': 20, 'bottom': 20, 'left': 0, 'right': 0}
+            padding=0
         ).configure_axis(
             labels=False,
             ticks=False,
@@ -526,8 +526,6 @@ with sentiment_section:
             fontSize=15,
             anchor='middle',
             color='white'
-        ).configure_view(
-            padding=0
         )
         st.altair_chart(AV_chart, use_container_width=True)
     with chart_2:
@@ -539,7 +537,7 @@ with sentiment_section:
             height=300,
             width='container',
             title='TextBlob',
-            padding={'top': 20, 'bottom': 20, 'left': 0, 'right': 0}
+            padding=0
         ).configure_axis(
             labels=False,
             ticks=False,
@@ -553,8 +551,6 @@ with sentiment_section:
             fontSize=15,
             anchor='middle',
             color='white'
-        ).configure_view(
-            padding=0
         )
         st.altair_chart(TB_chart, use_container_width=True)
         
