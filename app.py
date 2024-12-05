@@ -589,9 +589,9 @@ with sentiment_section:
                 gradient='linear',
                 stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
                        alt.GradientStop(color='#4a6382', offset=1)],
-                x1=1,
+                x1=0,
                 x2=1,
-                y1=1,
+                y1=0,
                 y2=0
         )).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
