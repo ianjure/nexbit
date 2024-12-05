@@ -884,7 +884,10 @@ with news_section:
         step=13,
         strokeWidth=0
     ).configure_axis(
-        domain=False
+        domain=False,
+        tickColor=f"{text_dark}",
+        offset=0,
+        tickWidth=0.2
     )
 
     st.altair_chart(heatmap, use_container_width=True)
