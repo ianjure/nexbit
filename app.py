@@ -512,7 +512,7 @@ with sentiment_section:
             height=300,
             width='container',
             title='Alpha Vantage',
-            padding=0
+            padding={'top': 0, 'bottom': 0, 'left': -50, 'right': -50}
         ).configure_axis(
             labels=False,
             ticks=False,
@@ -541,7 +541,7 @@ with sentiment_section:
             height=300,
             width='container',
             title='TextBlob',
-            padding=0
+            padding={'top': 0, 'bottom': 0, 'left': -50, 'right': -50}
         ).configure_axis(
             labels=False,
             ticks=False,
