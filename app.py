@@ -881,8 +881,8 @@ with news_section:
     daily_sentiment = heatmap_df.groupby(heatmap_df['date'].dt.date).agg({'sentiment': 'mean'}).reset_index()
     daily_sentiment['date'] = pd.to_datetime(daily_sentiment['date'])
 
-    min_sentiment = -1
-    max_sentiment = 1
+    min_sentiment = daily_sentiment['sentiment_score'].min()
+    max_sentiment = daily_sentiment['sentiment_score'].max()
     mid_lower = -0.1
     mid_upper = 0.1 
 
@@ -903,7 +903,24 @@ with news_section:
         offset=0,
     )
 
-    st.altair_chart(heatmap, use_container_width=True)
+    lgd_min_sentiment = -1
+    lgd_max_sentiment = 1
+    lgd_mid_lower = -0.1
+    lgd_mid_upper = 0.1 
+    
+    legend = alt.Chart(daily_sentiment).mark_rect().encode(
+        alt.Color("sentiment:Q", title=None, scale=alt.Scale(
+            domain=[lgd_min_sentiment, lgd_mid_lower, lgd_mid_upper, lgd_max_sentiment],
+            range=[f"{color1_light}", f"{black_light}", f"{black_light}", f"{color2_light}"]
+        ),
+        legend=alt.Legend(padding=0, labelFontSize=10)),
+    )
+
+    final_heatmap = alt.vconcat(heatmap, legend).resolve_legend(
+        color='independent'
+    )
+            
+    st.altair_chart(final_heatmap, use_container_width=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
