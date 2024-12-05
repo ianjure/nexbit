@@ -523,14 +523,14 @@ with sentiment_section:
         )
         
         # Layer the bar chart and text labels
-        layered_chart = alt.layer(bar_chart, text_labels)
+        layered_chart = alt.layer(bar_chart, text_labels).properties(
+            width='container',
+            height=50
+        )
         
         # Apply faceting
         final_chart = layered_chart.facet(
             row=alt.Row('sentiment:N', title=None, header=alt.Header(labelAngle=0, labelPadding=5))
-        ).properties(
-            width='container',
-            height=50
         )
         st.altair_chart(final_chart, use_container_width=True)
     with stats:
