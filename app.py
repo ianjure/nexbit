@@ -508,7 +508,12 @@ with sentiment_section:
             x='count:Q',
             y="sentiment:O",
             color='sentiment:N'
-        ).properties(height=300, width='container', title='Alpha Vantage').configure_axis(
+        ).properties(
+            height=300,
+            width='container',
+            title='Alpha Vantage',
+            padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
+        ).configure_axis(
             labelAngle=0,
             labels=False,
             ticks=False,
@@ -519,7 +524,7 @@ with sentiment_section:
             title=None
         ).configure_title(
             font='Roboto',
-            fontSize=20,
+            fontSize=15,
             anchor='middle',
             color='white'
         )
@@ -529,7 +534,12 @@ with sentiment_section:
             x='count:Q',
             y="sentiment:O",
             color='sentiment:N'
-        ).properties(height=300, width='container', title='TextBlob').configure_axis(
+        ).properties(
+            height=300,
+            width='container',
+            title='TextBlob',
+            padding={'top': 20, 'bottom': 20, 'left': 2, 'right': 2}
+        ).configure_axis(
             labelAngle=0,
             labels=False,
             ticks=False,
