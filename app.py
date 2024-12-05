@@ -519,11 +519,16 @@ with sentiment_section:
         ).encode(
             text='sentiment:N',
             x=alt.value(5),  # Position text near the start of the bar
-            y=alt.Y('sentiment_set:O', axis=None),
-            row=alt.Row('sentiment:N', title=None)
+            y=alt.Y('sentiment_set:O', axis=None)
         )
-        # Combine the chart and the labels
-        final_chart = (bar_chart + text_labels).properties(
+        
+        # Layer the bar chart and text labels
+        layered_chart = alt.layer(bar_chart, text_labels)
+        
+        # Apply faceting
+        final_chart = layered_chart.facet(
+            row=alt.Row('sentiment:N', title=None, header=alt.Header(labelAngle=0, labelPadding=5))
+        ).properties(
             width='container',
             height=50
         )
