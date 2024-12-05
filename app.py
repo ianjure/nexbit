@@ -509,12 +509,25 @@ with sentiment_section:
             x='count:Q',
             y=alt.Y('sentiment_set:O', axis=None),
             color=alt.Color('sentiment_set:N').legend(orient="bottom"),
-            row=alt.Row('sentiment:N', header=alt.Header(labelAngle=0, title=None, labelPadding=5))
-        ).properties(
-            height=60,
-            width='container'
         )
-        st.altair_chart(group_bar, use_container_width=True)
+        text_labels = alt.Chart(sentiment_counts).mark_text(
+            align='left',  # Align text inside the bar
+            baseline='middle',  # Vertically center text
+            dx=5,  # Offset text horizontally
+            fontSize=12,
+            fontWeight='bold'
+        ).encode(
+            text='sentiment:N',
+            x=alt.value(5),  # Position text near the start of the bar
+            y=alt.Y('sentiment_set:O', axis=None),
+            row=alt.Row('sentiment:N', title=None)
+        )
+        # Combine the chart and the labels
+        final_chart = (bar_chart + text_labels).properties(
+            width='container',
+            height=50
+        )
+        st.altair_chart(final_chart, use_container_width=True)
     with stats:
         strong_p = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
