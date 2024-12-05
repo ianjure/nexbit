@@ -501,6 +501,7 @@ with sentiment_section:
             width=250,
             height=250
         )
+        """
         title = alt.Chart(pd.DataFrame({"text": [title_text]})).mark_text(
             align="center",
             fontSize=15,
@@ -512,15 +513,17 @@ with sentiment_section:
             width=250,
             height=20
         )
-        return alt.vconcat(title, donut)
+        """
+        #return alt.vconcat(title, donut)
+        return donut
         
     chart1 = create_donut_chart(sentiment_counts, "Alpha Vantage")
     chart2 = create_donut_chart(sentiment_counts, "TextBlob")
 
     combined_charts = alt.hconcat(chart1, chart2)
-    centered_charts = alt.vconcat(combined_charts)
+    #centered_charts = alt.vconcat(combined_charts)
 
-    final_chart = centered_charts.configure_legend(
+    final_chart = combined_charts.configure_legend(
         orient="bottom",
         direction="horizontal",
         title=None,
