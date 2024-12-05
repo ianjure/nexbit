@@ -509,7 +509,7 @@ with sentiment_section:
             x='count:Q',
             y=alt.Y('sentiment_set:O', axis=None),
             color=alt.Color('sentiment_set:N').legend(orient="bottom"),
-            row=alt.Row('sentiment:N', header=alt.Header(labelAngle=0))
+            row=alt.Row('sentiment:N', header=alt.Header(labelAngle=0, title=None, labelPadding=5))
         ).properties(
             height=60,
             width='container'
