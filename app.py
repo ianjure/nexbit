@@ -527,8 +527,7 @@ with sentiment_section:
             y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
         ).properties(
             height=300,
-            width='container',
-            padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
+            width='container'
         )
 
         highlighted_bar = alt.Chart(sentiment_counts_AV).mark_bar(
