@@ -553,7 +553,7 @@ with sentiment_section:
             alt.datum.count == max_count_AV
         )
         
-        final_AV_chart = alt.layer(AV_chart, highlighted_bar).resolve_scale(
+        final_AV_chart = alt.layer(highlighted_bar, AV_chart).resolve_scale(
             color='independent'
         ).configure_axis(
             labels=False,
