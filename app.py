@@ -909,7 +909,7 @@ with news_section:
         legend=alt.Legend(padding=0, labelFontSize=10)),
     )
 
-    final_heatmap = alt.vconcat(heatmap, legend).resolve_legend(
+    final_heatmap = alt.hconcat(heatmap, legend).resolve_legend(
         color='independent'
     ).configure_view(
         step=13,
@@ -917,7 +917,7 @@ with news_section:
     ).configure_axis(
         domain=False,
         labelColor=f'{text_dark}',
-        offset=0,
+        offset=0
     )
             
     st.altair_chart(final_heatmap, use_container_width=True)
