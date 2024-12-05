@@ -505,7 +505,7 @@ with sentiment_section:
     sentiment_counts_TB.columns = ['sentiment', 'count']
     max_count_AV = sentiment_counts_AV.loc[sentiment_counts_AV['count'].idxmax(), 'sentiment']
     max_count_TB = sentiment_counts_TB.loc[sentiment_counts_TB['count'].idxmax(), 'sentiment']
-    sentiment_counts_AV['highlight'] = sentiment_counts_AV['count'] == max_count_AV
+    
     with chart_1:
         av_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>Alpha Vantage Sentiment Score</h4>"
         st.markdown(av_title, unsafe_allow_html=True)
@@ -549,7 +549,7 @@ with sentiment_section:
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
         ).transform_filter(
-            alt.datum.count == max_count_AV
+            alt.datum.sentiment == max_count_AV
         ).properties(
             height=300,
             width='container'
