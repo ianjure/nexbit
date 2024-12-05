@@ -196,7 +196,6 @@ info_hover = """
     <style>
     .info-icon {
         position: relative;
-        cursor: pointer;
     }
     .info-tooltip {
         display: none;
@@ -206,7 +205,7 @@ info_hover = """
         transform: translateX(-50%);
         background-color: """ + black_light + """;
         color: """ + text_dark + """;
-        padding-top: 15px;
+        padding-top: 20px;
         padding-bottom: 15px;
         padding-left: 20px;
         padding-right: 20px;
@@ -420,8 +419,8 @@ sentiment_section, news_section = st.columns([3,2])
 with sentiment_section:
     # DAILY AVERAGE SENTIMENT
     ave_sentiment_title = f"""
-        <div style='display: flex; align-items: center; gap: 6px; margin-bottom: 2px;'>
-            <h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>
+        <div style='display: flex; align-items: center; gap: 6px;'>
+            <h4 style='text-align: left; font-size: 1rem; font-weight: 600; color: {text_light};'>
                 DAILY AVERAGE SENTIMENT
             </h4>
             <span class="info-icon">
