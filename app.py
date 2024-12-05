@@ -201,17 +201,18 @@ info_hover = """
     .info-tooltip {
         display: none;
         position: absolute;
-        top: 20px;
-        left: 0;
-        background-color: white;
-        color: black;
-        padding: 5px 10px;
-        border: 1px solid #ddd;
+        top: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: """ + black_light + """;
+        color: """ + text_dark + """;
+        padding: 20px;
         border-radius: 5px;
         font-size: 0.75rem;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         z-index: 10;
         white-space: nowrap;
+        text-align: left;
     }
     .info-icon:hover .info-tooltip {
         display: block;
