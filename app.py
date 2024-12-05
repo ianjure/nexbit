@@ -201,7 +201,7 @@ info_hover = """
     .info-tooltip {
         display: none;
         position: absolute;
-        top: 120%;
+        top: 80%;
         left: 50%;
         transform: translateX(-50%);
         background-color: """ + black_light + """;
@@ -209,7 +209,7 @@ info_hover = """
         padding: 20px;
         border-radius: 5px;
         font-size: 0.75rem;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 10px 6px rgba(0, 0, 0, 0.5);
         z-index: 10;
         white-space: nowrap;
         text-align: left;
