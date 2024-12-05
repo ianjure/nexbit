@@ -495,7 +495,7 @@ with sentiment_section:
     def create_donut_chart(data, title_text):
         donut = alt.Chart(data).mark_arc(innerRadius=80, outerRadius=100).encode(
             theta=alt.Theta(field="count", type="quantitative"),
-            color=alt.Color(field="sentiment", type="nominal", legend=None),
+            color=alt.Color(field="sentiment", type="nominal", legend=alt.Legend(orient="bottom", direction="horizontal", title=None)),
             tooltip=["sentiment", "count"]
         ).properties(
             width=250,
