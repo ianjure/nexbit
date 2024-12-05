@@ -500,16 +500,9 @@ with sentiment_section:
         ).properties(
             width='container',
             height=400,
+            title=title
         )
-        title = alt.Chart(pd.DataFrame({"text": title})).mark_text(
-            align="center",
-            dy=-150,
-            fontSize=16,
-            fontWeight="bold"
-        ).encode(
-            text="text:N"
-        )
-        return title + donut_chart
+        return donut_chart
         
     chart1 = create_donut_chart(sentiment_counts, "Alpha Vantage")
     chart2 = create_donut_chart(sentiment_counts, "TextBlob")
