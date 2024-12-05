@@ -400,7 +400,7 @@ with chart:
         color_fill = color2_dark
 
     color_line = color1_dark
-    color_fill = "#0a2f1e"
+    color_fill = "#0a3c21"
     
     price_chart = alt.Chart(df).mark_area(
         line={'color': f'{color_line}'},
