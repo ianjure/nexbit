@@ -493,7 +493,7 @@ with sentiment_section:
     sentiment_counts.columns = ['sentiment', 'count']
     
     def create_donut_chart(data, title_text):
-        donut_chart = alt.Chart(data).mark_arc(innerRadius=80, outerRadius=100).encode(
+        donut = alt.Chart(data).mark_arc(innerRadius=80, outerRadius=100).encode(
             theta=alt.Theta(field="count", type="quantitative"),
             color=alt.Color(field="sentiment", type="nominal", legend=alt.Legend(orient="bottom", direction="horizontal", title=None)),
             tooltip=["sentiment", "count"]
