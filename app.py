@@ -527,11 +527,6 @@ with sentiment_section:
             symbolSize=0,
             title=None,
             offset=0
-        ).configure_title(
-            font='Roboto',
-            fontSize=15,
-            anchor='start',
-            color='white'
         ).configure_view(
             step=0
         )
@@ -597,11 +592,6 @@ with sentiment_section:
             symbolSize=0,
             title=None,
             offset=0
-        ).configure_title(
-            font='Roboto',
-            fontSize=15,
-            anchor='start',
-            color='white'
         ).configure_view(
             step=0
         )
