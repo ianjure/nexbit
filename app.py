@@ -477,63 +477,100 @@ with sentiment_section:
     sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 
-    alpha_vantage, textblob = st.columns(2)
-    sent_count_data = pd.read_excel('btc_final(2).xlsx')
-    sent_count_data.rename(columns={'AV_sentiment_category_Strong Positive': 'Strong Positive',
-                       'AV_sentiment_category_Moderate Positive': 'Moderate Positive',
-                       'AV_sentiment_category_Neutral': 'Neutral',
-                       'AV_sentiment_category_Moderate Negative': 'Moderate Negative',
-                       'AV_sentiment_category_Strong Negative': 'Strong Negative'}, inplace=True)
-    sent_count_data = sent_count_data[['Strong Positive',
-                                       'Moderate Positive',
-                                       'Neutral',
-                                       'Moderate Negative',
-                                       'Strong Negative']].sum(axis=0)
-    sentiment_counts = sent_count_data.reset_index()
-    sentiment_counts.columns = ['sentiment', 'count']
-    
-    def create_donut_chart(data, title_text):
-        donut = alt.Chart(data).mark_arc(innerRadius=80, outerRadius=100).encode(
-            theta=alt.Theta(field="count", type="quantitative"),
-            color=alt.Color(field="sentiment", type="nominal"),
-            tooltip=["sentiment", "count"]
-        ).properties(
-            width=250,
-            height=250
-        )
-
-        title = alt.Chart(pd.DataFrame({"text": [title_text]})).mark_text(
-            align="center",
-            fontSize=15,
-            fontWeight="bold",
-            color='white'
-        ).encode(
-            text="text:N"
-        ).properties(
-            width=250,
-            height=20
-        )
-
-        return alt.vconcat(title, donut)
-        #return donut
+    stats, chart = st.columns(2)
+    with stats:
+        strong_p = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(strong_p, unsafe_allow_html=True)
+        moderate_p = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(moderate_p, unsafe_allow_html=True)
+        neutral = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(neutral, unsafe_allow_html=True)
+        moderate_n = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(moderate_n, unsafe_allow_html=True)
+        strong_n = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(strong_n, unsafe_allow_html=True)
+    with chart:
+        sent_count_data = pd.read_excel('btc_final(2).xlsx')
+        sent_count_data.rename(columns={'AV_sentiment_category_Strong Positive': 'Strong Positive',
+                           'AV_sentiment_category_Moderate Positive': 'Moderate Positive',
+                           'AV_sentiment_category_Neutral': 'Neutral',
+                           'AV_sentiment_category_Moderate Negative': 'Moderate Negative',
+                           'AV_sentiment_category_Strong Negative': 'Strong Negative'}, inplace=True)
+        sent_count_data = sent_count_data[['Strong Positive',
+                                           'Moderate Positive',
+                                           'Neutral',
+                                           'Moderate Negative',
+                                           'Strong Negative']].sum(axis=0)
+        sentiment_counts = sent_count_data.reset_index()
+        sentiment_counts.columns = ['sentiment', 'count']
         
-    chart1 = create_donut_chart(sentiment_counts, "Alpha Vantage")
-    chart2 = create_donut_chart(sentiment_counts, "TextBlob")
-
-    combined_charts = alt.hconcat(chart1, chart2, center=True, autosize='fit')
-
-    final_chart = combined_charts.configure_legend(
-        orient="bottom",
-        direction="horizontal",
-        title=None,
-        padding=10,
-        labelFontSize=12
-    ).configure_view(
-        strokeWidth=0
-    ).configure_concat(
-        spacing=5
-    )
-    st.altair_chart(final_chart, use_container_width=True)
+        def create_donut_chart(data, title_text):
+            donut = alt.Chart(data).mark_arc(innerRadius=80, outerRadius=100).encode(
+                theta=alt.Theta(field="count", type="quantitative"),
+                color=alt.Color(field="sentiment", type="nominal"),
+                tooltip=["sentiment", "count"]
+            ).properties(
+                width=250,
+                height=250
+            )
+    
+            title = alt.Chart(pd.DataFrame({"text": [title_text]})).mark_text(
+                align="center",
+                fontSize=15,
+                fontWeight="bold",
+                color='white'
+            ).encode(
+                text="text:N"
+            ).properties(
+                width=250,
+                height=20
+            )
+    
+            return alt.vconcat(title, donut)
+            #return donut
+            
+        chart1 = create_donut_chart(sentiment_counts, "Alpha Vantage")
+        chart2 = create_donut_chart(sentiment_counts, "TextBlob")
+    
+        combined_charts = alt.hconcat(chart1, chart2, center=True, autosize='fit')
+    
+        final_chart = combined_charts.configure_legend(
+            orient="bottom",
+            direction="horizontal",
+            title=None,
+            padding=10,
+            labelFontSize=12
+        ).configure_view(
+            strokeWidth=0
+        ).configure_concat(
+            spacing=5
+        )
+        st.altair_chart(final_chart, use_container_width=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
