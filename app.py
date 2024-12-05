@@ -883,13 +883,14 @@ with news_section:
 
     min_sentiment = daily_sentiment['sentiment'].min()
     max_sentiment = daily_sentiment['sentiment'].max()
-    mid_lower = -0.1
-    mid_upper = 0.1 
+    mid_sentiment = (min_sentiment + max_sentiment) / 2
+    #mid_lower = -0.1
+    #mid_upper = 0.1
 
     heatmap = alt.Chart(daily_sentiment).mark_rect().encode(
         alt.X("date(date):O").axis(format="%e", labelAngle=0, title=None),
         alt.Y("month(date):O").axis(title=None),
-        alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, mid_lower, mid_upper, max_sentiment], range=[f"{color1_light}", f"{black_light}", f"{black_light}", f"{color2_light}"]),
+        alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, mid_sentiment, max_sentiment], range=[f"{color1_light}", f"{black_light}", f"{color2_light}"]),
                   legend=alt.Legend(padding=0, labelFontSize=10)),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
@@ -901,18 +902,6 @@ with news_section:
         domain=False,
         labelColor=f'{text_dark}',
         offset=0
-    )
-
-    heatmap = heatmap.encode(
-        color=alt.Color("sentiment:Q", scale=alt.Scale(
-            domain=[min_sentiment, mid_lower, mid_upper, max_sentiment],
-            range=[f"{color1_light}", f"{black_light}", f"{black_light}", f"{color2_light}"]
-        ),
-        legend=alt.Legend(
-            padding=0,
-            labelFontSize=10,
-            title=None
-        ))
     )
 
     lgd_min_sentiment = -1
