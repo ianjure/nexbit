@@ -440,7 +440,7 @@ with sentiment_section:
                 axis=alt.Axis(labelAngle=0)),
         y=alt.Y('sentiment:Q', 
                 title=None, 
-                axis=alt.Axis(grid=True, gridColor='#2C2E2D')),
+                axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).properties(
@@ -506,18 +506,19 @@ with sentiment_section:
     with chart_1:
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
             x='count:Q',
-            y="sentiment:O",
+            y=alt.Y('sentiment:O', title=None, axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             color='sentiment:N'
         ).properties(
             height=300,
             width='container',
             title='Alpha Vantage',
-            padding={'top': 0, 'bottom': 0, 'left': -20, 'right': 0}
+            padding={'top': 0, 'bottom': 0, 'left': -15, 'right': 0}
         ).configure_axis(
             labels=False,
             ticks=False,
             title=None,
-            offset=0
+            offset=0,
+            gridWidth=0.2
         ).configure_legend(
             labelFontSize=0,
             symbolSize=0,
@@ -532,21 +533,59 @@ with sentiment_section:
             step=0
         )
         st.altair_chart(AV_chart, use_container_width=True)
+        
+        # TOTAL SENTIMENT COUNT (AV)
+        strong_p = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(strong_p, unsafe_allow_html=True)
+        moderate_p = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(moderate_p, unsafe_allow_html=True)
+        neutral = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(neutral, unsafe_allow_html=True)
+        moderate_n = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(moderate_n, unsafe_allow_html=True)
+        strong_n = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(strong_n, unsafe_allow_html=True)
     with chart_2:
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
             x='count:Q',
-            y="sentiment:O",
+            y=alt.Y('sentiment:O', title=None, axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             color='sentiment:N'
         ).properties(
             height=300,
             width='container',
             title='TextBlob',
-            padding={'top': 0, 'bottom': 0, 'left': -20, 'right': 0}
+            padding={'top': 0, 'bottom': 0, 'left': -15, 'right': 0}
         ).configure_axis(
             labels=False,
             ticks=False,
             title=None,
-            offset=0
+            offset=0,
+            gridWidth=0.2
         ).configure_legend(
             labelFontSize=0,
             symbolSize=0,
@@ -562,42 +601,42 @@ with sentiment_section:
         )
         st.altair_chart(TB_chart, use_container_width=True)
         
-    # TOTAL SENTIMENT COUNT
-    strong_p = f"""
-    <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
-        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
-        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-    </div>
-    """
-    st.markdown(strong_p, unsafe_allow_html=True)
-    moderate_p = f"""
-    <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
-        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-    </div>
-    """
-    st.markdown(moderate_p, unsafe_allow_html=True)
-    neutral = f"""
-    <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
-        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-    </div>
-    """
-    st.markdown(neutral, unsafe_allow_html=True)
-    moderate_n = f"""
-    <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
-        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-    </div>
-    """
-    st.markdown(moderate_n, unsafe_allow_html=True)
-    strong_n = f"""
-    <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
-        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-    </div>
-    """
-    st.markdown(strong_n, unsafe_allow_html=True)
+        # TOTAL SENTIMENT COUNT (TB)
+        strong_p = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(strong_p, unsafe_allow_html=True)
+        moderate_p = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(moderate_p, unsafe_allow_html=True)
+        neutral = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(neutral, unsafe_allow_html=True)
+        moderate_n = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(moderate_n, unsafe_allow_html=True)
+        strong_n = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+        </div>
+        """
+        st.markdown(strong_n, unsafe_allow_html=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
