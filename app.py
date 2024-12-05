@@ -881,8 +881,8 @@ with news_section:
     daily_sentiment = heatmap_df.groupby(heatmap_df['date'].dt.date).agg({'sentiment': 'mean'}).reset_index()
     daily_sentiment['date'] = pd.to_datetime(daily_sentiment['date'])
 
-    min_sentiment = daily_sentiment['sentiment_score'].min()
-    max_sentiment = daily_sentiment['sentiment_score'].max()
+    min_sentiment = daily_sentiment['sentiment'].min()
+    max_sentiment = daily_sentiment['sentiment'].max()
     mid_lower = -0.1
     mid_upper = 0.1 
 
