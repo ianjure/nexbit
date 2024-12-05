@@ -891,7 +891,7 @@ with news_section:
     upper_mid_value = 0.1
     
     def map_to_new_scale(value, min_val, max_val, new_min, new_max):
-    return new_min + (value - min_val) * (new_max - new_min) / (max_val - min_val)
+        return new_min + (value - min_val) * (new_max - new_min) / (max_val - min_val)
 
     # Map the min, max, and mid values to the new scale
     scaled_min = map_to_new_scale(min_sentiment, min_sentiment, max_sentiment, new_min, new_max)
