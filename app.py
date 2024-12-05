@@ -209,10 +209,10 @@ info_hover = """
         padding-top: 15px;
         padding-bottom: 15px;
         padding-left: 20px;
-        padding-left: 20px;
+        padding-right: 20px;
         border-radius: 6px;
-        font-size: 0.9rem;
-        box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.3);
+        font-size: 0.8rem;
+        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
         z-index: 10;
         white-space: normal;
         width: 250px;
