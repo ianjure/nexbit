@@ -432,9 +432,9 @@ with sentiment_section:
                     The daily aggregated sentiment scores are sourced from Alpha Vantage.
                     <br>
                     <br>
-                    Positive Sentiment > 0.5
+                    Positive Sentiment > 0
                     <br>
-                    Negative Sentiment < 0.5
+                    Negative Sentiment < 0
                 </div>
             </span>
             <style>
@@ -449,7 +449,6 @@ with sentiment_section:
     
     news_df['date'] = pd.to_datetime(news_df['date'])
     news_df['day_of_week'] = news_df['date'].dt.dayofweek
-    news_df['sentiment'] = (news_df['sentiment'] + 1) / 2
     
     avg_sentiment_by_day = news_df.groupby('day_of_week')['sentiment'].mean().reset_index()
     avg_sentiment_by_day['day_name'] = avg_sentiment_by_day['day_of_week'].map({
