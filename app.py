@@ -526,7 +526,7 @@ with sentiment_section:
         ).configure_title(
             font='Roboto',
             fontSize=15,
-            anchor='left',
+            anchor='start',
             color='white'
         ).configure_view(
             step=0
@@ -555,7 +555,7 @@ with sentiment_section:
         ).configure_title(
             font='Roboto',
             fontSize=15,
-            anchor='left',
+            anchor='start',
             color='white'
         ).configure_view(
             step=0
