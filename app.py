@@ -207,11 +207,13 @@ info_hover = """
         background-color: """ + black_light + """;
         color: """ + text_dark + """;
         padding: 20px;
-        border-radius: 5px;
+        border-radius: 6px;
         font-size: 0.75rem;
-        box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.6);
+        box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.3);
         z-index: 10;
-        white-space: nowrap;
+        white-space: normal;
+        width: 200px; /* Fixed width */
+        word-wrap: break-word;
         text-align: left;
     }
     .info-icon:hover .info-tooltip {
@@ -422,10 +424,8 @@ with sentiment_section:
             <span class="info-icon">
                 <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: pointer;">info</i>
                 <div class="info-tooltip">
-                    The daily aggregated sentiment scores are sourced from Alpha Vantage,
-                    providing a comprehensive overview of sentiment trends based on various
-                    financial news and market data for each day of the week.
-
+                    The daily aggregated sentiment scores are sourced from Alpha Vantage, providing a comprehensive overview of sentiment trends based on various financial news and market data for each day of the week.
+                    <br>
                     Positive Sentiment > 0.5
                     Negative Sentiment < 0.5
                 </div>
