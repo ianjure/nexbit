@@ -221,6 +221,7 @@ info_hover = """
     }
     .info-icon:hover .info-tooltip {
         display: block;
+        cursor: default;
     }
     </style>
     """
