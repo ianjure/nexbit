@@ -420,7 +420,7 @@ with sentiment_section:
             </h4>
             <span class="info-icon">
                 <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: pointer;">info</i>
-                <div class="info-tooltip" style="display: block;">
+                <div class="info-tooltip">
                     This is your information text.
                 </div>
             </span>
