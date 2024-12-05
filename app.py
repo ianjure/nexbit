@@ -533,6 +533,10 @@ with sentiment_section:
         strokeWidth=0
     ).configure_concat(
         spacing=5
+    ).properties(
+        width='container',
+        height=300,
+        align="center"
     )
     st.altair_chart(final_chart, use_container_width=True)
 with news_section:
