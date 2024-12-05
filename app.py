@@ -529,19 +529,6 @@ with sentiment_section:
             height=300,
             width='container',
             padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
-        ).configure_axis(
-            labels=False,
-            ticks=False,
-            title=None,
-            offset=0,
-            gridWidth=0.2
-        ).configure_legend(
-            labelFontSize=0,
-            symbolSize=0,
-            title=None,
-            offset=0
-        ).configure_view(
-            step=0
         )
 
         highlighted_bar = alt.Chart(sentiment_counts_AV).mark_bar(
@@ -564,6 +551,12 @@ with sentiment_section:
             height=300,
             width='container',
             padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
+        ).transform_filter(
+            alt.datum.count == max_count_AV
+        )
+        
+        final_AV_chart = alt.layer(AV_chart, highlighted_bar).resolve_scale(
+            color='independent'
         ).configure_axis(
             labels=False,
             ticks=False,
@@ -577,15 +570,6 @@ with sentiment_section:
             offset=0
         ).configure_view(
             step=0
-        ).transform_filter(
-            alt.datum.count == max_count_AV
-        )
-        
-        final_AV_chart = alt.layer(AV_chart, highlighted_bar).resolve_scale(
-            color='independent'
-        ).configure_axis(
-            labelColor=f'{text_dark}',
-            gridWidth=0.2
         )
 
         st.altair_chart(final_AV_chart, use_container_width=True)
