@@ -492,7 +492,7 @@ with sentiment_section:
     sentiment_counts = sent_count_data.reset_index()
     sentiment_counts.columns = ['sentiment', 'count']
     
-    def create_donut_chart(data):
+    def create_donut_chart(data, title):
         donut_chart = alt.Chart(data).mark_arc(innerRadius=80, outerRadius=100).encode(
             theta=alt.Theta(field="count", type="quantitative"),
             color=alt.Color(field="sentiment", type="nominal", legend=alt.Legend(orient="bottom", title=None)),
@@ -501,7 +501,7 @@ with sentiment_section:
             width='container',
             height=400,
         )
-        title = alt.Chart(pd.DataFrame({"text": [title_text]})).mark_text(
+        title = alt.Chart(pd.DataFrame({"text": title})).mark_text(
             align="center",
             dy=-150,
             fontSize=16,
@@ -511,8 +511,8 @@ with sentiment_section:
         )
         return title + donut_chart
         
-    chart1 = create_donut_chart(sentiment_counts)
-    chart2 = create_donut_chart(sentiment_counts)
+    chart1 = create_donut_chart(sentiment_counts, "Alpha Vantage")
+    chart2 = create_donut_chart(sentiment_counts, "TextBlob")
     combined_chart = alt.hconcat(chart1, chart2)
     combined_chart_with_legend = combined_charts.configure_legend(
         orient="bottom",
