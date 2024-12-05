@@ -390,13 +390,24 @@ with chart:
     df = df[['date', 'close_price']]
     df = df.copy()
     df['date'] = pd.to_datetime(df['date'])
+    pct_change = ((st.session_state.price - df["close_price"].iloc[-2]) / df["close_price"].iloc[-2]) * 100
+    
+    if pct_change > 0:
+        color_line = color1_light
+        color_fill = "#FFFFFF"
+    else:
+        color_line = color2_light
+        color_fill = color2_dark
+
+    color_line = color1_light
+    color_fill = color1_dark
     
     price_chart = alt.Chart(df).mark_area(
-        line={'color': f'{color2_light}'},
+        line={'color': f'{color_line}'},
         color=alt.Gradient(
             gradient='linear',
             stops=[alt.GradientStop(color=f'{black_dark}', offset=0),
-                   alt.GradientStop(color=f'{color2_dark}', offset=1)],
+                   alt.GradientStop(color=f'{color_fill}', offset=1)],
             x1=1,
             x2=1,
             y1=1,
