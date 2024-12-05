@@ -505,14 +505,14 @@ with sentiment_section:
     sentiment_counts_TB.columns = ['sentiment', 'count']
     with chart_1:
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
-            x='count:Q',
-            y=alt.Y('sentiment:O', title=None, axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
+            x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
+            y=alt.Y('sentiment:O', title=None),
             color='sentiment:N'
         ).properties(
             height=300,
             width='container',
             title='Alpha Vantage',
-            padding={'top': 0, 'bottom': 0, 'left': -15, 'right': 0}
+            padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
         ).configure_axis(
             labels=False,
             ticks=False,
@@ -572,14 +572,14 @@ with sentiment_section:
         st.markdown(strong_n, unsafe_allow_html=True)
     with chart_2:
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
-            x='count:Q',
-            y=alt.Y('sentiment:O', title=None, axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
+            x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
+            y=alt.Y('sentiment:O', title=None),
             color='sentiment:N'
         ).properties(
             height=300,
             width='container',
             title='TextBlob',
-            padding={'top': 0, 'bottom': 0, 'left': -15, 'right': 0}
+            padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
         ).configure_axis(
             labels=False,
             ticks=False,
