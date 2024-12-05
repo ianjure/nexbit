@@ -393,14 +393,14 @@ with chart:
     pct_change = ((st.session_state.price - df["close_price"].iloc[-2]) / df["close_price"].iloc[-2]) * 100
     
     if pct_change > 0:
-        color_line = color1_light
-        color_fill = "#FFFFFF"
+        color_line = color1_dark
+        color_fill = "#0a2f1e"
     else:
         color_line = color2_light
         color_fill = color2_dark
 
-    color_line = color1_light
-    color_fill = color1_dark
+    color_line = color1_dark
+    color_fill = "#0a2f1e"
     
     price_chart = alt.Chart(df).mark_area(
         line={'color': f'{color_line}'},
