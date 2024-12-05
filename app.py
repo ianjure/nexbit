@@ -518,7 +518,7 @@ with sentiment_section:
     chart2 = create_donut_chart(sentiment_counts, "TextBlob")
 
     combined_charts = alt.hconcat(chart1, chart2).configure_concat(spacing=20)
-    centered_charts = alt.vconcat(combined_charts).configure_concat(spacing=10)
+    centered_charts = alt.vconcat(combined_charts)
 
     final_chart = centered_charts.configure_legend(
         orient="bottom",
