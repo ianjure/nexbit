@@ -509,94 +509,9 @@ with sentiment_section:
     with chart_1:
         av_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>Alpha Vantage Sentiment Score</h4>"
         st.markdown(av_title, unsafe_allow_html=True)
-        """
-        AV_chart = alt.Chart(sentiment_counts_AV).mark_bar(
-            cornerRadiusBottomRight=5,
-            cornerRadiusTopRight=5
-        ).encode(
-            x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
-            color=alt.condition(
-                alt.datum.highlight == True,  # Highlight the bar with the max count
-                alt.Gradient(
-                    gradient='linear',
-                    stops=[
-                        alt.GradientStop(color=f'{black_dark}', offset=0),
-                        alt.GradientStop(color='#4a6382', offset=1)
-                    ],
-                    x1=0,
-                    x2=1,
-                    y1=0,
-                    y2=0
-                ),  # Apply gradient color for the highlighted bar
-                alt.Gradient(
-                    gradient='linear',
-                    stops=[
-                        alt.GradientStop(color=f'{black_dark}', offset=0),
-                        alt.GradientStop(color=f'{black_light}', offset=1)
-                    ],
-                    x1=0,
-                    x2=1,
-                    y1=0,
-                    y2=0
-                )  # Apply default gradient color for other bars
-            )
-        ).properties(
-            height=300,
-            width='container'
-        ).configure_axis(
-            labels=False,
-            ticks=False,
-            title=None,
-            offset=0,
-            gridWidth=0.2
-        ).configure_legend(
-            labelFontSize=0,
-            symbolSize=0,
-            title=None,
-            offset=0
-        ).configure_view(
-            step=0
-        )
 
-        # Display the chart in Streamlit
-        st.altair_chart(AV_chart, use_container_width=True)
-
-        """
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar(
-            cornerRadiusBottomRight=5,
-            cornerRadiusTopRight=5
-        ).encode(
-            x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
-            color=alt.condition(
-                alt.datum.highlight == True,  # Highlight the bar with the max count
-                alt.value('#4a6382'),  # Highlighted color
-                alt.value(f'{black_light}')  # Default color for other bars
-            )
-        ).properties(
-            height=300,
-            width='container'
-        ).configure_axis(
-            labels=False,
-            ticks=False,
-            title=None,
-            offset=0,
-            gridWidth=0.2
-        ).configure_legend(
-            labelFontSize=0,
-            symbolSize=0,
-            title=None,
-            offset=0
-        ).configure_view(
-            step=0
-        )
-        
-        # Display the chart in Streamlit
-        st.altair_chart(AV_chart, use_container_width=True)
-
-        """
-        AV_chart = alt.Chart(sentiment_counts_AV).mark_bar(
+            opacity=0.7,
             cornerRadiusBottomRight=5,
             cornerRadiusTopRight=5,
             color=alt.Gradient(
@@ -633,11 +548,11 @@ with sentiment_section:
         ).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
+        ).transform_filter(
+            alt.datum.count == max_count_AV
         ).properties(
             height=300,
             width='container'
-        ).transform_filter(
-            alt.datum.count == max_count_AV
         )
         
         final_AV_chart = alt.layer(AV_chart, highlighted_bar).configure_axis(
@@ -656,7 +571,7 @@ with sentiment_section:
         )
 
         st.altair_chart(final_AV_chart, use_container_width=True)
-        """
+        
         # TOTAL SENTIMENT COUNT (AV)
         strong_p = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -15px; margin-bottom: 5px;'>
