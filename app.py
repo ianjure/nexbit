@@ -362,21 +362,21 @@ with info:
     # CRYPTO INFO
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Market Cap:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Market Cap</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
         </div>
         """
     st.markdown(market_cap, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Total Supply:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Total Supply</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
         </div>
         """
     st.markdown(total_supply, unsafe_allow_html=True)
     website = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Website:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Website</span>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; text-align: right'>
                 <a href='{st.session_state.website}' style='text-decoration: none; color: {color1_light};'>{st.session_state.website.replace("https://", "").replace("/", "").replace("www.","")}
                 </a>
@@ -426,7 +426,7 @@ with sentiment_section:
             <h4 style='text-align: left; font-size: 1rem; font-weight: 600; color: {text_light};'>
                 DAILY AVERAGE SENTIMENT
             </h4>
-            <span class="info-icon">
+            <span class="info-icon" style"cursor: default;">
                 <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: pointer;">info</i>
                 <div class="info-tooltip">
                     The daily aggregated sentiment scores are sourced from Alpha Vantage.
@@ -661,23 +661,23 @@ with sentiment_section:
         total_sentiment_count_AV = f"""
         <div style='margin-top: -30px; margin-bottom: 25px;'>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Strong Positive']['count'].iloc[0]}</span>
             </div>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Moderate Positive']['count'].iloc[0]}</span>
             </div>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Neutral']['count'].iloc[0]}</span>
             </div>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Moderate Negative']['count'].iloc[0]}</span>
             </div>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Strong Negative']['count'].iloc[0]}</span>
             </div>
         </div>
@@ -760,23 +760,23 @@ with sentiment_section:
         total_sentiment_count_TB = f"""
         <div style='margin-top: -30px; margin-bottom: 25px;'>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'Strong Positive']['count'].iloc[0]}</span>
             </div>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'Moderate Positive']['count'].iloc[0]}</span>
             </div>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'Neutral']['count'].iloc[0]}</span>
             </div>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'Moderate Negative']['count'].iloc[0]}</span>
             </div>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count</span>
                 <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'Strong Negative']['count'].iloc[0]}</span>
             </div>
         </div>
@@ -800,7 +800,7 @@ with news_section:
     
     news_count_m = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Monthly News Count:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Monthly News Count</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{current_month_news_count}</span>
         </div>
         """
@@ -810,7 +810,7 @@ with news_section:
     current_year_news_count = current_year_news.shape[0]
     news_count_y = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Annual News Count:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Annual News Count</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{current_year_news_count}</span>
         </div>
         """
@@ -819,7 +819,7 @@ with news_section:
     top_news_source_name = news_df['source'].value_counts().idxmax()
     top_news_source = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Top News Source:</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Top News Source</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{top_news_source_name}</span>
         </div>
         """
