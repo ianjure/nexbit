@@ -492,29 +492,45 @@ with sentiment_section:
     sentiment_counts = sent_count_data.reset_index()
     sentiment_counts.columns = ['sentiment', 'count']
     
-    def create_donut_chart(data, title):
+    def create_donut_chart(data, title_text):
         donut_chart = alt.Chart(data).mark_arc(innerRadius=80, outerRadius=100).encode(
             theta=alt.Theta(field="count", type="quantitative"),
-            color=alt.Color(field="sentiment", type="nominal", legend=alt.Legend(orient="bottom", title=None)),
+            color=alt.Color(field="sentiment", type="nominal", legend=alt.Legend(orient="bottom", direction="horizontal", title=None)),
             tooltip=["sentiment", "count"]
         ).properties(
-            width='container',
-            height=400,
-            title=title
+            width=250,
+            height=250
         )
-        return donut_chart
+        title = alt.Chart(pd.DataFrame({"text": [title_text]})).mark_text(
+            align="center",
+            fontSize=14,  # Slightly smaller font size
+            fontWeight="bold"
+        ).encode(
+            text="text:N"
+        ).properties(
+            width=250,
+            height=20
+        )
+        return alt.vconcat(title, donut).configure_concat(spacing=10)
         
     chart1 = create_donut_chart(sentiment_counts, "Alpha Vantage")
     chart2 = create_donut_chart(sentiment_counts, "TextBlob")
-    combined_chart = alt.hconcat(chart1, chart2)
-    combined_chart_with_legend = combined_chart.configure_legend(
-        orient="bottom",
-        columns=1,
-        padding=10
-    ).properties(
-        bounds="flush"
+
+    combined_charts = alt.hconcat(chart1, chart2).configure_concat(spacing=20)  # Reduce spacing between the charts
+
+    # Add a shared legend at the bottom
+    final_chart = alt.vconcat(combined_charts).configure_legend(
+        orient="bottom",  # Legend at the bottom
+        direction="horizontal",  # Horizontal layout
+        title=None,  # Remove legend title
+        padding=10,  # Adjust legend padding
+        labelFontSize=12,  # Adjust legend label size
+    ).configure_view(
+        strokeWidth=0  # Remove borders around the charts
+    ).configure_concat(
+        spacing=5  # Reduce overall spacing
     )
-    st.altair_chart(combined_chart_with_legend, use_container_width=True)
+    st.altair_chart(final_chart, use_container_width=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
