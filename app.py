@@ -530,7 +530,7 @@ with sentiment_section:
         
         # Apply faceting
         final_chart = layered_chart.facet(
-            row=alt.Row('sentiment:N', title=None, header=alt.Header(labelAngle=0, labelPadding=5, axis=None))
+            row=alt.Row('sentiment:N', title=None, axis=None)
         )
         st.altair_chart(final_chart, use_container_width=True)
     with stats:
