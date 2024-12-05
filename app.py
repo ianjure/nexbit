@@ -218,6 +218,7 @@ info_hover = """
     }
     </style>
     """
+st.markdown(info_hover, unsafe_allow_html=True)
 
 # [CRYPTOCOMPARE API] FETCH CURRENT CRYPTO PRICE
 def get_crypto_price(api_key):
@@ -419,7 +420,7 @@ with sentiment_section:
             </h4>
             <span class="info-icon">
                 <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: pointer;">info</i>
-                <div class="info-tooltip">
+                <div class="info-tooltip" style="display: block;">
                     This is your information text.
                 </div>
             </span>
