@@ -818,7 +818,7 @@ with sentiment_section:
                   legend=alt.Legend(padding=0, labelFontSize=10, tickMinStep=1, labelOffset=5, labelColor=f"{text_dark}")),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
-            alt.Tooltip("sentiment:Q", title="Sentiment Score")]
+            alt.Tooltip("sentiment:Q", title="Avg Score")]
     ).configure_view(
         step=13,
         strokeWidth=0
@@ -909,6 +909,17 @@ with news_section:
     </a>
     """
     st.markdown(news_3, unsafe_allow_html=True)
+    news_4 = f"""
+    <a class='news-card' target='_blank' href='{news_df["url"].iloc[-4]}'>
+        <span class='title'>{news_df["title"].iloc[-4].title()}</span>
+        <span class='summary'>{news_df["summary"].iloc[-4]}</span>
+        <div class='meta-info'>
+            <span>Source: {news_df["source"].iloc[-4]}</span>
+            <span style='color: {categorize_score(news_df["sentiment"].iloc[-4], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-4])}</span>
+        </div>
+    </a>
+    """
+    st.markdown(news_4, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
