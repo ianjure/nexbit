@@ -495,7 +495,7 @@ with sentiment_section:
     def create_donut_chart(data, title_text):
         donut = alt.Chart(data).mark_arc(innerRadius=80, outerRadius=100).encode(
             theta=alt.Theta(field="count", type="quantitative"),
-            color=alt.Color(field="sentiment", type="nominal", legend=alt.Legend(orient="bottom", direction="horizontal", title=None)),
+            color=alt.Color(field="sentiment", type="nominal", legend=None),
             tooltip=["sentiment", "count"]
         ).properties(
             width=250,
@@ -518,13 +518,12 @@ with sentiment_section:
 
     combined_charts = alt.hconcat(chart1, chart2).configure_concat(spacing=20)  # Reduce spacing between the charts
 
-    # Add a shared legend at the bottom
-    final_chart = alt.vconcat(combined_charts).configure_legend(
+    final_chart = combined_charts.configure_legend(
         orient="bottom",  # Legend at the bottom
         direction="horizontal",  # Horizontal layout
         title=None,  # Remove legend title
         padding=10,  # Adjust legend padding
-        labelFontSize=12,  # Adjust legend label size
+        labelFontSize=12  # Adjust legend label size
     ).configure_view(
         strokeWidth=0  # Remove borders around the charts
     ).configure_concat(
