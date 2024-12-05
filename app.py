@@ -873,14 +873,13 @@ with news_section:
     daily_sentiment = heatmap_df.groupby(heatmap_df['date'].dt.date).agg({'sentiment': 'mean'}).reset_index()
     daily_sentiment['date'] = pd.to_datetime(daily_sentiment['date'])
 
-    heatmap = alt.Chart(daily_sentiment, title="Annual Heatmap of Sentiment Scores").mark_rect().encode(
+    heatmap = alt.Chart(daily_sentiment, title=None).mark_rect().encode(
         alt.X("date(date):O").title(None).axis(format="%e", labelAngle=0),
         alt.Y("month(date):O").title(None),
-        alt.Color("sentiment:Q", title="Sentiment Score", scale=alt.Scale(scheme="viridis")),
-            legend=alt.Legend(orient="bottom")),
-            tooltip=[
-                alt.Tooltip("date(date):T", title="Date"),
-                alt.Tooltip("sentiment:Q", title="Sentiment Score")]
+        alt.Color("sentiment:Q", title="Sentiment Score", scale=alt.Scale(scheme="viridis"), legend=alt.Legend(orient="bottom")),
+        tooltip=[
+            alt.Tooltip("date(date):T", title="Date"),
+            alt.Tooltip("sentiment:Q", title="Sentiment Score")]
     ).configure_view(
         step=13,
         strokeWidth=0
