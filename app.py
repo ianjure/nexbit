@@ -509,9 +509,9 @@ with sentiment_section:
             x='count:Q',
             y=alt.Y('sentiment_set:O', axis=None),
             color=alt.Color('sentiment_set:N').legend(orient="bottom"),
-            row='sentiment:N'
+            row=alt.Row('sentiment:N', header=alt.Header(labelAngle=0))
         ).properties(
-            height=100,
+            height=60,
             width='container'
         )
         st.altair_chart(group_bar, use_container_width=True)
