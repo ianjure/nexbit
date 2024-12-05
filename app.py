@@ -520,7 +520,7 @@ with sentiment_section:
     chart1 = create_donut_chart(sentiment_counts, "Alpha Vantage")
     chart2 = create_donut_chart(sentiment_counts, "TextBlob")
 
-    combined_charts = alt.hconcat(chart1, chart2, center=True, align='all')
+    combined_charts = alt.hconcat(chart1, chart2, center=True, autosize='fit')
     #centered_charts = alt.vconcat(combined_charts)
 
     final_chart = combined_charts.configure_legend(
