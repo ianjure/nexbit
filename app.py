@@ -504,9 +504,9 @@ with sentiment_section:
     sentiment_counts_AV.columns = ['sentiment', 'count']
     sentiment_counts_TB.columns = ['sentiment', 'count']
     max_count_AV = sentiment_counts_AV['count'].max()
-    sentiment_counts_AV['highlight'] = sentiment_counts_AV['count'] == max_count
+    sentiment_counts_AV['highlight'] = sentiment_counts_AV['count'] == max_count_AV
     max_count_TB = sentiment_counts_AV['count'].max()
-    sentiment_counts_TB['highlight'] = sentiment_counts_TB['count'] == max_count
+    sentiment_counts_TB['highlight'] = sentiment_counts_TB['count'] == max_count_TB
     with chart_1:
         av_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>Alpha Vantage Sentiment Score</h4>"
         st.markdown(av_title, unsafe_allow_html=True)
