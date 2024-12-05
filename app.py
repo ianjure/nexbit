@@ -506,7 +506,8 @@ with sentiment_section:
     with chart_1:
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
             x='count:Q',
-            y="sentiment:O"
+            y=alt.Y('sentiment:O', axis=alt.Axis(title='Sentiment', labelAngle=0)),
+            color='sentiment:N'
         ).properties(height=100, width='container', title='Alpha Vantage')
         st.altair_chart(AV_chart, use_container_width=True)
     with chart_2:
