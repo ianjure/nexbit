@@ -418,7 +418,10 @@ with sentiment_section:
                 axis=alt.Axis(labelAngle=0)),
         y=alt.Y('sentiment:Q',
                 title=None, 
-                axis=alt.Axis(grid=True, gridColor=f'{text_dark}'))
+                axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
+        tooltip=[
+            alt.Tooltip("day_name:N", title="Day"),
+            alt.Tooltip("sentiment:Q", title="Average Sentiment")]
     ).properties(
         height=300,
         width='container'
@@ -444,6 +447,9 @@ with sentiment_section:
         y=alt.Y('sentiment:Q', 
                 title=None, 
                 axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
+        tooltip=[
+            alt.Tooltip("day_name:N", title="Day"),
+            alt.Tooltip("sentiment:Q", title="Average Sentiment")]
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).properties(
@@ -465,7 +471,10 @@ with sentiment_section:
         x=alt.X('day_name:N',
                sort=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']),
         y=alt.Y('sentiment:Q'),
-        text=alt.Text('sentiment:Q', format='.2f')
+        text=alt.Text('sentiment:Q', format='.2f'),
+        tooltip=[
+            alt.Tooltip("day_name:N", title="Day"),
+            alt.Tooltip("sentiment:Q", title="Average Sentiment")]
     )
     
     final_ave_sent_chart = alt.layer(ave_sent_chart, highlighted_bar, text_format).resolve_scale(
@@ -481,27 +490,27 @@ with sentiment_section:
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 
     chart_1, chart_2 = st.columns(2)
-    sent_count_data = pd.read_excel('btc_final(2).xlsx')
-    sent_count_data.rename(columns={'AV_sentiment_category_Strong Positive': 'Alpha Vantage_Strong Positive',
-                                    'AV_sentiment_category_Moderate Positive': 'Alpha Vantage_Moderate Positive',
-                                    'AV_sentiment_category_Neutral': 'Alpha Vantage_Neutral',
-                                    'AV_sentiment_category_Moderate Negative': 'Alpha Vantage_Moderate Negative',
-                                    'AV_sentiment_category_Strong Negative': 'Alpha Vantage_Strong Negative',
-                                    'TB_sentiment_category_Strong Positive': 'TextBlob_Strong Positive',
-                                    'TB_sentiment_category_Moderate Positive': 'TextBlob_Moderate Positive',
-                                    'TB_sentiment_category_Neutral': 'TextBlob_Neutral',
-                                    'TB_sentiment_category_Moderate Negative': 'TextBlob_Moderate Negative',
-                                    'TB_sentiment_category_Strong Negative': 'TextBlob_Strong Negative'}, inplace=True)
-    sent_count_AV = sent_count_data[['Alpha Vantage_Strong Positive',
-                                     'Alpha Vantage_Moderate Positive',
-                                     'Alpha Vantage_Neutral',
-                                     'Alpha Vantage_Moderate Negative',
-                                     'Alpha Vantage_Strong Negative']].sum(axis=0)
-    sent_count_TB = sent_count_data[['TextBlob_Strong Positive',
-                                     'TextBlob_Moderate Positive',
-                                     'TextBlob_Neutral',
-                                     'TextBlob_Moderate Negative',
-                                     'TextBlob_Strong Negative']].sum(axis=0)
+    sent_count_data = pd.read_excel('btc_final(1).xlsx')
+    sent_count_AV = sent_count_data[['AV_sentiment_category_Strong Positive',
+                                     'AV_sentiment_category_Moderate Positive',
+                                     'AV_sentiment_category_Neutral',
+                                     'AV_sentiment_category_Moderate Negative',
+                                     'AV_sentiment_category_Strong Negative']]
+    sent_count_AV.rename(columns={'AV_sentiment_category_Strong Positive': 'Strong Positive',
+                                  'AV_sentiment_category_Moderate Positive': 'Moderate Positive',
+                                  'AV_sentiment_category_Neutral': 'Neutral',
+                                  'AV_sentiment_category_Moderate Negative': 'Moderate Negative',
+                                  'AV_sentiment_category_Strong Negative': 'Strong Negative', inplace=True).sum(axis=0)
+    sent_count_TB = sent_count_data[['TB_sentiment_category_Strong Positive',
+                                     'TB_sentiment_category_Moderate Positive',
+                                     'TB_sentiment_category_Neutral',
+                                     'TB_sentiment_category_Moderate Negative',
+                                     'TB_sentiment_category_Strong Negative']]
+    sent_count_TB.rename(columns={'TB_sentiment_category_Strong Positive': 'Strong Positive',
+                                  'TB_sentiment_category_Moderate Positive': 'Moderate Positive',
+                                  'TB_sentiment_category_Neutral': 'Neutral',
+                                  'TB_sentiment_category_Moderate Negative': 'Moderate Negative',
+                                  'TB_sentiment_category_Strong Negative': 'Strong Negative'}, inplace=True).sum(axis=0)
     sentiment_counts_AV = sent_count_AV.reset_index()
     sentiment_counts_TB = sent_count_TB.reset_index()
     sentiment_counts_AV.columns = ['sentiment', 'count']
@@ -529,7 +538,10 @@ with sentiment_section:
                 y2=0)
         ).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
+            y=alt.Y('sentiment:O', title=None, sort=['Strong Positive', 'Moderate Positive', 'Neutral', 'Moderate Negative', 'Strong Negative']),
+            tooltip=[
+                alt.Tooltip("count:Q", title="Count"),
+                alt.Tooltip("sentiment:O", title="Sentiment Category")]
         ).properties(
             height=300,
             width='container'
@@ -550,7 +562,10 @@ with sentiment_section:
                 y2=0)
         ).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
+            y=alt.Y('sentiment:O', title=None, sort=['Strong Positive', 'Moderate Positive', 'Neutral', 'Moderate Negative', 'Strong Negative']),
+            tooltip=[
+                alt.Tooltip("count:Q", title="Count"),
+                alt.Tooltip("sentiment:O", title="Sentiment Category")]
         ).transform_filter(
             alt.datum.sentiment == max_count_AV
         ).properties(
@@ -622,7 +637,10 @@ with sentiment_section:
                 y2=0)
         ).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
+            y=alt.Y('sentiment:O', title=None, sort=['Strong Positive', 'Moderate Positive', 'Neutral', 'Moderate Negative', 'Strong Negative']),
+            tooltip=[
+                alt.Tooltip("count:Q", title="Count"),
+                alt.Tooltip("sentiment:O", title="Sentiment Category")]
         ).properties(
             height=300,
             width='container'
@@ -643,7 +661,10 @@ with sentiment_section:
                 y2=0)
         ).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
+            y=alt.Y('sentiment:O', title=None, sort=['Strong Positive', 'Moderate Positive', 'Neutral', 'Moderate Negative', 'Strong Negative']),
+            tooltip=[
+                alt.Tooltip("count:Q", title="Count"),
+                alt.Tooltip("sentiment:O", title="Sentiment Category")]
         ).transform_filter(
             alt.datum.sentiment == max_count_TB
         ).properties(
