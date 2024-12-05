@@ -503,45 +503,29 @@ with sentiment_section:
     sentiment_counts_TB = sent_count_TB.reset_index()
     sentiment_counts_AV.columns = ['sentiment', 'count']
     sentiment_counts_TB.columns = ['sentiment', 'count']
-    max_count_AV = sentiment_counts_AV['count'].max()
-    sentiment_counts_AV['highlight'] = sentiment_counts_AV['count'] == max_count_AV
-    max_count_TB = sentiment_counts_AV['count'].max()
-    sentiment_counts_TB['highlight'] = sentiment_counts_TB['count'] == max_count_TB
+    max_count_AV = sentiment_counts_AV.loc[sentiment_counts_AV['count'].idxmax(), 'sentiment']
+    max_count_TB = sentiment_counts_TB.loc[sentiment_counts_TB['count'].idxmax(), 'sentiment']
     with chart_1:
         av_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>Alpha Vantage Sentiment Score</h4>"
         st.markdown(av_title, unsafe_allow_html=True)
         
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar(
             cornerRadiusBottomRight=5,
-            cornerRadiusTopRight=5
+            cornerRadiusTopRight=5,
+            color=alt.Gradient(
+                gradient='linear',
+                stops=[
+                    alt.GradientStop(color=f'{black_dark}', offset=0),
+                    alt.GradientStop(color=f'{black_light}', offset=1)
+                ],
+                x1=0,
+                x2=1,
+                y1=0,
+                y2=0)
         ).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
-            color=alt.condition(
-                alt.datum.highlight == True,
-                alt.Gradient(
-                    gradient='linear',
-                    stops=[
-                        alt.GradientStop(color=f'{black_dark}', offset=0),
-                        alt.GradientStop(color='#4a6382', offset=1)
-                    ],
-                    x1=0,
-                    x2=1,
-                    y1=0,
-                    y2=0
-                ),
-                alt.Gradient(
-                    gradient='linear',
-                    stops=[
-                        alt.GradientStop(color=f'{black_dark}', offset=0),
-                        alt.GradientStop(color=f'{black_light}', offset=1)
-                    ],
-                    x1=0,
-                    x2=1,
-                    y1=0,
-                    y2=0
-                    )
-        )).properties(
+            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
+        ).properties(
             height=300,
             width='container',
             padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
@@ -559,7 +543,51 @@ with sentiment_section:
         ).configure_view(
             step=0
         )
-        st.altair_chart(AV_chart, use_container_width=True)
+
+        highlighted_bar = alt.Chart(sentiment_counts_AV).mark_bar(
+            cornerRadiusBottomRight=5,
+            cornerRadiusTopRight=5,
+            color=alt.Gradient(
+                gradient='linear',
+                stops=[
+                    alt.GradientStop(color=f'{black_dark}', offset=0),
+                    alt.GradientStop(color='#4a6382', offset=1)
+                ],
+                x1=0,
+                x2=1,
+                y1=0,
+                y2=0)
+        ).encode(
+            x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
+            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative'])
+        ).properties(
+            height=300,
+            width='container',
+            padding={'top': 0, 'bottom': 0, 'left': 0, 'right': 0}
+        ).configure_axis(
+            labels=False,
+            ticks=False,
+            title=None,
+            offset=0,
+            gridWidth=0.2
+        ).configure_legend(
+            labelFontSize=0,
+            symbolSize=0,
+            title=None,
+            offset=0
+        ).configure_view(
+            step=0
+        ).transform_filter(
+            alt.datum.count == max_count_AV
+
+        final_AV_chart = alt.layer(AV_chart, highlighted_bar).resolve_scale(
+            color='independent'
+        ).configure_axis(
+            labelColor=f'{text_dark}',
+            gridWidth=0.2
+        )
+
+        st.altair_chart(final_AV_chart, use_container_width=True)
         
         # TOTAL SENTIMENT COUNT (AV)
         strong_p = f"""
