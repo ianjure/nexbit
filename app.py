@@ -427,10 +427,11 @@ with sentiment_section:
             <span class="info-icon">
                 <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: pointer;">info</i>
                 <div class="info-tooltip">
-                    The daily aggregated sentiment scores are sourced from Alpha Vantage, providing a comprehensive overview of sentiment trends based on various financial news and market data for each day of the week.
+                    The daily aggregated sentiment scores are sourced from Alpha Vantage.
                     <br>
                     <br>
                     Positive Sentiment > 0.5
+                    <br>
                     Negative Sentiment < 0.5
                 </div>
             </span>
