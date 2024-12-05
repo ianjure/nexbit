@@ -206,13 +206,16 @@ info_hover = """
         transform: translateX(-50%);
         background-color: """ + black_light + """;
         color: """ + text_dark + """;
-        padding: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 20px;
+        padding-left: 20px;
         border-radius: 6px;
-        font-size: 0.75rem;
+        font-size: 0.9rem;
         box-shadow: 0px 8px 6px rgba(0, 0, 0, 0.3);
         z-index: 10;
         white-space: normal;
-        width: 200px; /* Fixed width */
+        width: 250px;
         word-wrap: break-word;
         text-align: left;
     }
@@ -425,6 +428,7 @@ with sentiment_section:
                 <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: pointer;">info</i>
                 <div class="info-tooltip">
                     The daily aggregated sentiment scores are sourced from Alpha Vantage, providing a comprehensive overview of sentiment trends based on various financial news and market data for each day of the week.
+                    <br>
                     <br>
                     Positive Sentiment > 0.5
                     Negative Sentiment < 0.5
