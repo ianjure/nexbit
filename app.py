@@ -495,7 +495,7 @@ with sentiment_section:
         color=alt.Color(field="sentiment", type="nominal"),
         tooltip=["sentiment", "count"]
     ).properties(
-        width='container'
+        width='container',
         height=400,
     )
     st.altair_chart(polar_chart, use_container_width=True)
