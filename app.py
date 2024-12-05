@@ -504,7 +504,7 @@ with sentiment_section:
         sentiment_counts.columns = ['category', 'count']
         sentiment_counts[['sentiment_set', 'sentiment']] = sentiment_counts['category'].str.split('_', expand=True)
         sentiment_counts = sentiment_counts.drop(columns=['category'])
-        sentiment_counts = sentiment_counts[['sentiment_set', 'sentiment', 'Count']]
+        sentiment_counts = sentiment_counts[['sentiment_set', 'sentiment', 'count']]
         group_bar = alt.Chart(sentiment_counts).mark_bar().encode(
             x='count:Q',
             y='sentiment_set:O',
