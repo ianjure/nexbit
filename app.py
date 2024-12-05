@@ -884,13 +884,25 @@ with news_section:
     min_sentiment = daily_sentiment['sentiment'].min()
     max_sentiment = daily_sentiment['sentiment'].max()
     mid_sentiment = (min_sentiment + max_sentiment) / 2
-    #mid_lower = -0.1
-    #mid_upper = 0.1
+
+    new_min = -1
+    new_max = 1
+    lower_mid_value = -0.1
+    upper_mid_value = 0.1
+    
+    def map_to_new_scale(value, min_val, max_val, new_min, new_max):
+    return new_min + (value - min_val) * (new_max - new_min) / (max_val - min_val)
+
+    # Map the min, max, and mid values to the new scale
+    scaled_min = map_to_new_scale(min_sentiment, min_sentiment, max_sentiment, new_min, new_max)
+    scaled_max = map_to_new_scale(max_sentiment, min_sentiment, max_sentiment, new_min, new_max)
+    scaled_lower_mid = map_to_new_scale(lower_mid_value, min_sentiment, max_sentiment, new_min, new_max)
+    scaled_upper_mid = map_to_new_scale(upper_mid_value, min_sentiment, max_sentiment, new_min, new_max)
 
     heatmap = alt.Chart(daily_sentiment).mark_rect().encode(
         alt.X("date(date):O").axis(format="%e", labelAngle=0, title=None),
         alt.Y("month(date):O").axis(title=None),
-        alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, mid_sentiment, max_sentiment], range=[f"{color1_light}", f"{black_light}", f"{color2_light}"]),
+        alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[scaled_min, scaled_lower_mid, scaled_upper_mid, scaled_max], range=[f"{color1_light}", f"{black_light}", f"{black_light}", f"{color2_light}"]),
                   legend=alt.Legend(padding=0, labelFontSize=10)),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
