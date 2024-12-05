@@ -472,11 +472,12 @@ with sentiment_section:
         gridWidth=0.2
     )
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
-    
+
     # SENTIMENT STATISTIC
     sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 
+    alpha_vantage, textblob = st.columns(2)
     sent_count_data = pd.read_excel('btc_final(2).xlsx')
     sent_count_data.rename(columns={'AV_sentiment_category_Strong Positive': 'Strong Positive',
                        'AV_sentiment_category_Moderate Positive': 'Moderate Positive',
@@ -490,15 +491,22 @@ with sentiment_section:
                                        'Strong Negative']].sum(axis=0)
     sentiment_counts = sent_count_data.reset_index()
     sentiment_counts.columns = ['sentiment', 'count']
-    polar_chart = alt.Chart(sentiment_counts).mark_arc(innerRadius=50).encode(
-        theta=alt.Theta(field="count", type="quantitative"),
-        color=alt.Color(field="sentiment", type="nominal"),
-        tooltip=["sentiment", "count"]
-    ).properties(
-        width='container',
-        height=400,
-    )
-    st.altair_chart(polar_chart, use_container_width=True)
+    
+    def create_donut_chart(data):
+        donut_chart = alt.Chart(data).mark_arc(innerRadius=30, outerRadius=50).encode(
+            theta=alt.Theta(field="count", type="quantitative"),
+            color=alt.Color(field="sentiment", type="nominal", legend=alt.Legend(orient="bottom", title=None)),
+            tooltip=["sentiment", "count"]
+        ).properties(
+            width='container',
+            height=400,
+        )
+        return donut_chart
+        
+    chart1 = create_donut_chart(sentiment_counts)
+    chart2 = create_donut_chart(sentiment_counts)
+    combined_chart = alt.hconcat(chart1, chart2)
+    st.altair_chart(combined_chart, use_container_width=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
