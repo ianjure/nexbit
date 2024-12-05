@@ -526,6 +526,8 @@ with sentiment_section:
             fontSize=15,
             anchor='middle',
             color='white'
+        ).configure_view(
+            padding=0
         )
         st.altair_chart(AV_chart, use_container_width=True)
     with chart_2:
@@ -551,6 +553,8 @@ with sentiment_section:
             fontSize=15,
             anchor='middle',
             color='white'
+        ).configure_view(
+            padding=0
         )
         st.altair_chart(TB_chart, use_container_width=True)
         
