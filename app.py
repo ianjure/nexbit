@@ -493,7 +493,7 @@ with sentiment_section:
     sentiment_counts.columns = ['sentiment', 'count']
     
     def create_donut_chart(data):
-        donut_chart = alt.Chart(data).mark_arc(innerRadius=30, outerRadius=50).encode(
+        donut_chart = alt.Chart(data).mark_arc(innerRadius=80, outerRadius=100).encode(
             theta=alt.Theta(field="count", type="quantitative"),
             color=alt.Color(field="sentiment", type="nominal", legend=alt.Legend(orient="bottom", title=None)),
             tooltip=["sentiment", "count"]
@@ -501,12 +501,28 @@ with sentiment_section:
             width='container',
             height=400,
         )
-        return donut_chart
+        title = alt.Chart(pd.DataFrame({"text": [title_text]})).mark_text(
+            align="center",
+            dy=-150,
+            fontSize=16,
+            fontWeight="bold"
+        ).encode(
+            text="text:N"
+        )
+        return title + donut_chart
         
     chart1 = create_donut_chart(sentiment_counts)
     chart2 = create_donut_chart(sentiment_counts)
     combined_chart = alt.hconcat(chart1, chart2)
-    st.altair_chart(combined_chart, use_container_width=True)
+    combined_chart_with_legend = combined_charts.configure_legend(
+        orient="bottom",
+        columns=1,
+        padding=10
+    ).properties(
+        title=None,
+        bounds="flush"
+    )
+    st.altair_chart(combined_chart_with_legend, use_container_width=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
