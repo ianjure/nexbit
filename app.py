@@ -512,23 +512,24 @@ with sentiment_section:
             width=250,
             height=20
         )
-        return alt.vconcat(title, donut).resolve_legend(color="independent")
+        return alt.vconcat(title, donut)
         
     chart1 = create_donut_chart(sentiment_counts, "Alpha Vantage")
     chart2 = create_donut_chart(sentiment_counts, "TextBlob")
 
-    combined_charts = alt.hconcat(chart1, chart2).configure_concat(spacing=20)  # Reduce spacing between the charts
+    combined_charts = alt.hconcat(chart1, chart2).configure_concat(spacing=20)
+    centered_charts = alt.vconcat(combined_charts).configure_concat(spacing=10)
 
-    final_chart = combined_charts.configure_legend(
-        orient="bottom",  # Legend at the bottom
-        direction="horizontal",  # Horizontal layout
-        title=None,  # Remove legend title
-        padding=10,  # Adjust legend padding
-        labelFontSize=12  # Adjust legend label size
+    final_chart = centered_charts.configure_legend(
+        orient="bottom",
+        direction="horizontal",
+        title=None,
+        padding=10,
+        labelFontSize=12
     ).configure_view(
-        strokeWidth=0  # Remove borders around the charts
+        strokeWidth=0
     ).configure_concat(
-        spacing=5  # Reduce overall spacing
+        spacing=5
     )
     st.altair_chart(final_chart, use_container_width=True)
 with news_section:
