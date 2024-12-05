@@ -504,7 +504,7 @@ with sentiment_section:
     sentiment_counts_AV.columns = ['sentiment', 'count']
     sentiment_counts_TB.columns = ['sentiment', 'count']
     with chart_1:
-        av_title = f"<h4 style='text-align: left; font-size: 0.8rem; font-weight: 500; margin-top: -10px; color: #FFFFFF;'>Alpha Vantage Sentiment Score</h4>"
+        av_title = f"<h4 style='text-align: left; font-size: 0.8rem; font-weight: 500; margin-top: -15px; color: #FFFFFF;'>Alpha Vantage Sentiment Score</h4>"
         st.markdown(av_title, unsafe_allow_html=True)
         
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
@@ -533,7 +533,7 @@ with sentiment_section:
         
         # TOTAL SENTIMENT COUNT (AV)
         strong_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -15px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
         </div>
@@ -561,14 +561,14 @@ with sentiment_section:
         """
         st.markdown(moderate_n, unsafe_allow_html=True)
         strong_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
         </div>
         """
         st.markdown(strong_n, unsafe_allow_html=True)
     with chart_2:
-        tb_title = f"<h4 style='text-align: left; font-size: 0.8rem; font-weight: 500; margin-top: -10px; color: #FFFFFF;'>TextBlob Sentiment Score</h4>"
+        tb_title = f"<h4 style='text-align: left; font-size: 0.8rem; font-weight: 500; margin-top: -15px; color: #FFFFFF;'>TextBlob Sentiment Score</h4>"
         st.markdown(tb_title, unsafe_allow_html=True)
         
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
@@ -597,7 +597,7 @@ with sentiment_section:
         
         # TOTAL SENTIMENT COUNT (TB)
         strong_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -15px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
         </div>
@@ -625,7 +625,7 @@ with sentiment_section:
         """
         st.markdown(moderate_n, unsafe_allow_html=True)
         strong_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
         </div>
