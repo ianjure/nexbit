@@ -874,8 +874,8 @@ with news_section:
     daily_sentiment['date'] = pd.to_datetime(daily_sentiment['date'])
 
     heatmap = alt.Chart(daily_sentiment, title=None).mark_rect().encode(
-        alt.X("date(date):O").title(None).axis(format="%e", labelAngle=0),
-        alt.Y("month(date):O").title(None),
+        alt.X("date(date):O").axis(format="%e", labelAngle=0, title=None),
+        alt.Y("month(date):O").axis(title=None),
         alt.Color("sentiment:Q", title="Sentiment Score", scale=alt.Scale(scheme="viridis"), legend=alt.Legend(orient="bottom")),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
