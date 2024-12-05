@@ -421,7 +421,7 @@ with sentiment_section:
                 axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
         tooltip=[
             alt.Tooltip("day_name:N", title="Day"),
-            alt.Tooltip("sentiment:Q", title="Average Sentiment")]
+            alt.Tooltip("sentiment:Q", title="Avg Score")]
     ).properties(
         height=300,
         width='container'
@@ -449,7 +449,7 @@ with sentiment_section:
                 axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
         tooltip=[
             alt.Tooltip("day_name:N", title="Day"),
-            alt.Tooltip("sentiment:Q", title="Average Sentiment")]
+            alt.Tooltip("sentiment:Q", title="Avg Score")]
     ).transform_filter(
         alt.datum.day_name == max_score_day
     ).properties(
@@ -474,7 +474,7 @@ with sentiment_section:
         text=alt.Text('sentiment:Q', format='.2f'),
         tooltip=[
             alt.Tooltip("day_name:N", title="Day"),
-            alt.Tooltip("sentiment:Q", title="Average Sentiment")]
+            alt.Tooltip("sentiment:Q", title="Avg Score")]
     )
     
     final_ave_sent_chart = alt.layer(ave_sent_chart, highlighted_bar, text_format).resolve_scale(
@@ -550,7 +550,7 @@ with sentiment_section:
             y=alt.Y('sentiment:O', title=None, sort=['Strong Positive', 'Moderate Positive', 'Neutral', 'Moderate Negative', 'Strong Negative']),
             tooltip=[
                 alt.Tooltip("count:Q", title="Count"),
-                alt.Tooltip("sentiment:O", title="Sentiment Category")]
+                alt.Tooltip("sentiment:O", title="Category")]
         ).properties(
             height=300,
             width='container'
@@ -574,7 +574,7 @@ with sentiment_section:
             y=alt.Y('sentiment:O', title=None, sort=['Strong Positive', 'Moderate Positive', 'Neutral', 'Moderate Negative', 'Strong Negative']),
             tooltip=[
                 alt.Tooltip("count:Q", title="Count"),
-                alt.Tooltip("sentiment:O", title="Sentiment Category")]
+                alt.Tooltip("sentiment:O", title="Category")]
         ).transform_filter(
             alt.datum.sentiment == max_count_AV
         ).properties(
