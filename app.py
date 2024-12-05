@@ -196,6 +196,7 @@ info_hover = """
     <style>
     .info-icon {
         position: relative;
+        cursor: default;
     }
     .info-tooltip {
         display: none;
