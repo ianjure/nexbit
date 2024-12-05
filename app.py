@@ -477,98 +477,80 @@ with sentiment_section:
     sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 
-    chart, stats = st.columns([2,1])
-    with chart:
-        sent_count_data = pd.read_excel('btc_final(2).xlsx')
-        sent_count_data.rename(columns={'AV_sentiment_category_Strong Positive': 'Alpha Vantage_Strong Positive',
-                                        'AV_sentiment_category_Moderate Positive': 'Alpha Vantage_Moderate Positive',
-                                        'AV_sentiment_category_Neutral': 'Alpha Vantage_Neutral',
-                                        'AV_sentiment_category_Moderate Negative': 'Alpha Vantage_Moderate Negative',
-                                        'AV_sentiment_category_Strong Negative': 'Alpha Vantage_Strong Negative',
-                                        'TB_sentiment_category_Strong Positive': 'TextBlob_Strong Positive',
-                                        'TB_sentiment_category_Moderate Positive': 'TextBlob_Moderate Positive',
-                                        'TB_sentiment_category_Neutral': 'TextBlob_Neutral',
-                                        'TB_sentiment_category_Moderate Negative': 'TextBlob_Moderate Negative',
-                                        'TB_sentiment_category_Strong Negative': 'TextBlob_Strong Negative'}, inplace=True)
-        sent_count_data = sent_count_data[['Alpha Vantage_Strong Positive',
-                                           'Alpha Vantage_Moderate Positive',
-                                           'Alpha Vantage_Neutral',
-                                           'Alpha Vantage_Moderate Negative',
-                                           'Alpha Vantage_Strong Negative',
-                                           'TextBlob_Strong Positive',
-                                           'TextBlob_Moderate Positive',
-                                           'TextBlob_Neutral',
-                                           'TextBlob_Moderate Negative',
-                                           'TextBlob_Strong Negative']].sum(axis=0)
-        sentiment_counts = sent_count_data.reset_index()
-        sentiment_counts.columns = ['category', 'count']
-        sentiment_counts[['sentiment_set', 'sentiment']] = sentiment_counts['category'].str.split('_', expand=True)
-        sentiment_counts = sentiment_counts.drop(columns=['category'])
-        sentiment_counts = sentiment_counts[['sentiment_set', 'sentiment', 'count']]
-        bar_chart = alt.Chart(sentiment_counts).mark_bar().encode(
+    chart_1, chart_2 = st.columns(2)
+    sent_count_data = pd.read_excel('btc_final(2).xlsx')
+    sent_count_data.rename(columns={'AV_sentiment_category_Strong Positive': 'Alpha Vantage_Strong Positive',
+                                    'AV_sentiment_category_Moderate Positive': 'Alpha Vantage_Moderate Positive',
+                                    'AV_sentiment_category_Neutral': 'Alpha Vantage_Neutral',
+                                    'AV_sentiment_category_Moderate Negative': 'Alpha Vantage_Moderate Negative',
+                                    'AV_sentiment_category_Strong Negative': 'Alpha Vantage_Strong Negative',
+                                    'TB_sentiment_category_Strong Positive': 'TextBlob_Strong Positive',
+                                    'TB_sentiment_category_Moderate Positive': 'TextBlob_Moderate Positive',
+                                    'TB_sentiment_category_Neutral': 'TextBlob_Neutral',
+                                    'TB_sentiment_category_Moderate Negative': 'TextBlob_Moderate Negative',
+                                    'TB_sentiment_category_Strong Negative': 'TextBlob_Strong Negative'}, inplace=True)
+    sent_count_AV = sent_count_data[['Alpha Vantage_Strong Positive',
+                                     'Alpha Vantage_Moderate Positive',
+                                     'Alpha Vantage_Neutral',
+                                     'Alpha Vantage_Moderate Negative',
+                                     'Alpha Vantage_Strong Negative']].sum(axis=0)
+    sent_count_TB = sent_count_data[['TextBlob_Strong Positive',
+                                     'TextBlob_Moderate Positive',
+                                     'TextBlob_Neutral',
+                                     'TextBlob_Moderate Negative',
+                                     'TextBlob_Strong Negative']].sum(axis=0)
+    sentiment_counts_AV = sent_count_AV.reset_index()
+    sentiment_counts_TB = sent_count_TB.reset_index()
+    sentiment_counts_AV.columns = ['sentiment', 'count']
+    sentiment_counts_TB.columns = ['sentiment', 'count']
+    with chart_1:
+        AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
             x='count:Q',
-            y=alt.Y('sentiment_set:O', axis=None),
-            color=alt.Color('sentiment_set:N').legend(orient="bottom"),
-        )
-        text_labels = alt.Chart(sentiment_counts).mark_text(
-            align='left',  # Align text inside the bar
-            baseline='middle',  # Vertically center text
-            dx=5,  # Offset text horizontally
-            fontSize=12,
-            fontWeight='bold'
-        ).encode(
-            text='sentiment:N',
-            x=alt.value(5),  # Position text near the start of the bar
-            y=alt.Y('sentiment_set:O', axis=None)
-        )
-        
-        # Layer the bar chart and text labels
-        layered_chart = alt.layer(bar_chart, text_labels).properties(
-            width='container',
-            height=50
-        )
-        
-        # Apply faceting
-        final_chart = layered_chart.facet(
-            row=alt.Row('sentiment:N', title=None, axis=None)
-        )
-        st.altair_chart(final_chart, use_container_width=True)
-    with stats:
-        strong_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-        </div>
-        """
-        st.markdown(strong_p, unsafe_allow_html=True)
-        moderate_p = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-        </div>
-        """
-        st.markdown(moderate_p, unsafe_allow_html=True)
-        neutral = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-        </div>
-        """
-        st.markdown(neutral, unsafe_allow_html=True)
-        moderate_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-        </div>
-        """
-        st.markdown(moderate_n, unsafe_allow_html=True)
-        strong_n = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
-        </div>
-        """
-        st.markdown(strong_n, unsafe_allow_html=True)
+            y="sentiment:O"
+        ).properties(height=50, title='Alpha Vantage')
+        st.altair_chart(AV_chart, use_container_width=True)
+    with chart_2:
+        TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
+            x='count:Q',
+            y="sentiment:O"
+        ).properties(height=50, title='TextBlob')
+        st.altair_chart(TB_chart, use_container_width=True)
+    # TOTAL SENTIMENT COUNT
+    strong_p = f"""
+    <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
+        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
+        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+    </div>
+    """
+    st.markdown(strong_p, unsafe_allow_html=True)
+    moderate_p = f"""
+    <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
+        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+    </div>
+    """
+    st.markdown(moderate_p, unsafe_allow_html=True)
+    neutral = f"""
+    <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
+        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+    </div>
+    """
+    st.markdown(neutral, unsafe_allow_html=True)
+    moderate_n = f"""
+    <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
+        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+    </div>
+    """
+    st.markdown(moderate_n, unsafe_allow_html=True)
+    strong_n = f"""
+    <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+        <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
+        <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+    </div>
+    """
+    st.markdown(strong_n, unsafe_allow_html=True)
 with news_section:
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
