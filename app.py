@@ -490,7 +490,14 @@ with sentiment_section:
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
 
     chart_1, chart_2 = st.columns(2)
-    sent_count_data = pd.read_excel('btc_final(1).xlsx')
+    
+    if st.session_state.symbol == "BTC":
+        sent_count_data = pd.read_excel('btc.xlsx')
+    elif st.session_state.symbol == "ETH":
+        sent_count_data = pd.read_excel('eth.xlsx')
+    else:
+        sent_count_data = pd.read_excel('sol.xlsx')
+        
     sent_count_AV = sent_count_data[['AV_sentiment_category_Strong Positive',
                                      'AV_sentiment_category_Moderate Positive',
                                      'AV_sentiment_category_Neutral',
@@ -500,7 +507,7 @@ with sentiment_section:
                                   'AV_sentiment_category_Moderate Positive': 'Moderate Positive',
                                   'AV_sentiment_category_Neutral': 'Neutral',
                                   'AV_sentiment_category_Moderate Negative': 'Moderate Negative',
-                                  'AV_sentiment_category_Strong Negative': 'Strong Negative', inplace=True).sum(axis=0)
+                                  'AV_sentiment_category_Strong Negative': 'Strong Negative'}, inplace=True).sum(axis=0)
     sent_count_TB = sent_count_data[['TB_sentiment_category_Strong Positive',
                                      'TB_sentiment_category_Moderate Positive',
                                      'TB_sentiment_category_Neutral',
