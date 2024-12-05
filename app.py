@@ -895,7 +895,7 @@ with news_section:
         alt.X("date(date):O").axis(format="%e", labelAngle=0, title=None),
         alt.Y("month(date):O").axis(title=None),
         alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, lower_mid_sentiment, upper_mid_sentiment, max_sentiment], range=[f"{color2_light}", f"{black_light}", f"{black_light}", f"{color1_light}"]),
-                  legend=alt.Legend(padding=0, labelFontSize=10)),
+                  legend=alt.Legend(padding=0, labelFontSize=10, tickMinStep=1)),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Sentiment Score")]
