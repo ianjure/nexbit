@@ -881,11 +881,11 @@ with news_section:
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Sentiment Score")]
     ).configure_view(
-        step=5,
-        strokeWidth=1
+        step=13,
+        strokeWidth=0
     ).configure_axis(
         domain=False,
-        tickColor=f"{text_dark}",
+        tickColor='white',
         offset=0,
         tickWidth=0.2
     )
