@@ -509,7 +509,7 @@ with sentiment_section:
         
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None),
+            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
             color=alt.Color('sentiment:N', legend=None)
         ).properties(
             height=300,
@@ -535,35 +535,35 @@ with sentiment_section:
         strong_p = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -15px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Strong Positive']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(strong_p, unsafe_allow_html=True)
         moderate_p = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Moderate Positive']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(moderate_p, unsafe_allow_html=True)
         neutral = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Neutral']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(neutral, unsafe_allow_html=True)
         moderate_n = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Moderate Negative']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(moderate_n, unsafe_allow_html=True)
         strong_n = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_AV[sentiment_counts_AV['sentiment'] == 'Alpha Vantage_Strong Negative']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(strong_n, unsafe_allow_html=True)
@@ -573,7 +573,7 @@ with sentiment_section:
         
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
-            y=alt.Y('sentiment:O', title=None),
+            y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
             color=alt.Color('sentiment:N', legend=None)
         ).properties(
             height=300,
@@ -599,35 +599,35 @@ with sentiment_section:
         strong_p = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -15px; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Positive Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Strong Positive']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(strong_p, unsafe_allow_html=True)
         moderate_p = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Positive Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Moderate Positive']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(moderate_p, unsafe_allow_html=True)
         neutral = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Neutral Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Neutral']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(neutral, unsafe_allow_html=True)
         moderate_n = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Moderate Negative Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Moderate Negative']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(moderate_n, unsafe_allow_html=True)
         strong_n = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Strong Negative Count:</span>
-            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>10</span>
+            <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{sentiment_counts_TB[sentiment_counts_TB['sentiment'] == 'TextBlob_Strong Negative']['count'].iloc[0]}</span>
         </div>
         """
         st.markdown(strong_n, unsafe_allow_html=True)
