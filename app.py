@@ -894,13 +894,6 @@ with news_section:
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Sentiment Score")]
-    ).configure_view(
-        step=13,
-        strokeWidth=0
-    ).configure_axis(
-        domain=False,
-        labelColor=f'{text_dark}',
-        offset=0,
     )
 
     lgd_min_sentiment = -1
@@ -914,6 +907,15 @@ with news_section:
             range=[f"{color1_light}", f"{black_light}", f"{black_light}", f"{color2_light}"]
         ),
         legend=alt.Legend(padding=0, labelFontSize=10)),
+    )
+
+    final_heatmap = final_heatmap.configure_view(
+        step=13,
+        strokeWidth=0
+    ).configure_axis(
+        domain=False,
+        labelColor=f'{text_dark}',
+        offset=0,
     )
 
     final_heatmap = alt.vconcat(heatmap, legend).resolve_legend(
