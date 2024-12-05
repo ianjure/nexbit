@@ -126,7 +126,7 @@ st.markdown(primary, unsafe_allow_html=True)
 # [STREAMLIT] ADJUST SETTINGS BUTTON
 set_btn = """
     <style>
-    [class="st-emotion-cache-1jgd3dq ef3psqc19"] {
+    [data-testid="stBaseButton-secondary"] {
         border-radius: 5rem;
         border: 2px solid #FFFFFF;
         width: 2.5rem;
