@@ -510,6 +510,9 @@ with sentiment_section:
             y='sentiment_set:O',
             color='sentiment_set:N',
             row='sentiment:N'
+        ).properties(
+            height=1000,
+            width='container'
         )
         st.altair_chart(group_bar, use_container_width=True)
     with stats:
