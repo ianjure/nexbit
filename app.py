@@ -507,14 +507,15 @@ with sentiment_section:
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar().encode(
             x='count:Q',
             y="sentiment:O"
-        ).properties(height=50, title='Alpha Vantage')
+        ).properties(height=100, width='container', title='Alpha Vantage')
         st.altair_chart(AV_chart, use_container_width=True)
     with chart_2:
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar().encode(
             x='count:Q',
             y="sentiment:O"
-        ).properties(height=50, title='TextBlob')
+        ).properties(height=100, width='container', title='TextBlob')
         st.altair_chart(TB_chart, use_container_width=True)
+        
     # TOTAL SENTIMENT COUNT
     strong_p = f"""
     <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -5px; margin-bottom: 5px;'>
