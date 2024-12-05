@@ -508,7 +508,7 @@ with sentiment_section:
         st.markdown(av_title, unsafe_allow_html=True)
         
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar(
-            cornerRadiusTopLeft=5,
+            cornerRadiusBottomRight=5,
             cornerRadiusTopRight=5,
             color=alt.Gradient(
                 gradient='linear',
@@ -583,7 +583,7 @@ with sentiment_section:
         st.markdown(tb_title, unsafe_allow_html=True)
         
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar(
-            cornerRadiusTopLeft=5,
+            cornerRadiusBottomRight=5,
             cornerRadiusTopRight=5,
             color=alt.Gradient(
                 gradient='linear',
@@ -596,7 +596,6 @@ with sentiment_section:
         )).encode(
             x=alt.X('count:Q', axis=alt.Axis(grid=True, gridColor=f'{text_dark}')),
             y=alt.Y('sentiment:O', title=None, sort=['Alpha Vantage_Strong Positive', 'Alpha Vantage_Moderate Positive', 'Alpha Vantage_Neutral', 'Alpha Vantage_Moderate Negative', 'Alpha Vantage_Strong Negative']),
-            color=alt.Color('sentiment:N', legend=None)
         ).properties(
             height=300,
             width='container',
