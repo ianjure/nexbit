@@ -511,7 +511,7 @@ with sentiment_section:
         st.markdown(av_title, unsafe_allow_html=True)
 
         AV_chart = alt.Chart(sentiment_counts_AV).mark_bar(
-            opacity=0.7,
+            opacity=0.9,
             cornerRadiusBottomRight=5,
             cornerRadiusTopRight=5,
             color=alt.Gradient(
@@ -604,7 +604,7 @@ with sentiment_section:
         st.markdown(tb_title, unsafe_allow_html=True)
         
         TB_chart = alt.Chart(sentiment_counts_TB).mark_bar(
-            opacity=0.7,
+            opacity=0.9,
             cornerRadiusBottomRight=5,
             cornerRadiusTopRight=5,
             color=alt.Gradient(
