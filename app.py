@@ -398,9 +398,6 @@ with chart:
     else:
         color_line = color2_light
         color_fill = color2_dark
-
-    #color_line = color1_dark
-    #color_fill = "#0a3c21"
     
     price_chart = alt.Chart(df).mark_area(
         line={'color': f'{color_line}'},
@@ -884,10 +881,13 @@ with news_section:
     daily_sentiment = heatmap_df.groupby(heatmap_df['date'].dt.date).agg({'sentiment': 'mean'}).reset_index()
     daily_sentiment['date'] = pd.to_datetime(daily_sentiment['date'])
 
+    min_sentiment = daily_sentiment['sentiment'].min()
+    max_sentiment = daily_sentiment['sentiment'].max()
+
     heatmap = alt.Chart(daily_sentiment).mark_rect().encode(
         alt.X("date(date):O").axis(format="%e", labelAngle=0, title=None),
         alt.Y("month(date):O").axis(title=None),
-        alt.Color("sentiment:Q", title=None, scale=alt.Scale(scheme="greenblue"), legend=alt.Legend(padding=0, labelFontSize=10)),
+        alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, max_sentiment], range=["green", "red"]), legend=alt.Legend(padding=0, labelFontSize=10)),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Sentiment Score")]
