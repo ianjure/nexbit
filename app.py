@@ -202,7 +202,7 @@ info_hover = """
         display: none;
         cursor: default;
         position: absolute;
-        top: 75%;
+        top: 85%;
         left: 50%;
         transform: translateX(-50%);
         background-color: """ + black_light + """;
@@ -232,7 +232,7 @@ info_hover = """
         display: none;
         cursor: default;
         position: absolute;
-        top: 110%;
+        top: 120%;
         left: 50%;
         transform: translateX(-50%);
         background-color: """ + black_light + """;
