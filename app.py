@@ -984,7 +984,7 @@ with news_section:
     st.markdown(about_title, unsafe_allow_html=True)
 
     about = f"""
-        <span style='text-align: justify; font-size: 0.9rem; font-weight: 300; color: {text_dark}; margin-top: 30px;'>
+        <span style='text-align: justify; font-size: 0.9rem; font-weight: 300; color: {text_dark}; margin-top: 5px;'>
             Bitcoin (BTC) is the first cryptocurrency built on blockchain technology, also known as a decentralized digital currency that is based on cryptography. Unlike government-issued or fiat currencies such as US Dollars or Euro which are controlled by central banks, Bitcoin can operate without the need of a central authority like a central bank or a company. The decentralized nature allows it to operate on a peer-to-peer network whereby users are able to send funds to each other without going through intermediaries.
         </span>
         """
