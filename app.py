@@ -450,7 +450,7 @@ with sentiment_section:
             <h4 style='text-align: left; font-size: 1rem; font-weight: 600; color: {text_light};'>
                 DAILY AVERAGE SENTIMENT
             </h4>
-            <span class="info-icon" style="cursor: default;">
+            <span class="info-icon" style="cursor: default; display: flex; align-items: center;">
                 <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: default;">info</i>
                 <div class="info-tooltip">
                     The daily aggregated sentiment scores are sourced from Alpha Vantage.
