@@ -397,12 +397,10 @@ with info:
                 <span class="info-icon2" style="cursor: default; display: flex; align-items: center;">
                     <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_dark}; cursor: default;">info</i>
                     <div class="info-tooltip2">
-                        The daily aggregated sentiment scores are sourced from Alpha Vantage.
+                        Refers to the total market value of a cryptocurrency’s circulating supply. It is similar to the stock market’s measurement of multiplying price per share by shares readily available in the market (not held & locked by insiders, governments)
                         <br>
                         <br>
-                        Positive Sentiment > 0
-                        <br>
-                        Negative Sentiment < 0
+                        Market Cap = Current Price x Circulating Supply
                     </div>
                 </span>
                 <style>
