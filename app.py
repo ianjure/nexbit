@@ -297,6 +297,36 @@ info_hover = """
         display: block;
         cursor: default;
     }
+    .info-icon4 {
+        position: relative;
+        cursor: default;
+    }
+    .info-tooltip4 {
+        display: none;
+        cursor: default;
+        position: absolute;
+        top: 85%;
+        left: 50%;
+        transform: translateX(-100%);
+        background-color: """ + black_light + """;
+        color: """ + text_dark + """;
+        padding-top: 20px;
+        padding-bottom: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.35);
+        z-index: 10;
+        white-space: normal;
+        width: 300px;
+        word-wrap: break-word;
+        text-align: left;
+    }
+    .info-icon4:hover .info-tooltip4 {
+        display: block;
+        cursor: default;
+    }
     </style>
     """
 st.markdown(info_hover, unsafe_allow_html=True)
@@ -664,8 +694,6 @@ with sentiment_section:
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
 
     # SENTIMENT STATISTIC
-    chart_1, chart_2 = st.columns(2)
-    
     if st.session_state.symbol == "BTC":
         sent_count_data = pd.read_excel('btc.xlsx')
     elif st.session_state.symbol == "ETH":
@@ -707,9 +735,9 @@ with sentiment_section:
             <h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>
                 SENTIMENT STATISTIC
             </h4>
-            <span class="info-icon3" style="cursor: default;">
+            <span class="info-icon4" style="cursor: default;">
                 <i class="material-symbols-outlined" style="font-size: 1.1rem; color: {text_light}; cursor: default;">help</i>
-                <div class="info-tooltip3"">
+                <div class="info-tooltip4"">
                     The two graphs show the difference in category counts between sentiment scores sourced from Alpha Vantage and those derived using TextBlob.
                     <br>
                     <br>
@@ -724,6 +752,8 @@ with sentiment_section:
         </div>
         """
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
+
+    chart_1, chart_2 = st.columns(2)
     
     with chart_1:
         av_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>Alpha Vantage Sentiment Score</h4>"
