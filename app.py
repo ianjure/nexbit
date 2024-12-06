@@ -123,6 +123,15 @@ primary = """
         """
 st.markdown(primary, unsafe_allow_html=True)
 
+# [STREAMLIT] FIXED IMAGE HEIGHT
+set_height = """
+    <style>
+    [data-testid="stImageContainer"] {
+        height: 28px;
+    }
+    </style>
+    """
+
 # [STREAMLIT] ADJUST SETTINGS BUTTON
 set_btn = """
     <style>
