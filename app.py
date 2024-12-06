@@ -594,7 +594,7 @@ with sentiment_section:
                 </style>
             </div>
             <span class="info-icon3" style="cursor: default;">
-                <i class="material-symbols-outlined" style="font-size: 1.1rem; color: {text_light}; cursor: default;">help</i>
+                <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: default;">help</i>
                 <div class="info-tooltip3"">
                     This graph shows that <strong>{max_score_day}</strong> has the highest average sentiment score of <strong>{"{:,.2f}".format(float(max_score))}</strong>.
                 </div>
@@ -736,7 +736,7 @@ with sentiment_section:
                 SENTIMENT STATISTIC
             </h4>
             <span class="info-icon4" style="cursor: default;">
-                <i class="material-symbols-outlined" style="font-size: 1.1rem; color: {text_light}; cursor: default;">help</i>
+                <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: default;">help</i>
                 <div class="info-tooltip4"">
                     The two graphs show the difference in category counts between sentiment scores sourced from Alpha Vantage and those derived using TextBlob.
                     <br>
