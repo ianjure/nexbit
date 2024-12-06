@@ -949,6 +949,14 @@ with news_section:
         </div>
         """
     st.markdown(top_news_source, unsafe_allow_html=True)
+
+    with st.expander("More"):
+        st.write('''
+            The chart above shows some numbers I picked for you.
+            I rolled actual dice for these, so they're *guaranteed* to
+            be random.
+        ''')
+        st.image("https://static.streamlit.io/examples/dice.jpg")
     
     # LATEST NEWS
     latest_news_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>LATEST NEWS</h4>"
