@@ -981,7 +981,10 @@ with sentiment_section:
     heatmap_df = st.session_state.news
     heatmap_df = heatmap_df.copy()
 
+    current_year = datetime.now().year
+
     heatmap_df['date'] = pd.to_datetime(heatmap_df['date'])
+    heatmap_df = heatmap_df[heatmap_df['date'].dt.year == current_year]
     daily_sentiment = heatmap_df.groupby(heatmap_df['date'].dt.date).agg({'sentiment': 'mean'}).reset_index()
     daily_sentiment['date'] = pd.to_datetime(daily_sentiment['date'])
 
