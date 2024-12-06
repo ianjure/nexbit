@@ -566,12 +566,7 @@ with sentiment_section:
             <span class="info-icon3" style="cursor: default;">
                 <i class="material-symbols-outlined" style="font-size: 1.1rem; color: {text_light}; cursor: default;">help</i>
                 <div class="info-tooltip3" style="text-align: justify;">
-                    This graph shows that {max_score_day} has the highest average sentiment score of {"{:,.2f}".format(float(max_score))}.
-                    <br>
-                    <br>
-                    Positive Sentiment > 0
-                    <br>
-                    Negative Sentiment < 0
+                    This graph shows that <strong>{max_score_day}</strong> has the highest average sentiment score of <strong>{"{:,.2f}".format(float(max_score))}</strong>.
                 </div>
             </span>
             <style>
