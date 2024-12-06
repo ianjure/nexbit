@@ -415,9 +415,10 @@ with info:
     if st.session_state.crypto == "Bitcoin":
         st.image("assets/btc-logo.svg")
     elif st.session_state.crypto == "Ethereum":
-        st.image("assets/eth-logo.png")
+        st.image("assets/eth-logo.svg")
     else:
-        st.image("assets/sol-logo.png")
+        st.image("assets/sol-logo.svg")
+        
     # CRYPTO PRICE
     price_df = st.session_state.price_data
     pct_change = ((st.session_state.price - price_df["close_price"].iloc[-2]) / price_df["close_price"].iloc[-2]) * 100
@@ -444,6 +445,7 @@ with info:
         </style>
         """
     st.markdown(price_change, unsafe_allow_html=True)
+    
     # MODEL PREDICTION
     date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
@@ -459,6 +461,7 @@ with info:
         </div>
         """
     st.markdown(increase, unsafe_allow_html=True)
+    
     # CRYPTO INFO
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
@@ -512,6 +515,7 @@ with info:
         </div>
         """
     st.markdown(website, unsafe_allow_html=True)
+    
 with chart:
     # PRICE CHART
     df = st.session_state.price_data
