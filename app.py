@@ -263,7 +263,7 @@ info_hover = """
         cursor: default;
         position: absolute;
         top: 85%;
-        right: 50%;
+        right: 0%;
         transform: translateX(-50%);
         background-color: """ + black_light + """;
         color: """ + text_dark + """;
