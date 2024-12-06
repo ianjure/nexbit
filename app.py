@@ -723,7 +723,6 @@ with sentiment_section:
             </style>
         </div>
         """
-    sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
     st.markdown(sentiment_stat_title, unsafe_allow_html=True)
     
     with chart_1:
