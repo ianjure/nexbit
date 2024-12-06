@@ -889,17 +889,6 @@ with sentiment_section:
     st.altair_chart(heatmap, use_container_width=True)
         
 with news_section:
-    # ABOUT THE CRYPTO
-    about_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>ABOUT {st.session_state.crypto.upper()}</h4>"
-    st.markdown(about_title, unsafe_allow_html=True)
-
-    about = f"""
-        <span style='text-align: left; font-size: 1rem; font-weight: 300; color: {text_dark};'>
-            Bitcoin (BTC) is the first cryptocurrency built on blockchain technology, also known as a decentralized digital currency that is based on cryptography. Unlike government-issued or fiat currencies such as US Dollars or Euro which are controlled by central banks, Bitcoin can operate without the need of a central authority like a central bank or a company. The decentralized nature allows it to operate on a peer-to-peer network whereby users are able to send funds to each other without going through intermediaries.
-        </span>
-        """
-    st.markdown(about, unsafe_allow_html=True)
-    
     # NEWS STATISTIC
     news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
@@ -1000,6 +989,17 @@ with news_section:
     </a>
     """
     st.markdown(news_5, unsafe_allow_html=True)
+
+    # ABOUT THE CRYPTO
+    about_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>ABOUT {st.session_state.crypto.upper()}</h4>"
+    st.markdown(about_title, unsafe_allow_html=True)
+
+    about = f"""
+        <span style='text-align: justify; font-size: 0.8rem; font-weight: 300; color: {text_dark};'>
+            Bitcoin (BTC) is the first cryptocurrency built on blockchain technology, also known as a decentralized digital currency that is based on cryptography. Unlike government-issued or fiat currencies such as US Dollars or Euro which are controlled by central banks, Bitcoin can operate without the need of a central authority like a central bank or a company. The decentralized nature allows it to operate on a peer-to-peer network whereby users are able to send funds to each other without going through intermediaries.
+        </span>
+        """
+    st.markdown(about, unsafe_allow_html=True)
 
 # [STREAMLIT] CRYPTO OPTIONS
 float_init()
