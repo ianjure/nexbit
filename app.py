@@ -412,7 +412,7 @@ info, chart = st.columns([1,2])
 with info:
     # CRYPTO LOGO AND NAME
     if st.session_state.crypto == "Bitcoin":
-        st.image("assets/btc-logo.png")
+        st.image("assets/btc-logo.svg")
     elif st.session_state.crypto == "Ethereum":
         st.image("assets/eth-logo.png")
     else:
