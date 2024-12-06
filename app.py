@@ -96,9 +96,6 @@ exp = """
     [class="st-emotion-cache-ysk9xe e1nzilvr5"] {
         color: """ + text_light + """;
     }
-    details {
-        border: solid 1px """ + text_light + """;
-    }
     [class="eyeqlp53 st-emotion-cache-1b2ybts ex0cdmw0"]:hover {
         color: """ + text_light + """;
     }
