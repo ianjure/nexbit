@@ -97,7 +97,7 @@ exp = """
         color: """ + text_light + """;
     }
     details {
-        border: solid 2px """ + text_dark + """;
+        border: solid 1px """ + text_light + """;
     }
     [class="eyeqlp53 st-emotion-cache-1b2ybts ex0cdmw0"]:hover {
         color: """ + text_light + """;
