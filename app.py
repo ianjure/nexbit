@@ -457,7 +457,7 @@ with info:
     st.markdown(date_acc, unsafe_allow_html=True)
     increase = f"""
         <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color1_light}; border-radius: 0.8rem; background-color: {color1_dark}1A;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The price will increase tomorrow.</span>
+            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase tomorrow.</span>
         </div>
         """
     st.markdown(increase, unsafe_allow_html=True)
