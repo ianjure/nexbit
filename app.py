@@ -530,6 +530,18 @@ sentiment_section, news_section = st.columns([3,2])
 
 with sentiment_section:
     # DAILY AVERAGE SENTIMENT
+    news_df = st.session_state.news
+    news_df = news_df.copy()
+    
+    news_df['date'] = pd.to_datetime(news_df['date'])
+    news_df['day_of_week'] = news_df['date'].dt.dayofweek
+    
+    avg_sentiment_by_day = news_df.groupby('day_of_week')['sentiment'].mean().reset_index()
+    avg_sentiment_by_day['day_name'] = avg_sentiment_by_day['day_of_week'].map({
+        0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'})
+    max_score_day = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'day_name']
+    max_score = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'sentiment']
+    
     ave_sentiment_title = f"""
         <div style='display: flex; justify-content: space-between; align-items: center;'>
             <div style='display: flex; align-items: center; gap: 6px; margin-top: -10px;'>
@@ -554,7 +566,7 @@ with sentiment_section:
             <span class="info-icon3" style="cursor: default;">
                 <i class="material-symbols-outlined" style="font-size: 1.1rem; color: {text_light}; cursor: default;">help</i>
                 <div class="info-tooltip3">
-                    The daily aggregated sentiment scores are sourced from Alpha Vantage.
+                    This graph shows that """ + max_score_day + """ has the highest average sentiment score of """ + max_score + """.
                     <br>
                     <br>
                     Positive Sentiment > 0
@@ -568,17 +580,6 @@ with sentiment_section:
         </div>
         """
     st.markdown(ave_sentiment_title, unsafe_allow_html=True)
-    
-    news_df = st.session_state.news
-    news_df = news_df.copy()
-    
-    news_df['date'] = pd.to_datetime(news_df['date'])
-    news_df['day_of_week'] = news_df['date'].dt.dayofweek
-    
-    avg_sentiment_by_day = news_df.groupby('day_of_week')['sentiment'].mean().reset_index()
-    avg_sentiment_by_day['day_name'] = avg_sentiment_by_day['day_of_week'].map({
-        0: 'Monday', 1: 'Tuesday', 2: 'Wednesday', 3: 'Thursday', 4: 'Friday', 5: 'Saturday', 6: 'Sunday'})
-    max_score_day = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'day_name']
     
     ave_sent_chart = alt.Chart(avg_sentiment_by_day).mark_bar(
         opacity=0.7,
