@@ -1015,7 +1015,7 @@ with sentiment_section:
         
 with news_section:
     # NEWS STATISTIC
-    news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>NEWS STATISTIC</h4>"
+    news_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -15px; color: {text_light};'>NEWS STATISTIC</h4>"
     st.markdown(news_stat_title, unsafe_allow_html=True)
     
     news_df = st.session_state.news
