@@ -263,8 +263,8 @@ info_hover = """
         cursor: default;
         position: absolute;
         top: 85%;
-        left: -50%;
-        transform: translateX(-50%);
+        left: 50%;
+        transform: translateX(-100%);
         background-color: """ + black_light + """;
         color: """ + text_dark + """;
         padding-top: 20px;
@@ -989,7 +989,7 @@ with news_section:
     
     top_news_source_name = news_df['source'].value_counts().idxmax()
     top_news_source = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Top News Source</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{top_news_source_name}</span>
         </div>
