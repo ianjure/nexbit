@@ -109,7 +109,7 @@ top = """
     .block-container {
         padding-top: 3rem;
         padding-bottom: 3rem;
-        margin-top: -5rem;
+        margin-top: -7rem;
     }
     </style>
     """
