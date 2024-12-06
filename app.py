@@ -397,7 +397,7 @@ with info:
                 <span class="info-icon2" style="cursor: default; display: flex; align-items: center;">
                     <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_dark}; cursor: default;">info</i>
                     <div class="info-tooltip2">
-                        Refers to the total market value of a cryptocurrency’s circulating supply. It is similar to the stock market’s measurement of multiplying price per share by shares readily available in the market (not held & locked by insiders, governments)
+                        Refers to the total market value of a cryptocurrency’s circulating supply.
                         <br>
                         <br>
                         Market Cap = Current Price x Circulating Supply
@@ -413,7 +413,21 @@ with info:
     st.markdown(market_cap, unsafe_allow_html=True)
     total_supply = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Total Supply</span>
+            <div style='display: flex; align-items: center; gap: 6px;'>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Total Supply</span>
+                <span class="info-icon2" style="cursor: default; display: flex; align-items: center;">
+                    <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_dark}; cursor: default;">info</i>
+                    <div class="info-tooltip2">
+                        The amount of coins that have already been created, minus any coins that have been burned (removed from circulation).
+                        <br>
+                        <br>
+                        Total Supply = Onchain supply - Burned Tokens
+                    </div>
+                </span>
+                <style>
+                    @import url('https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined');
+                </style>
+            </div>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.total_supply))}</span>
         </div>
         """
