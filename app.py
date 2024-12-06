@@ -361,10 +361,10 @@ with info:
     st.markdown(increase, unsafe_allow_html=True)
     # CRYPTO INFO
     market_cap = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <div style='display: flex; align-items: center; gap: 6px;'>
                 <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Market Cap</span>
-                <span class="info-icon" style="cursor: default;">
+                <span class="info-icon" style="cursor: default; margin-bottom: -10px;">
                     <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_dark}; cursor: default;">info</i>
                     <div class="info-tooltip">
                         The daily aggregated sentiment scores are sourced from Alpha Vantage.
