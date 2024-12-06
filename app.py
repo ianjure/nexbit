@@ -815,7 +815,7 @@ with sentiment_section:
         alt.Y("month(date):O").axis(title=None),
         alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, lower_mid_sentiment, upper_mid_sentiment, max_sentiment],
                                                              range=[f"{color2_light}", f"{black_light}", f"{black_light}", f"{color1_light}"]),
-                  legend=alt.Legend(padding=0, labelFontSize=10, tickMinStep=1, labelOffset=5, labelColor=f"{text_dark}")),
+                  legend=alt.Legend(padding=0, cornerRadius=5, labelFontSize=10, tickMinStep=1, labelOffset=5, labelColor=f"{text_dark}")),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Avg Score")]
