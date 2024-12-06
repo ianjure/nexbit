@@ -90,19 +90,6 @@ hide_zoom = """
     """
 st.markdown(hide_zoom, unsafe_allow_html=True)
 
-# [STREAMLIT] EXPANDER STYLE
-exp = """
-    <style>
-    [class="st-emotion-cache-ysk9xe e1nzilvr5"] {
-        color: """ + text_light + """;
-    }
-    [class="eyeqlp53 st-emotion-cache-1b2ybts ex0cdmw0"]:hover {
-        color: """ + text_light + """;
-    }
-    </style>
-    """
-st.markdown(exp, unsafe_allow_html=True)
-
 # [STREAMLIT] ADJUST TOP PADDING
 top = """
     <style>
@@ -1054,14 +1041,6 @@ with news_section:
         </div>
         """
     st.markdown(top_news_source, unsafe_allow_html=True)
-
-    with st.expander("More"):
-        st.write('''
-            The chart above shows some numbers I picked for you.
-            I rolled actual dice for these, so they're *guaranteed* to
-            be random.
-        ''')
-        st.image("https://static.streamlit.io/examples/dice.jpg")
     
     # LATEST NEWS
     latest_news_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>LATEST NEWS</h4>"
