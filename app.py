@@ -107,7 +107,7 @@ st.markdown(exp, unsafe_allow_html=True)
 top = """
     <style>
     .block-container {
-        padding-top: 1rem;
+        padding-top: 3rem;
         padding-bottom: 3rem;
         margin-top: -5rem;
     }
