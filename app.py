@@ -90,6 +90,15 @@ hide_zoom = """
     """
 st.markdown(hide_zoom, unsafe_allow_html=True)
 
+# [STREAMLIT] EXPANDER TEXT
+exp_txt = """
+    <style>
+    [class="st-emotion-cache-ysk9xe e1nzilvr5"] {
+        color: """ + text_dark + """;
+    }
+    </style>
+"""
+
 # [STREAMLIT] ADJUST TOP PADDING
 top = """
     <style>
