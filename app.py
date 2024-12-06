@@ -97,7 +97,8 @@ exp_txt = """
         color: """ + text_dark + """;
     }
     </style>
-"""
+    """
+st.markdown(exp_txt, unsafe_allow_html=True)
 
 # [STREAMLIT] ADJUST TOP PADDING
 top = """
