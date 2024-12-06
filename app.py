@@ -488,12 +488,28 @@ sentiment_section, news_section = st.columns([3,2])
 with sentiment_section:
     # DAILY AVERAGE SENTIMENT
     ave_sentiment_title = f"""
-        <div style='display: flex; align-items: center; gap: 6px; margin-top: -10px;'>
-            <h4 style='text-align: left; font-size: 1rem; font-weight: 600; color: {text_light};'>
-                DAILY AVERAGE SENTIMENT
-            </h4>
+        <div style='display: flex; justify-content: space-between; align-items: center;'>
+            <div style='display: flex; align-items: center; gap: 6px; margin-top: -10px;'>
+                <h4 style='text-align: left; font-size: 1rem; font-weight: 600; color: {text_light};'>
+                    DAILY AVERAGE SENTIMENT
+                </h4>
+                <span class="info-icon" style="cursor: default;">
+                    <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: default;">info</i>
+                    <div class="info-tooltip">
+                        The daily aggregated sentiment scores are sourced from Alpha Vantage.
+                        <br>
+                        <br>
+                        Positive Sentiment > 0
+                        <br>
+                        Negative Sentiment < 0
+                    </div>
+                </span>
+                <style>
+                    @import url('https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined');
+                </style>
+            </div>
             <span class="info-icon" style="cursor: default;">
-                <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: default;">info</i>
+                <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: default;">more</i>
                 <div class="info-tooltip">
                     The daily aggregated sentiment scores are sourced from Alpha Vantage.
                     <br>
@@ -943,7 +959,7 @@ with news_section:
     
     top_news_source_name = news_df['source'].value_counts().idxmax()
     top_news_source = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;'>
             <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Top News Source</span>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{top_news_source_name}</span>
         </div>
