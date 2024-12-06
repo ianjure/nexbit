@@ -220,6 +220,28 @@ info_hover = """
         word-wrap: break-word;
         text-align: left;
     }
+    .info-tooltip2 {
+        display: none;
+        cursor: default;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: """ + black_light + """;
+        color: """ + text_dark + """;
+        padding-top: 20px;
+        padding-bottom: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        white-space: normal;
+        width: 250px;
+        word-wrap: break-word;
+        text-align: left;
+    }
     .info-icon:hover .info-tooltip {
         display: block;
         cursor: default;
@@ -366,7 +388,7 @@ with info:
                 <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Market Cap</span>
                 <span class="info-icon" style="cursor: default; display: flex; align-items: center;">
                     <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_dark}; cursor: default;">info</i>
-                    <div class="info-tooltip">
+                    <div class="info-tooltip2">
                         The daily aggregated sentiment scores are sourced from Alpha Vantage.
                         <br>
                         <br>
@@ -450,7 +472,7 @@ with sentiment_section:
             <h4 style='text-align: left; font-size: 1rem; font-weight: 600; color: {text_light};'>
                 DAILY AVERAGE SENTIMENT
             </h4>
-            <span class="info-icon" style="cursor: default; display: flex; align-items: center;">
+            <span class="info-icon" style="cursor: default;">
                 <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: default;">info</i>
                 <div class="info-tooltip">
                     The daily aggregated sentiment scores are sourced from Alpha Vantage.
