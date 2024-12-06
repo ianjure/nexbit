@@ -131,6 +131,7 @@ set_height = """
     }
     </style>
     """
+st.markdown(set_height, unsafe_allow_html=True)
 
 # [STREAMLIT] ADJUST SETTINGS BUTTON
 set_btn = """
