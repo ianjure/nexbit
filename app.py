@@ -107,7 +107,7 @@ st.markdown(exp, unsafe_allow_html=True)
 top = """
     <style>
     .block-container {
-        padding-top: 3rem;
+        padding-top: 0rem;
         padding-bottom: 3rem;
         margin-top: -5rem;
     }
@@ -573,8 +573,8 @@ with sentiment_section:
     max_score = avg_sentiment_by_day.loc[avg_sentiment_by_day['sentiment'].idxmax(), 'sentiment']
     
     ave_sentiment_title = f"""
-        <div style='display: flex; justify-content: space-between; align-items: center;'>
-            <div style='display: flex; align-items: center; gap: 6px; margin-top: -10px;'>
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-top: -15px;'>
+            <div style='display: flex; align-items: center; gap: 6px;'>
                 <h4 style='text-align: left; font-size: 1rem; font-weight: 600; color: {text_light};'>
                     DAILY AVERAGE SENTIMENT
                 </h4>
