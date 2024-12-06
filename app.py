@@ -254,6 +254,36 @@ info_hover = """
         display: block;
         cursor: default;
     }
+    .info-icon3 {
+        position: relative;
+        cursor: default;
+    }
+    .info-tooltip3 {
+        display: none;
+        cursor: default;
+        position: absolute;
+        top: 85%;
+        left: 0%;
+        transform: translateX(-50%);
+        background-color: """ + black_light + """;
+        color: """ + text_dark + """;
+        padding-top: 20px;
+        padding-bottom: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.35);
+        z-index: 10;
+        white-space: normal;
+        width: 250px;
+        word-wrap: break-word;
+        text-align: left;
+    }
+    .info-icon3:hover .info-tooltip3 {
+        display: block;
+        cursor: default;
+    }
     </style>
     """
 st.markdown(info_hover, unsafe_allow_html=True)
@@ -508,9 +538,9 @@ with sentiment_section:
                     @import url('https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined');
                 </style>
             </div>
-            <span class="info-icon" style="cursor: default;">
-                <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: default;">more</i>
-                <div class="info-tooltip">
+            <span class="info-icon3" style="cursor: default;">
+                <i class="material-symbols-outlined" style="font-size: 1.2rem; color: {text_light}; cursor: default;">question_mark</i>
+                <div class="info-tooltip3">
                     The daily aggregated sentiment scores are sourced from Alpha Vantage.
                     <br>
                     <br>
