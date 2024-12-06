@@ -232,7 +232,7 @@ info_hover = """
         display: none;
         cursor: default;
         position: absolute;
-        top: 100%;
+        top: 105%;
         left: 50%;
         transform: translateX(-50%);
         background-color: """ + black_light + """;
