@@ -263,7 +263,7 @@ info_hover = """
         cursor: default;
         position: absolute;
         top: 85%;
-        left: 0%;
+        right: 100%;
         transform: translateX(-50%);
         background-color: """ + black_light + """;
         color: """ + text_dark + """;
@@ -539,7 +539,7 @@ with sentiment_section:
                 </style>
             </div>
             <span class="info-icon3" style="cursor: default;">
-                <i class="material-symbols-outlined" style="font-size: 1.2rem; color: {text_light}; cursor: default;">question_mark</i>
+                <i class="material-symbols-outlined" style="font-size: 1.1rem; color: {text_light}; cursor: default;">help</i>
                 <div class="info-tooltip3">
                     The daily aggregated sentiment scores are sourced from Alpha Vantage.
                     <br>
