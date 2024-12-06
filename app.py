@@ -565,7 +565,7 @@ with sentiment_section:
             </div>
             <span class="info-icon3" style="cursor: default;">
                 <i class="material-symbols-outlined" style="font-size: 1.1rem; color: {text_light}; cursor: default;">help</i>
-                <div class="info-tooltip3" style="text-align: justify;">
+                <div class="info-tooltip3"">
                     This graph shows that <strong>{max_score_day}</strong> has the highest average sentiment score of <strong>{"{:,.2f}".format(float(max_score))}</strong>.
                 </div>
             </span>
@@ -664,9 +664,6 @@ with sentiment_section:
     st.altair_chart(final_ave_sent_chart, use_container_width=True)
 
     # SENTIMENT STATISTIC
-    sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
-    st.markdown(sentiment_stat_title, unsafe_allow_html=True)
-
     chart_1, chart_2 = st.columns(2)
     
     if st.session_state.symbol == "BTC":
@@ -704,6 +701,30 @@ with sentiment_section:
     sentiment_counts_TB.columns = ['sentiment', 'count']
     max_count_AV = sentiment_counts_AV.loc[sentiment_counts_AV['count'].idxmax(), 'sentiment']
     max_count_TB = sentiment_counts_TB.loc[sentiment_counts_TB['count'].idxmax(), 'sentiment']
+
+    sentiment_stat_title = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center;'>
+            <h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>
+                SENTIMENT STATISTIC
+            </h4>
+            <span class="info-icon3" style="cursor: default;">
+                <i class="material-symbols-outlined" style="font-size: 1.1rem; color: {text_light}; cursor: default;">help</i>
+                <div class="info-tooltip3"">
+                    The two graphs show the difference in category counts between sentiment scores sourced from Alpha Vantage and those derived using TextBlob.
+                    <br>
+                    <br>
+                    <strong>{max_count_AV}</strong> ⟶ Alpha Vantage
+                    <br>
+                    <strong>{max_count_TB}</strong> ⟶ TextBlob
+                </div>
+            </span>
+            <style>
+                @import url('https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined');
+            </style>
+        </div>
+        """
+    sentiment_stat_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>SENTIMENT STATISTIC</h4>"
+    st.markdown(sentiment_stat_title, unsafe_allow_html=True)
     
     with chart_1:
         av_title = f"<h4 style='text-align: left; font-size: 0.9rem; font-weight: 500; margin-top: -15px; color: {text_dark};'>Alpha Vantage Sentiment Score</h4>"
