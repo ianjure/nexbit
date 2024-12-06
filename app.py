@@ -98,7 +98,7 @@ exp = """
     }
     details {
         border-width: 2px;
-        border-color: aqua;
+        border-color: """ + text_dark + """;
     }
     [class="eyeqlp53 st-emotion-cache-1b2ybts ex0cdmw0"]:hover {
         color: """ + text_light + """;
