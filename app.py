@@ -404,7 +404,7 @@ if "total_supply" not in st.session_state:
 if "website" not in st.session_state:
     st.session_state.website = crypto_info["website"].iloc[0]
 if "accuracy" not in st.session_state:
-    st.session_state.accuracy = "54.07%"
+    st.session_state.accuracy = "52.40%"
 if "news" not in st.session_state:
     st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
 
@@ -1151,6 +1151,7 @@ def open_options():
             st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
             st.session_state.website = crypto_info["website"].iloc[0]
             st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
+            st.session_state.accuracy = "52.40%"
         elif selection == "Ethereum":
             st.session_state.price = crypto_price[crypto_price["crypto_id"]==2]["close_price"].iloc[-1]
             st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==2]
@@ -1159,6 +1160,7 @@ def open_options():
             st.session_state.total_supply = crypto_info["total_supply"].iloc[1]
             st.session_state.website = crypto_info["website"].iloc[1]
             st.session_state.news = crypto_news[crypto_news["crypto_id"]==2]
+            st.session_state.accuracy = "53.11%"
         else:
             st.session_state.price = crypto_price[crypto_price["crypto_id"]==3]["close_price"].iloc[-1]
             st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==3]
@@ -1167,6 +1169,7 @@ def open_options():
             st.session_state.total_supply = crypto_info["total_supply"].iloc[2]
             st.session_state.website = crypto_info["website"].iloc[2]
             st.session_state.news = crypto_news[crypto_news["crypto_id"]==3]
+            st.session_state.accuracy = "54.39%"
         st.rerun()
 
 button_container = st.container()
