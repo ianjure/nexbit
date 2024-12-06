@@ -363,7 +363,7 @@ with info:
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <div style='display: flex; align-items: center; gap: 6px;'>
-                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark}; display: flex; align-items: center;'>Market Cap</span>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Market Cap</span>
                 <span class="info-icon" style="cursor: default; display: flex; align-items: center;">
                     <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_dark}; cursor: default;">info</i>
                     <div class="info-tooltip">
