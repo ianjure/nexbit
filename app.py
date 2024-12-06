@@ -362,7 +362,23 @@ with info:
     # CRYPTO INFO
     market_cap = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Market Cap</span>
+            <div style='display: flex; align-items: center; gap: 6px; margin-top: -10px;'>
+                <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Market Cap</span>
+                <span class="info-icon" style="cursor: default;">
+                    <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_light}; cursor: default;">info</i>
+                    <div class="info-tooltip">
+                        The daily aggregated sentiment scores are sourced from Alpha Vantage.
+                        <br>
+                        <br>
+                        Positive Sentiment > 0
+                        <br>
+                        Negative Sentiment < 0
+                    </div>
+                </span>
+                <style>
+                    @import url('https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined');
+                </style>
+            </div>
             <span style='text-align: right; font-size: 1rem; font-weight: 500;'>{"${:,.2f}".format(float(st.session_state.market_cap))}</span>
         </div>
         """
@@ -815,7 +831,7 @@ with sentiment_section:
         alt.Y("month(date):O").axis(title=None),
         alt.Color("sentiment:Q", title=None, scale=alt.Scale(domain=[min_sentiment, lower_mid_sentiment, upper_mid_sentiment, max_sentiment],
                                                              range=[f"{color2_light}", f"{black_light}", f"{black_light}", f"{color1_light}"]),
-                  legend=alt.Legend(padding=0, cornerRadius=5, labelFontSize=10, tickMinStep=1, labelOffset=5, labelColor=f"{text_dark}")),
+                  legend=alt.Legend(padding=0, labelFontSize=10, tickMinStep=1, labelOffset=5, labelColor=f"{text_dark}")),
         tooltip=[
             alt.Tooltip("date(date):T", title="Date"),
             alt.Tooltip("sentiment:Q", title="Avg Score")]
