@@ -220,6 +220,14 @@ info_hover = """
         word-wrap: break-word;
         text-align: left;
     }
+    .info-icon:hover .info-tooltip {
+        display: block;
+        cursor: default;
+    }
+    .info-icon2 {
+        position: relative;
+        cursor: default;
+    }
     .info-tooltip2 {
         display: none;
         cursor: default;
@@ -242,7 +250,7 @@ info_hover = """
         word-wrap: break-word;
         text-align: left;
     }
-    .info-icon:hover .info-tooltip {
+    .info-icon2:hover .info-tooltip2 {
         display: block;
         cursor: default;
     }
@@ -386,7 +394,7 @@ with info:
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <div style='display: flex; align-items: center; gap: 6px;'>
                 <span style='text-align: left; font-size: 1rem; font-weight: 500; color: {text_dark};'>Market Cap</span>
-                <span class="info-icon" style="cursor: default; display: flex; align-items: center;">
+                <span class="info-icon2" style="cursor: default; display: flex; align-items: center;">
                     <i class="material-symbols-outlined" style="font-size: 1rem; color: {text_dark}; cursor: default;">info</i>
                     <div class="info-tooltip2">
                         The daily aggregated sentiment scores are sourced from Alpha Vantage.
