@@ -978,24 +978,13 @@ with news_section:
     </a>
     """
     st.markdown(news_4, unsafe_allow_html=True)
-    news_5 = f"""
-    <a class='news-card' target='_blank' href='{news_df["url"].iloc[-5]}'>
-        <span class='title'>{news_df["title"].iloc[-5].title()}</span>
-        <span class='summary'>{news_df["summary"].iloc[-5]}</span>
-        <div class='meta-info'>
-            <span>Source: {news_df["source"].iloc[-5]}</span>
-            <span style='color: {categorize_score(news_df["sentiment"].iloc[-5], color=True)};'>{categorize_score(news_df["sentiment"].iloc[-5])}</span>
-        </div>
-    </a>
-    """
-    st.markdown(news_5, unsafe_allow_html=True)
 
     # ABOUT THE CRYPTO
-    about_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: -10px; color: {text_light};'>ABOUT {st.session_state.crypto.upper()}</h4>"
+    about_title = f"<h4 style='text-align: left; font-size: 1rem; font-weight: 600; margin-top: 30px; color: {text_light};'>ABOUT {st.session_state.crypto.upper()}</h4>"
     st.markdown(about_title, unsafe_allow_html=True)
 
     about = f"""
-        <span style='text-align: justify; font-size: 0.8rem; font-weight: 300; color: {text_dark};'>
+        <span style='text-align: justify; font-size: 0.9rem; font-weight: 300; color: {text_dark}; margin-top: 30px;'>
             Bitcoin (BTC) is the first cryptocurrency built on blockchain technology, also known as a decentralized digital currency that is based on cryptography. Unlike government-issued or fiat currencies such as US Dollars or Euro which are controlled by central banks, Bitcoin can operate without the need of a central authority like a central bank or a company. The decentralized nature allows it to operate on a peer-to-peer network whereby users are able to send funds to each other without going through intermediaries.
         </span>
         """
