@@ -365,6 +365,10 @@ crypto_info = fetch_data('Cryptocurrency', SUPABASE_URL, SUPABASE_KEY)
 crypto_price = fetch_data('Price', SUPABASE_URL, SUPABASE_KEY)
 crypto_news = fetch_data('News', SUPABASE_URL, SUPABASE_KEY)
 
+ml_data_btc = final_transform(crypto_news, crypto_price, 1)
+ml_data_eth = final_transform(crypto_news, crypto_price, 2)
+ml_data_sol = final_transform(crypto_news, crypto_price, 3)
+
 # [STREAMLIT] CATEGORIZE SCORE FOR NEWS CARD
 def categorize_score(score, color=False):
     if color:
@@ -409,6 +413,8 @@ if "accuracy" not in st.session_state:
     st.session_state.accuracy = "52.40%"
 if "news" not in st.session_state:
     st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
+if "prediction" not in st.session_state:
+    st.session_state.predictions = [[pred_btc, acc_btc, conf_btc]]
 
 info, chart = st.columns([1,2])
 
