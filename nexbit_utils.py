@@ -92,7 +92,7 @@ def predict_btc(data):
                                                  'AV_sentiment_lag_1', 'AV_sentiment_lag_2', 'AV_sentiment_lag_3'], axis=1).columns.to_list()
     data = add_features(data)
     preds = backtest_with_oversampling(data, knn_model, feature_selection(data, TB_new_predictors, 'target'))
-    accuracy = accuracy_score(preds["target"], preds["predictions"])
+    accuracy = accuracy_score(preds["target"], preds["prediction"])
     if preds['prediction'].iloc[-1] > 0:
         prediction = 1
         confidence = round(preds['confidence'].iloc[-1] * 100)
@@ -108,7 +108,7 @@ def predict_eth(data):
                                        'TB_sentiment_category_Strong Positive', 'TB_sentiment_category_Neutral',
                                        'TB_sentiment_category_Moderate Negative', 'TB_sentiment_category_Moderate Positive'], axis=1).columns.to_list()
     preds = backtest(data, xgb_model, feature_selection(data, AV_predictors, 'target'))
-    accuracy = accuracy_score(preds["target"], preds["predictions"])
+    accuracy = accuracy_score(preds["target"], preds["prediction"])
     if preds['prediction'].iloc[-1] > 0:
         prediction = 1
         confidence = round(preds['confidence'].iloc[-1] * 100)
@@ -126,7 +126,7 @@ def predict_sol(data):
                                                  'TB_sentiment_lag_1', 'TB_sentiment_lag_2', 'TB_sentiment_lag_3'], axis=1).columns.to_list()
     data = add_features(data)
     preds = backtest_with_oversampling(data, knn_model, feature_selection(data, AV_new_predictors, 'target'))
-    accuracy = accuracy_score(preds["target"], preds["predictions"])
+    accuracy = accuracy_score(preds["target"], preds["prediction"])
     if preds['prediction'].iloc[-1] > 0:
         prediction = 1
         confidence = round(preds['confidence'].iloc[-1] * 100)
