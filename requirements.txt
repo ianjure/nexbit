@@ -4,3 +4,4 @@ altair
 supabase
 openpyxl
 plotly
+scikit-learn
