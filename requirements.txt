@@ -6,3 +6,4 @@ openpyxl
 plotly
 scikit-learn
 xgboost
+imbalanced-learn
