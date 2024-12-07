@@ -104,9 +104,9 @@ def predict_btc(data):
 # Generating Predictions for Ethereum
 def predict_eth(data):
     xgb_model = XGBClassifier(random_state=42, learning_rate=.1, n_estimators=200)
-    AV_predictors = final_df_btc.drop(['target', 'TB_average_sentiment', 'TB_sentiment_category_Strong Negative',
-                                       'TB_sentiment_category_Strong Positive', 'TB_sentiment_category_Neutral',
-                                       'TB_sentiment_category_Moderate Negative', 'TB_sentiment_category_Moderate Positive'], axis=1).columns.to_list()
+    AV_predictors = data.drop(['target', 'TB_average_sentiment', 'TB_sentiment_category_Strong Negative',
+                               'TB_sentiment_category_Strong Positive', 'TB_sentiment_category_Neutral',
+                               'TB_sentiment_category_Moderate Negative', 'TB_sentiment_category_Moderate Positive'], axis=1).columns.to_list()
     preds = backtest(data, xgb_model, feature_selection(data, AV_predictors, 'target'))
     accuracy = accuracy_score(preds["target"], preds["prediction"])
     if preds['prediction'].iloc[-1] > 0:
