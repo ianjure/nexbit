@@ -411,8 +411,8 @@ if "website" not in st.session_state:
     st.session_state.website = crypto_info["website"].iloc[0]
 if "news" not in st.session_state:
     st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
-if "prediction" not in st.session_state:
-    st.session_state.prediction = [[*predict_btc(ml_data_btc)], [*predict_eth(ml_data_eth)], [*predict_sol(ml_data_sol)]]
+if "predictions" not in st.session_state:
+    st.session_state.predictions = [[*predict_btc(ml_data_btc)], [*predict_eth(ml_data_eth)], [*predict_sol(ml_data_sol)]]
 
 info, chart = st.columns([1,2])
 
@@ -457,24 +457,24 @@ with info:
         date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
-            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: {st.session_state.predictions[0][1]}</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.accuracy[0][2]}</span>
+            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: 52.40%</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.predictions[0][2]}</span>
         </div>
         """
     elif st.session_state.symbol == "ETH":
         date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
-            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: {st.session_state.predictions[1][1]}</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.accuracy[1][2]}</span>
+            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: 53.11%</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.predictions[1][2]}</span>
         </div>
         """
     else:
         date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
-            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: {st.session_state.predictions[2][1]}</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.accuracy[2][2]}</span>
+            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: 54.39%</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.predictions[2][2]}</span>
         </div>
         """
     st.markdown(date_acc, unsafe_allow_html=True)
