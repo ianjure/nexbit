@@ -458,7 +458,7 @@ with info:
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
             <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: 52.40%</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.predictions[0][2]}</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.predictions[0][1]}</span>
         </div>
         """
     elif st.session_state.symbol == "ETH":
@@ -466,7 +466,7 @@ with info:
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
             <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: 53.11%</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.predictions[1][2]}</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.predictions[1][1]}</span>
         </div>
         """
     else:
@@ -474,7 +474,7 @@ with info:
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
             <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: 54.39%</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.predictions[2][2]}</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.predictions[2][1]}</span>
         </div>
         """
     st.markdown(date_acc, unsafe_allow_html=True)
