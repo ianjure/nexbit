@@ -8,6 +8,7 @@ from datetime import datetime
 from PIL import Image
 from streamlit_float import *
 from supabase import create_client, Client
+from nexbit_utils import predict_btc, predict_eth, predict_sol
 
 # [STREAMLIT] PAGE CONFIGURATION
 icon = Image.open("assets/nexbit-icon.png")
