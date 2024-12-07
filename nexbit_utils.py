@@ -85,13 +85,13 @@ def backtest_with_oversampling(data, model, predictors):
 
 # Generating Predictions for Bitcoin
 def predict_btc(data):
-    knn_model = KNeighborsClassifier(n_neighbors=10)
+    model = KNeighborsClassifier(n_neighbors=10)
     TB_new_predictors = add_features(data).drop(['target', 'AV_average_sentiment', 'AV_sentiment_category_Strong Negative',
                                                  'AV_sentiment_category_Strong Positive', 'AV_sentiment_category_Neutral',
                                                  'AV_sentiment_category_Moderate Negative', 'AV_sentiment_category_Moderate Positive',
                                                  'AV_sentiment_lag_1', 'AV_sentiment_lag_2', 'AV_sentiment_lag_3'], axis=1).columns.to_list()
     data = add_features(data)
-    preds = backtest_with_oversampling(data, knn_model, feature_selection(data, TB_new_predictors, 'target'))
+    preds = backtest_with_oversampling(data, model, feature_selection(data, TB_new_predictors, 'target'))
     accuracy = accuracy_score(preds["target"], preds["prediction"])
     if preds['prediction'].iloc[-1] > 0:
         prediction = 1
@@ -99,15 +99,15 @@ def predict_btc(data):
     else:
         prediction = 0
         confidence = 100 - round(preds['confidence'].iloc[-1] * 100)
-    return prediction, accuracy, confidence
+    return prediction, confidence
 
 # Generating Predictions for Ethereum
 def predict_eth(data):
-    xgb_model = XGBClassifier(random_state=42, learning_rate=.1, n_estimators=200)
+    model = XGBClassifier(random_state=42, learning_rate=.1, n_estimators=200)
     AV_predictors = data.drop(['target', 'TB_average_sentiment', 'TB_sentiment_category_Strong Negative',
                                'TB_sentiment_category_Strong Positive', 'TB_sentiment_category_Neutral',
                                'TB_sentiment_category_Moderate Negative', 'TB_sentiment_category_Moderate Positive'], axis=1).columns.to_list()
-    preds = backtest(data, xgb_model, feature_selection(data, AV_predictors, 'target'))
+    preds = backtest(data, model, feature_selection(data, AV_predictors, 'target'))
     accuracy = accuracy_score(preds["target"], preds["prediction"])
     if preds['prediction'].iloc[-1] > 0:
         prediction = 1
@@ -115,17 +115,17 @@ def predict_eth(data):
     else:
         prediction = 0
         confidence = 100 - round(preds['confidence'].iloc[-1] * 100)
-    return prediction, accuracy, confidence
+    return prediction, confidence
 
 # Generating Predictions for Solana
 def predict_sol(data):
-    knn_model = KNeighborsClassifier(n_neighbors=10)
+    model = KNeighborsClassifier(n_neighbors=10)
     AV_new_predictors = add_features(data).drop(['target', 'TB_average_sentiment', 'TB_sentiment_category_Strong Negative',
                                                  'TB_sentiment_category_Strong Positive', 'TB_sentiment_category_Neutral',
                                                  'TB_sentiment_category_Moderate Negative', 'TB_sentiment_category_Moderate Positive',
                                                  'TB_sentiment_lag_1', 'TB_sentiment_lag_2', 'TB_sentiment_lag_3'], axis=1).columns.to_list()
     data = add_features(data)
-    preds = backtest_with_oversampling(data, knn_model, feature_selection(data, AV_new_predictors, 'target'))
+    preds = backtest_with_oversampling(data, model, feature_selection(data, AV_new_predictors, 'target'))
     accuracy = accuracy_score(preds["target"], preds["prediction"])
     if preds['prediction'].iloc[-1] > 0:
         prediction = 1
@@ -133,4 +133,4 @@ def predict_sol(data):
     else:
         prediction = 0
         confidence = 100 - round(preds['confidence'].iloc[-1] * 100)
-    return prediction, accuracy, confidence
+    return prediction, confidence
