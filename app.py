@@ -409,12 +409,10 @@ if "total_supply" not in st.session_state:
     st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
 if "website" not in st.session_state:
     st.session_state.website = crypto_info["website"].iloc[0]
-if "accuracy" not in st.session_state:
-    st.session_state.accuracy = "52.40%"
 if "news" not in st.session_state:
     st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
 if "prediction" not in st.session_state:
-    st.session_state.predictions = [[pred_btc, acc_btc, conf_btc]]
+    st.session_state.predictions = [[*predict_btc(ml_data_btc)], [*predict_eth(ml_data_eth)], [*predict_sol(ml_data_sol)]]
 
 info, chart = st.columns([1,2])
 
@@ -455,20 +453,71 @@ with info:
     st.markdown(price_change, unsafe_allow_html=True)
     
     # MODEL PREDICTION
-    date_acc = f"""
+    if st.session_state.symbol == "BTC":
+        date_acc = f"""
         <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
             <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
-            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: {st.session_state.accuracy}</span>
-            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.accuracy}</span>
+            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: {st.session_state.predictions[0][1]}</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.accuracy[0][2]}</span>
+        </div>
+        """
+    elif st.session_state.symbol == "ETH":
+        date_acc = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
+            <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
+            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: {st.session_state.predictions[1][1]}</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.accuracy[1][2]}</span>
+        </div>
+        """
+    else:
+        date_acc = f"""
+        <div style='display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;'>
+            <span style='text-align: left; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Date: {datetime.now().strftime("%b %d, %Y")}</span>
+            <span style='text-align: center; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Accuracy: {st.session_state.predictions[2][1]}</span>
+            <span style='text-align: right; font-size: 0.7rem; font-weight: 500; color: {text_light};'>Confidence: {st.session_state.accuracy[2][2]}</span>
         </div>
         """
     st.markdown(date_acc, unsafe_allow_html=True)
-    increase = f"""
-        <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color1_light}; border-radius: 0.8rem; background-color: {color1_dark}1A;'>
-            <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase tomorrow.</span>
-        </div>
-        """
-    st.markdown(increase, unsafe_allow_html=True)
+    if st.session_state.symbol == "BTC":
+        if st.session_state.predictions[0][0] == 1:
+            model_prediction = f"""
+                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color1_light}; border-radius: 0.8rem; background-color: {color1_dark}1A;'>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase tomorrow.</span>
+                </div>
+                """
+        else:
+            model_prediction = f"""
+                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}1A;'>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease tomorrow.</span>
+                </div>
+                """
+    elif st.session_state.symbol == "ETH":
+        if st.session_state.predictions[1][0] == 1:
+            model_prediction = f"""
+                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color1_light}; border-radius: 0.8rem; background-color: {color1_dark}1A;'>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase tomorrow.</span>
+                </div>
+                """
+        else:
+            model_prediction = f"""
+                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}1A;'>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease tomorrow.</span>
+                </div>
+                """
+    else:
+        if st.session_state.predictions[2][0] == 1:
+            model_prediction = f"""
+                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color1_light}; border-radius: 0.8rem; background-color: {color1_dark}1A;'>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase tomorrow.</span>
+                </div>
+                """
+        else:
+            model_prediction = f"""
+                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}1A;'>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease tomorrow.</span>
+                </div>
+                """
+    st.markdown(model_prediction, unsafe_allow_html=True)
     
     # CRYPTO INFO
     market_cap = f"""
@@ -1159,7 +1208,6 @@ def open_options():
             st.session_state.total_supply = crypto_info["total_supply"].iloc[0]
             st.session_state.website = crypto_info["website"].iloc[0]
             st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
-            st.session_state.accuracy = "52.40%"
         elif selection == "Ethereum":
             st.session_state.price = crypto_price[crypto_price["crypto_id"]==2]["close_price"].iloc[-1]
             st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==2]
@@ -1168,7 +1216,6 @@ def open_options():
             st.session_state.total_supply = crypto_info["total_supply"].iloc[1]
             st.session_state.website = crypto_info["website"].iloc[1]
             st.session_state.news = crypto_news[crypto_news["crypto_id"]==2]
-            st.session_state.accuracy = "53.11%"
         else:
             st.session_state.price = crypto_price[crypto_price["crypto_id"]==3]["close_price"].iloc[-1]
             st.session_state.price_data = crypto_price[crypto_price["crypto_id"]==3]
@@ -1177,7 +1224,6 @@ def open_options():
             st.session_state.total_supply = crypto_info["total_supply"].iloc[2]
             st.session_state.website = crypto_info["website"].iloc[2]
             st.session_state.news = crypto_news[crypto_news["crypto_id"]==3]
-            st.session_state.accuracy = "54.39%"
         st.rerun()
 
 button_container = st.container()
