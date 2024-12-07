@@ -19,8 +19,8 @@ def backtest(data, model, predictors):
     for i in range(365, data.shape[0], 1):
         train = data.iloc[0:i].copy()
         test = data.iloc[i:(i+1)].copy()
-        predictions = predict(train, test, predictors, model)
-        all_predictions.append(predictions)
+        prediction = predict(train, test, predictors, model)
+        all_predictions.append(prediction)
     combined = pd.concat(all_predictions)
     return combined
 
@@ -78,8 +78,8 @@ def backtest_with_oversampling(data, model, predictors):
         X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
         train_resampled = X_train_resampled.copy()
         train_resampled["target"] = y_train_resampled
-        predictions = predict(train_resampled, test, predictors, model)
-        all_predictions.append(predictions)
+        prediction = predict(train_resampled, test, predictors, model)
+        all_predictions.append(prediction)
     combined = pd.concat(all_predictions)
     return combined
 
