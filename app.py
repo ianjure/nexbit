@@ -487,7 +487,7 @@ with info:
                 """
         else:
             model_prediction = f"""
-                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}1A;'>
+                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}80;'>
                     <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease tomorrow.</span>
                 </div>
                 """
@@ -500,7 +500,7 @@ with info:
                 """
         else:
             model_prediction = f"""
-                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}1A;'>
+                <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}80;'>
                     <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease tomorrow.</span>
                 </div>
                 """
