@@ -557,8 +557,20 @@ with chart:
     df = df.copy()
     df['date'] = pd.to_datetime(df['date'])
     pct_change = ((st.session_state.price - df["close_price"].iloc[-2]) / df["close_price"].iloc[-2]) * 100
-    
-    if pct_change > 0:
+
+    if (st.session_state.symbol == 'BTC') and (st.session_state.predictions[0][0] == 1):
+        color_line = color1_dark
+        color_fill = "#0a3c21"
+    elif (st.session_state.symbol == 'BTC') and (st.session_state.predictions[0][0] == 0):
+        color_line = color2_light
+        color_fill = color2_dark
+    elif (st.session_state.symbol == 'ETH') and (st.session_state.predictions[0][0] == 1):
+        color_line = color1_dark
+        color_fill = "#0a3c21"
+    elif (st.session_state.symbol == 'ETH') and (st.session_state.predictions[0][0] == 0):
+        color_line = color2_light
+        color_fill = color2_dark
+    elif (st.session_state.symbol == 'SOL') and (st.session_state.predictions[0][0] == 1):
         color_line = color1_dark
         color_fill = "#0a3c21"
     else:
