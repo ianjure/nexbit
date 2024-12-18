@@ -330,6 +330,15 @@ info_hover = """
     """
 st.markdown(info_hover, unsafe_allow_html=True)
 
+remove_underline = """
+    <style>
+    .st-emotion-cache-1cvow4s a {
+      text-decoration: none;
+    }
+    </style>
+    """
+st.markdown(remove_underline, unsafe_allow_html=True)
+
 # [SUPABASE] FETCHING DATA FROM THE DATABASE
 def fetch_data(table, url, key):
     supabase: Client = create_client(url, key)
