@@ -412,7 +412,7 @@ if "website" not in st.session_state:
 if "news" not in st.session_state:
     st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
 if "predictions" not in st.session_state:
-    st.session_state.predictions = [[*predict_btc(ml_data_btc)], [*predict_eth(ml_data_eth)], [*predict_sol(ml_data_sol)]]
+    st.session_state.predictions = [[p,c], [p,c], [p,c]]
 
 info, chart = st.columns([1,2])
 
