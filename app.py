@@ -365,9 +365,9 @@ crypto_info = fetch_data('Cryptocurrency', SUPABASE_URL, SUPABASE_KEY)
 crypto_price = fetch_data('Price', SUPABASE_URL, SUPABASE_KEY)
 crypto_news = fetch_data('News', SUPABASE_URL, SUPABASE_KEY)
 
-ml_data_btc = final_transform(crypto_news, crypto_price, 1)
-ml_data_eth = final_transform(crypto_news, crypto_price, 2)
-ml_data_sol = final_transform(crypto_news, crypto_price, 3)
+#ml_data_btc = final_transform(crypto_news, crypto_price, 1)
+#ml_data_eth = final_transform(crypto_news, crypto_price, 2)
+#ml_data_sol = final_transform(crypto_news, crypto_price, 3)
 
 # [STREAMLIT] CATEGORIZE SCORE FOR NEWS CARD
 def categorize_score(score, color=False):
