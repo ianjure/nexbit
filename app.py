@@ -564,13 +564,13 @@ with chart:
     elif (st.session_state.symbol == 'BTC') and (st.session_state.predictions[0][0] == 0):
         color_line = color2_light
         color_fill = color2_dark
-    elif (st.session_state.symbol == 'ETH') and (st.session_state.predictions[0][0] == 1):
+    elif (st.session_state.symbol == 'ETH') and (st.session_state.predictions[1][0] == 1):
         color_line = color1_dark
         color_fill = "#0a3c21"
-    elif (st.session_state.symbol == 'ETH') and (st.session_state.predictions[0][0] == 0):
+    elif (st.session_state.symbol == 'ETH') and (st.session_state.predictions[1][0] == 0):
         color_line = color2_light
         color_fill = color2_dark
-    elif (st.session_state.symbol == 'SOL') and (st.session_state.predictions[0][0] == 1):
+    elif (st.session_state.symbol == 'SOL') and (st.session_state.predictions[2][0] == 1):
         color_line = color1_dark
         color_fill = "#0a3c21"
     else:
