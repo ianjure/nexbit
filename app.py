@@ -330,29 +330,6 @@ info_hover = """
     """
 st.markdown(info_hover, unsafe_allow_html=True)
 
-# [CRYPTOCOMPARE API] FETCH CURRENT CRYPTO PRICE
-def get_crypto_price(api_key):
-    crypto_symbols = ['BTC', 'ETH', 'SOL']
-    url = f'https://min-api.cryptocompare.com/data/price'
-    price_list = []
-    for symbol in crypto_symbols:
-        params = {
-            'fsym': symbol,
-            'tsyms': 'USD',
-            "api_key": api_key
-        }
-        response = requests.get(url, params=params)
-        if response.status_code == 200:
-            data = response.json()
-            print(data)
-            #price_list.append(price)
-        else:
-            print("Error fetching data from CryptoCompare API")
-            return None
-#return price_list
-#prices = get_crypto_price('29f6b8bc885d1ec56c7612acdd69a9a9f1c4575666aa752220805a7a8dd01df9')
-#pass = lSwEVpkPlxYq9kls
-
 # [SUPABASE] FETCHING DATA FROM THE DATABASE
 def fetch_data(table, url, key):
     supabase: Client = create_client(url, key)
@@ -412,7 +389,7 @@ if "website" not in st.session_state:
 if "news" not in st.session_state:
     st.session_state.news = crypto_news[crypto_news["crypto_id"]==1]
 if "predictions" not in st.session_state:
-    st.session_state.predictions = [[p,c], [p,c], [p,c]]
+    st.session_state.predictions = [[1,60], [1,81], [0,60]]
 
 info, chart = st.columns([1,2])
 
@@ -482,39 +459,39 @@ with info:
         if st.session_state.predictions[0][0] == 1:
             model_prediction = f"""
                 <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color1_light}; border-radius: 0.8rem; background-color: {color1_dark}1A;'>
-                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase tomorrow.</span>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase today.</span>
                 </div>
                 """
         else:
             model_prediction = f"""
                 <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}80;'>
-                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease tomorrow.</span>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease today.</span>
                 </div>
                 """
     elif st.session_state.symbol == "ETH":
         if st.session_state.predictions[1][0] == 1:
             model_prediction = f"""
                 <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color1_light}; border-radius: 0.8rem; background-color: {color1_dark}1A;'>
-                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase tomorrow.</span>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase today.</span>
                 </div>
                 """
         else:
             model_prediction = f"""
                 <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}80;'>
-                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease tomorrow.</span>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease today.</span>
                 </div>
                 """
     else:
         if st.session_state.predictions[2][0] == 1:
             model_prediction = f"""
                 <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color1_light}; border-radius: 0.8rem; background-color: {color1_dark}1A;'>
-                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase tomorrow.</span>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price increase today.</span>
                 </div>
                 """
         else:
             model_prediction = f"""
                 <div style='width: auto; height: auto; padding-top: 12px; padding-bottom: 12px; padding-left: 15px; padding-right: 15px; margin: 0px; margin-bottom: 15px; border: 2px solid {color2_light}; border-radius: 0.8rem; background-color: {color2_dark}80;'>
-                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease tomorrow.</span>
+                    <span style='text-align: left; font-size: 1rem; font-weight: 500;'>The model predicts a price decrease today.</span>
                 </div>
                 """
     st.markdown(model_prediction, unsafe_allow_html=True)
